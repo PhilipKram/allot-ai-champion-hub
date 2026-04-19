@@ -14,7 +14,6 @@ Self-contained training hub for the Allot AI Champion Enablement Program — pre
 | `AI_Champion_Hub.html` | Identical copy of `index.html`. Kept so the canonical filename is obvious when browsing the repo. |
 | `AI_Champion_Pre-Work.md` | Source doc for pre-work content. Canonical text; the hub mirrors this. |
 | `AI_Champion_Enablement_Training.md` | Source doc for the 2-day workshop agenda. |
-| `AI_Champion_Readiness_Exam.html` | Standalone offline version of the exam (kept as backup; the hub has the same exam embedded). |
 | `AI_Champion_Pre-Work.html` / `AI_Champion_Enablement_Training.html` | Earlier standalone HTML exports. Superseded by the hub; kept for reference. |
 | `AI_Champion_Validation_Brief.md` | Internal validation brief for the program. |
 | `AI_Tools_License_Request.xlsx` | License request spreadsheet. |

@@ -490,8 +490,12 @@ Each champion team will (problem was identified in Day 1 wrap-up):
 ### Session 9: Wrap-Up & Next Steps (16:30–17:30)
 
 #### 9.1 Certification & Commitments
+
+**Certification Exam (post-training).** Within 7 days of Day 2 (by **Mon 11 May 2026, 10:00 IL**), each champion completes the AI Champion Certification Exam in the training hub. Five sections: Case Studies, Your Capstone, Your First Local Workshop, Prompt Library Starter, and Commitments.
+
 Each champion commits to:
-- [ ] Run their first local team workshop within 2 weeks
+- [ ] Submit the Certification Exam by Mon 11 May 2026
+- [ ] Run their first local team workshop within 2 weeks (by Mon 18 May 2026)
 - [ ] Contribute at least 3 prompts to the shared prompt library within 1 month
 - [ ] Identify and document 5 AI use cases for their team within 1 month
 - [ ] Attend monthly champion community syncs

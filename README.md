@@ -1,6 +1,6 @@
 # Allot AI Champion Hub
 
-Self-contained training hub for the Allot AI Champion Enablement Program — pre-work, 2-day workshop agenda, readiness exam, and completion checklist.
+Self-contained training hub for the Allot AI Champion Enablement Program — pre-work, 2-day workshop agenda, and post-training certification exam.
 
 **Live site:** https://philipkram.github.io/allot-ai-champion-hub/
 
@@ -10,7 +10,7 @@ Self-contained training hub for the Allot AI Champion Enablement Program — pre
 
 | File | Purpose |
 |---|---|
-| `index.html` | The hub itself. Single-file site with 5 tabs (Home, Pre-Work, Workshop, Exam, Checklist). Served as the GitHub Pages root. |
+| `index.html` | The hub itself. Single-file site with 4 tabs (Home, Pre-Work, Workshop, Certification Exam). Served as the GitHub Pages root. |
 | `AI_Champion_Hub.html` | Identical copy of `index.html`. Kept so the canonical filename is obvious when browsing the repo. |
 | `AI_Champion_Pre-Work.md` | Source doc for pre-work content. Canonical text; the hub mirrors this. |
 | `AI_Champion_Enablement_Training.md` | Source doc for the 2-day workshop agenda. |
@@ -25,8 +25,9 @@ Champions across Allot R&D, Product, Security, and Support. Multi-region cohort:
 
 ## Program shape
 
-- **Pre-Work** — 4 hours self-paced. Readiness Exam submitted 48h before Day 1.
+- **Pre-Work** — 2.5 hours self-paced. No gating exam; per-part completion checkboxes.
 - **Workshop** — 2 days, 10:00–18:00 IL, hybrid.
+- **Certification Exam** — post-training, submitted within 7 days of Day 2.
 - **Post-Training** — 90-day roadmap. First local workshop within 2 weeks.
 
 ## Editing

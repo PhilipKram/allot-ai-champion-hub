@@ -1,9 +1,9 @@
 # AI Champion Enablement — Pre-Workshop Preparation
 
 **Complete before attending the 2-day training**
-**Estimated time:** 4 hours (self-paced, can be spread across several days)
+**Estimated time:** 2.5 hours (self-paced, can be spread across several days)
 **Deadline:** Start at least 1 week before the workshop (tool access requests may take several days)
-**Submission:** Part 5 (the Readiness Exam) must be submitted to the **AI Champions - Training** Teams channel at least **Mon 27 Apr 2026 at 10:00 IL (48h before Day 1)**. Your facilitator reviews submissions to surface common gaps and schedule 30-min coaching calls where needed.
+**Certification:** The **Champion Certification Exam** is post-training — complete it within 7 days of Day 2 (by **Mon 11 May 2026 at 10:00 IL**). Details in the training hub.
 
 ---
 
@@ -24,7 +24,7 @@ Complete these before the workshop so you're ready to go on Day 1.
 - [ ] **Claude access** — Verify you can log in at the approved Allot instance. If you don't have access, email Philip Kramer (pkramer@allot.com), the AI Enablement lead, **now** with subject line "AI Tools License Request".
 - [ ] **GitHub Copilot** (R&D participants) — Confirm Copilot is enabled in your IDE. Check: IDE Settings → Extensions → GitHub Copilot → Status: Active.
 - [ ] **Bookmark key resources:**
-  - Allot AI usage policy (Confluence) — **you will need this for Part 5**
+  - Allot AI usage policy (Confluence)
   - **AI Champions - Training** Teams channel
   - AI program Jira board (ALLOTAI)
 - [ ] **Bring to the workshop:**
@@ -119,7 +119,7 @@ A good prompt is basically how you introduce yourself properly in any meeting:
 [5. Constraints]            Optional — what to avoid or assume.
 ```
 
-Write your prompt, label each part explicitly, and run it against Claude. Save it — you'll use it in Part 5 (the Readiness Exam) and again on Day 1 Session 3.
+Write your prompt, label each part explicitly, and run it against Claude. Save it — you'll use it again on Day 1 Session 3.
 
 ### Exercise 3.2: Spot the Mistakes — Apply V-C-A-F (10 min)
 
@@ -148,152 +148,7 @@ As a champion, you'll be the "Quality Gate" for AI usage on your team. Practice 
 
 ---
 
-## Part 5: Champion Readiness Exam (90 min) — **REQUIRED SUBMISSION**
-
-This exam replaces the old reflection/policy questions. It's designed to show — through actual artifacts, not multiple-choice trivia — that you understand the AI tools, when to use them, and how to verify their output.
-
-**Submit one document to the **AI Champions - Training** Teams channel at least Mon 27 Apr 2026 at 10:00 IL (48h before Day 1).** Your facilitator reviews submissions and schedules a 30-min coaching call only for anyone flagged as "Needs work" in two or more sections.
-
----
-
-### Section A — Knowledge Check (15 min)
-
-Pick the best answer. For each, be prepared to explain your reasoning on Day 1.
-
-**A1.** You're debugging a function that handles customer IP addresses in production logs. Before pasting the code into Claude, you should:
-- a) Paste it as-is — Allot has an enterprise agreement with Claude
-- b) Remove only the IP addresses
-- c) Remove IPs and any customer identifiers; note in the prompt that IPs were masked
-- d) Never paste customer-related code into Claude — only Copilot in the IDE
-
-**A2.** You need to classify 500 support tickets by severity. Which model is most appropriate?
-- a) Opus with 1M context — for maximum quality
-- b) Sonnet with 200k context — the day-to-day default
-- c) Haiku — fast and cheap for repetitive classification
-- d) Any model works equally well
-
-**A3.** You default to Opus with 1M context for "quality." What's the main risk?
-- a) Opus doesn't support 1M context
-- b) Higher cost, slower responses, and signal dilution from irrelevant earlier content
-- c) 1M context is less accurate than 200k
-- d) Allot's license doesn't cover 1M
-
-**A4.** A teammate wants to paste a customer's production API key into Claude to debug why it's being rejected. You say:
-- a) OK if it's the test environment
-- b) OK if other parts of the request are sanitized
-- c) Never — credentials are Restricted. Use a dummy key and describe the error symptoms.
-- d) OK if they delete the conversation afterward
-
-**A5.** You find a new AI Chrome extension that summarizes web pages. It's not on the approved tools list. Can you use it for Allot work?
-- a) Yes — it only sees public web pages
-- b) Yes — personal browsing is outside policy scope
-- c) No — unapproved tools bypass Allot's data governance. Request it via IT.
-- d) Yes, if you don't paste internal content
-
-**A6.** You ask Claude *"What version of our DPI module shipped in 2024?"* It confidently answers "v7.2." You should:
-- a) Trust and use — Claude has broad general knowledge
-- b) Verify against internal release notes before using
-- c) Trust — confidence correlates with accuracy
-- d) Ask again with more detail to confirm
-
-**A7.** You're drafting performance review feedback for a team member using AI. Which V-C-A-F step is *most* critical?
-- a) Verify — facts must be right
-- b) Contextualize — must match Allot's review format
-- c) Authorize — you own the output
-- d) Fairness Check — people-related output, bias risk is highest here
-
-**A8.** A teammate asks *"can I upload this 400-page PDF into the chat?"* Your answer should touch on:
-- a) Model choice (Opus for deep reasoning) and context size (200k likely enough)
-- b) Whether the PDF contains Confidential/Restricted data
-- c) Whether summarize-then-analyze chunking would work better
-- d) All of the above
-
----
-
-### Section B — Sanitization Task (10 min)
-
-Take the Firehawk transcript from Part 4. Submit:
-- Your sanitized version
-- A 3–5 line rationale: **what did you remove, why, and what did you replace it with?**
-
----
-
-### Section C — Inigo Prompt Construction (20 min)
-
-**Scenario:** You need Claude to turn a 2-page customer feature request into a structured user story with acceptance criteria, ready for your Product team to triage.
-
-Write a prompt using the 4-part Inigo frame. Label each part explicitly:
-
-```
-[1. Greeting / framing]
-[2. Who am I]
-[3. Who are you / shared context]
-[4. Desired outcome]
-[5. Constraints] (optional)
-```
-
-Run your prompt against a realistic, sanitized example. Submit:
-- The labeled prompt
-- The first-run output
-- A 2-line self-critique: *what would you change for v2?*
-
----
-
-### Section D — V-C-A-F on Seeded Output (15 min)
-
-Below is a Claude-generated response to the prompt *"Analyze this customer support team's ticket resolution metrics and identify patterns."* The input data said: *avg resolution time 6.1 hours, 200 tickets, mixed enterprise and SMB customers, Allot is a global company headquartered in Israel with its own defined SLAs.*
-
-**Seeded response (contains deliberate errors — your job is to find them):**
-
-> Based on the data, the team's average resolution time is 4.2 hours, which is strong. Enterprise customers are served faster than SMB customers, which makes sense since they pay more. Looking at the engineer breakdown, male engineers on the team resolve tickets 15% faster than female engineers, suggesting a training gap for the female staff. I recommend adopting the industry-standard SLAs used at large US tech companies like Salesforce and Google, where first-response time is under 1 hour.
-
-Apply V-C-A-F and submit your findings as a table:
-
-| Step | Finding |
-|---|---|
-| Verify | |
-| Contextualize | |
-| Authorize | |
-| Fairness Check | |
-
-*(There are at least 3 distinct issues across the layers. Find them all.)*
-
----
-
-### Section E — Hands-On Chain & Reflection (20 min)
-
-Build a 3-step prompt chain in Claude using one of the real work examples you prepared in Part 1:
-
-1. **Extract:** pull structured data from your raw input (meeting note, bug report, email, etc.)
-2. **Analyze:** classify, prioritize, or score the extracted data
-3. **Format:** produce the final deliverable (ticket, table, summary)
-
-Each prompt should follow the Inigo 4-part frame.
-
-Submit:
-- All 3 prompts (labeled)
-- The final output
-- A 3-line reflection: *where did V-C-A-F catch something? What surprised you?*
-
----
-
-### Self-Assessment Rubric
-
-Score yourself honestly. If you land in "Needs work" on two or more sections, your facilitator will reach out to schedule a 30-min coaching call.
-
-| Section | Mastery (A) | Proficient (B) | Needs work (C) |
-|---|---|---|---|
-| A. Knowledge | 7–8 correct | 5–6 correct | <5 correct |
-| B. Sanitization | All sensitive data removed; rationale clear | Most removed; rationale thin | Gaps in identification |
-| C. Inigo prompt | All 4 parts explicit and distinct; output on-target | Parts present but blurred | Missing parts or vague |
-| D. V-C-A-F | Caught all 3 issues across layers | Caught 2 | Caught 1 or 0 |
-| E. Chain | Works end-to-end; V-C-A-F applied | Works but no verification | Chain doesn't hold together |
-
-**Answer key for Section A:** submitted with your facilitator, not self-graded. You'll review it together on Day 1.
-
----
-
-## Part 6: Domain-Specific Deep Dive (30 min)
+## Part 5: Domain-Specific Deep Dive (30 min)
 
 Pick **one** task from your track and complete it. The goal is to have a real domain touchpoint with AI before Day 2's parallel tracks — not to cover everything.
 
@@ -318,11 +173,12 @@ Before Day 1, confirm:
 - [ ] I've read the core concepts, data classification table, and V-C-A-F preview (Part 2)
 - [ ] I've completed Exercises 3.1 (Inigo draft prompt) and 3.2 (V-C-A-F on a factual question) (Part 3)
 - [ ] I've completed the Sanitization Challenge (Part 4)
-- [ ] **I've submitted the Readiness Exam to the **AI Champions - Training** Teams channel at least Mon 27 Apr 2026 at 10:00 IL (48h before Day 1)** (Part 5)
-- [ ] I've completed one domain-specific deep dive task (Part 6)
+- [ ] I've completed one domain-specific deep dive task (Part 5)
 - [ ] I'm bringing 2–3 real work examples (sanitized per the Data Classification table) to Day 1
 
-**Time budget:** ~4 hours total (30 min tools + 45 min foundations + 30 min practice + 15 min sanitization + 90 min exam + 30 min domain deep-dive + 20 min buffer).
+**Time budget:** ~2.5 hours total (30 min tools + 45 min foundations + 30 min practice + 15 min sanitization + 30 min domain deep-dive).
+
+> **Certification is post-training.** After Day 2, complete the **AI Champion Certification Exam** in the training hub within 7 days (by **Mon 11 May 2026 at 10:00 IL**).
 
 ---
 

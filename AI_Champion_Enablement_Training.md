@@ -40,7 +40,7 @@
 #### 1.3 The 3-phase outcome ladder
 - **Pre-work (done):** baseline access, shared vocabulary, real problems in hand
 - **Workshop (today + tomorrow):** personal capability → leadership capability
-- **Post-training (90 days):** first local workshop delivered, prompt library seeded, eNPS pulse
+- **Post-training (60 days):** first local workshop delivered, prompt library seeded, eNPS pulse
 
 #### 1.4 Pre-work pulse
 Quick show of hands: tools working? Firehawk sanitization done? Policy scavenger hunt? Real examples in hand?
@@ -498,7 +498,7 @@ Each champion commits to:
 - [ ] Run their first local team workshop within 2 weeks (by Mon 18 May 2026)
 - [ ] Contribute at least 3 prompts to the shared prompt library within 1 month
 - [ ] Identify and document 5 AI use cases for their team within 1 month
-- [ ] Attend monthly champion community syncs
+- [ ] Attend bi-weekly champion community syncs
 
 #### 9.2 Your Champion Roadmap
 | Timeframe | Focus |

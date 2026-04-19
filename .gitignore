@@ -19,3 +19,7 @@
 *_Facilitator_Key.*
 *_Answer_Key.*
 Allot  R&D - All Hands Q1 2026.pptx
+
+# Playwright verification artifacts
+.playwright-mcp/
+hub-*.png

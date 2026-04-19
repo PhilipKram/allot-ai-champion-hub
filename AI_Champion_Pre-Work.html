@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Champion Enablement — Pre-Workshop Preparation</title>
+<style>
+  :root {
+    --primary: #1a3a5c;
+    --primary-light: #2a5a8c;
+    --primary-dark: #0f2540;
+    --accent: #e8a838;
+    --bg-light: #f5f7fa;
+    --bg-white: #ffffff;
+    --text: #2c3e50;
+    --text-light: #5a6a7a;
+    --border: #dce3eb;
+    --success: #27ae60;
+    --warning: #e67e22;
+    --danger: #c0392b;
+    --callout-tip: #3498db;
+    --callout-warning: #e67e22;
+    --code-bg: #1e2730;
+    --code-text: #e0e6ed;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    color: var(--text);
+    line-height: 1.7;
+    background: var(--bg-white);
+    position: relative;
+  }
+
+  /* DRAFT watermark banner */
+  .draft-banner {
+    background: repeating-linear-gradient(
+      -45deg,
+      var(--danger),
+      var(--danger) 10px,
+      #d44332 10px,
+      #d44332 20px
+    );
+    color: #fff;
+    text-align: center;
+    padding: 8px 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
+    color: #fff;
+    padding: 40px 0 50px;
+    text-align: center;
+    position: relative;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: var(--bg-white);
+    border-radius: 20px 20px 0 0;
+  }
+
+  .logo-placeholder {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding: 10px 24px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .logo-placeholder .logo-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--accent);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--primary-dark);
+  }
+  .logo-placeholder span {
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  .header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+  .header .subtitle {
+    font-size: 1rem;
+    opacity: 0.85;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  .header .meta-badges {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .header .meta-badges .badge {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  /* Container */
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Sections */
+  .section {
+    padding: 48px 0 40px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section:last-of-type {
+    border-bottom: none;
+  }
+  .section-alt {
+    background: var(--bg-light);
+    margin: 0 -9999px;
+    padding-left: 9999px;
+    padding-right: 9999px;
+  }
+
+  /* Section Header */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .section-number {
+    background: var(--primary);
+    color: #fff;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .section-header h2 {
+    font-size: 1.5rem;
+    color: var(--primary);
+    font-weight: 700;
+  }
+  .section-time {
+    margin-left: auto;
+    background: var(--bg-light);
+    padding: 4px 14px;
+    border-radius: 16px;
+    font-size: 0.8rem;
+    color: var(--text-light);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .section-alt .section-time {
+    background: var(--bg-white);
+  }
+
+  h3 {
+    font-size: 1.15rem;
+    color: var(--primary);
+    margin: 28px 0 12px;
+    font-weight: 600;
+  }
+
+  h4 {
+    font-size: 1rem;
+    color: var(--primary-light);
+    margin: 20px 0 8px;
+    font-weight: 600;
+  }
+
+  p {
+    margin-bottom: 14px;
+  }
+
+  strong {
+    color: var(--primary-dark);
+  }
+
+  /* Intro text */
+  .intro-text {
+    font-size: 1.05rem;
+    color: var(--text-light);
+    margin-bottom: 8px;
+  }
+
+  /* Callout boxes */
+  .callout {
+    border-left: 4px solid var(--callout-tip);
+    background: #eaf3fb;
+    padding: 16px 20px;
+    margin: 18px 0;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.95rem;
+  }
+  .callout-warning {
+    border-left-color: var(--callout-warning);
+    background: #fdf3e7;
+  }
+  .callout-danger {
+    border-left-color: var(--danger);
+    background: #fdecea;
+  }
+  .callout strong:first-child {
+    display: inline;
+  }
+
+  /* Tables */
+  .table-wrapper {
+    overflow-x: auto;
+    margin: 18px 0;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+  }
+  thead th {
+    background: var(--primary);
+    color: #fff;
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  tbody td {
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tbody tr:nth-child(even) {
+    background: var(--bg-light);
+  }
+  tbody tr:last-child td {
+    border-bottom: none;
+  }
+  tbody tr:hover {
+    background: #e8eef5;
+  }
+
+  /* Code blocks */
+  pre {
+    background: var(--code-bg);
+    color: var(--code-text);
+    padding: 20px 24px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: 'Cascadia Code', 'Fira Code', 'Consolas', 'Monaco', monospace;
+    font-size: 0.87rem;
+    line-height: 1.6;
+    margin: 16px 0;
+    border: 1px solid #2a3540;
+  }
+  code {
+    font-family: 'Cascadia Code', 'Fira Code', 'Consolas', 'Monaco', monospace;
+    font-size: 0.88em;
+    background: #eef2f7;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: var(--primary);
+  }
+  pre code {
+    background: none;
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
+  }
+
+  /* Checklist */
+  .checklist {
+    list-style: none;
+    padding: 0;
+    margin: 14px 0;
+  }
+  .checklist li {
+    position: relative;
+    padding: 10px 12px 10px 40px;
+    margin-bottom: 6px;
+    background: var(--bg-white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition: background 0.15s;
+  }
+  .section-alt .checklist li {
+    background: #fff;
+  }
+  .checklist li:hover {
+    background: #f0f4f8;
+  }
+  .checklist input[type="checkbox"] {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary);
+    cursor: pointer;
+  }
+  .checklist .sub-list {
+    margin: 8px 0 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .checklist .sub-list li {
+    padding: 4px 0 4px 20px;
+    border: none;
+    margin: 0;
+    background: none;
+    font-size: 0.93rem;
+  }
+  .checklist .sub-list li::before {
+    content: '\2022';
+    color: var(--primary);
+    font-weight: 700;
+    display: inline-block;
+    width: 16px;
+    margin-left: -16px;
+  }
+
+  /* Ordered and unordered lists */
+  ul, ol {
+    margin: 10px 0 14px 24px;
+  }
+  li {
+    margin-bottom: 6px;
+  }
+
+  /* Transcript / highlighted box */
+  .transcript-box {
+    background: linear-gradient(135deg, #fefcf3 0%, #fdf6e3 100%);
+    border: 2px solid var(--accent);
+    border-radius: 10px;
+    padding: 24px;
+    margin: 18px 0;
+    position: relative;
+  }
+  .transcript-box::before {
+    content: 'TRANSCRIPT';
+    position: absolute;
+    top: -11px;
+    left: 20px;
+    background: var(--accent);
+    color: var(--primary-dark);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    padding: 2px 12px;
+    border-radius: 4px;
+  }
+  .transcript-box blockquote {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.8;
+  }
+
+  /* Exercise boxes */
+  .exercise {
+    background: var(--bg-white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    margin: 20px 0;
+    border-left: 4px solid var(--primary-light);
+  }
+  .section-alt .exercise {
+    background: #fff;
+  }
+  .exercise h4 {
+    margin-top: 0;
+    color: var(--primary);
+    font-size: 1.05rem;
+  }
+  .exercise .time-badge {
+    display: inline-block;
+    background: var(--bg-light);
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.78rem;
+    color: var(--text-light);
+    font-weight: 600;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+    margin: 32px 0;
+  }
+
+  /* Role cards */
+  .role-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .role-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    border-top: 3px solid var(--primary);
+  }
+  .section-alt .role-card {
+    background: #fff;
+  }
+  .role-card h4 {
+    margin: 0 0 12px;
+    color: var(--primary);
+    font-size: 1rem;
+  }
+  .role-card ul {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 0.93rem;
+  }
+
+  /* Footer */
+  .footer {
+    background: var(--primary-dark);
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 32px 20px;
+    font-size: 0.9rem;
+    margin-top: 20px;
+  }
+  .footer strong {
+    color: #fff;
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 12px;
+  }
+  .footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 12px 0 0;
+  }
+  .footer li {
+    margin: 4px 0;
+  }
+
+  /* Notice callout inline */
+  .notice-inline {
+    background: #eef6ff;
+    border: 1px solid #c3d9f0;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin: 12px 0;
+    font-size: 0.92rem;
+    color: var(--primary);
+  }
+  .notice-inline strong {
+    color: var(--primary-dark);
+  }
+
+  /* Sanitization prompt */
+  .sanitization-prompt {
+    background: var(--bg-light);
+    border: 1px dashed var(--primary-light);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 14px 0;
+    font-style: italic;
+    color: var(--text-light);
+  }
+
+  /* Print styles */
+  @media print {
+    .draft-banner {
+      position: static;
+      background: #fff !important;
+      color: var(--danger) !important;
+      border: 2px solid var(--danger);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    body {
+      font-size: 11pt;
+      line-height: 1.5;
+      color: #000;
+    }
+    .header {
+      background: var(--primary) !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      padding: 24px 0 30px;
+    }
+    .section {
+      page-break-inside: avoid;
+      padding: 24px 0;
+    }
+    .exercise {
+      page-break-inside: avoid;
+    }
+    .table-wrapper {
+      page-break-inside: avoid;
+    }
+    thead th {
+      background: var(--primary) !important;
+      color: #fff !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    tbody tr:nth-child(even) {
+      background: #f0f0f0 !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    pre {
+      background: #f0f0f0 !important;
+      color: #000 !important;
+      border: 1px solid #ccc;
+    }
+    .checklist li:hover,
+    tbody tr:hover {
+      background: inherit !important;
+    }
+    a {
+      color: #000;
+      text-decoration: underline;
+    }
+    .section-alt {
+      background: none;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .header h1 { font-size: 1.5rem; }
+    .container { padding: 0 16px; }
+    .section { padding: 30px 0; }
+    .section-header { flex-wrap: wrap; }
+    .section-time { margin-left: 56px; margin-top: -6px; }
+    .role-cards { grid-template-columns: 1fr; }
+    table { font-size: 0.82rem; }
+    thead th, tbody td { padding: 8px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- DRAFT Banner -->
+<div class="draft-banner">
+  DRAFT &mdash; For Internal Review
+</div>
+
+<!-- Header -->
+<div class="header">
+  <div class="logo-placeholder">
+    <div class="logo-icon">A</div>
+    <span>ALLOT</span>
+  </div>
+  <h1>AI Champion Enablement</h1>
+  <p class="subtitle">Pre-Workshop Preparation</p>
+  <div class="meta-badges">
+    <span class="badge">Complete before the 2-day training</span>
+    <span class="badge">Estimated time: 5&ndash;6 hours</span>
+    <span class="badge">Self-paced</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Why Pre-Work -->
+  <div class="section">
+    <div class="callout-warning callout">
+      <strong>Deadline:</strong> Start at least 1 week before the workshop (tool access requests may take several days).
+    </div>
+    <h2 style="color:var(--primary);font-size:1.3rem;margin-top:18px;">Why Pre-Work?</h2>
+    <p style="margin-top:10px;">The 2-day workshop is hands-on and fast-paced. This pre-work ensures everyone starts from a common baseline so we can skip the basics and dive straight into practical skills. Completing it will make the workshop significantly more valuable for you.</p>
+  </div>
+
+  <!-- Part 1 -->
+  <div class="section section-alt">
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <h2>Tool Setup &amp; Access</h2>
+      <span class="section-time">30 min</span>
+    </div>
+    <p class="intro-text">Complete these before the workshop so you're ready to go on Day 1.</p>
+
+    <h3>Checklist</h3>
+
+    <div class="callout callout-warning">
+      <strong>Start this part at least 1 week early.</strong> IT ticket resolution can take 2&ndash;3 business days. Don't let tool access block your preparation.
+    </div>
+
+    <ul class="checklist">
+      <li>
+        <input type="checkbox" id="c1">
+        <label for="c1"><strong>Claude access</strong> &mdash; Verify you can log in at the approved Allot instance. If you don't have access, submit a request via IT Service Desk <strong>now</strong> (reference: AI Tools License Request).</label>
+      </li>
+      <li>
+        <input type="checkbox" id="c2">
+        <label for="c2"><strong>GitHub Copilot</strong> (R&amp;D participants) &mdash; Confirm Copilot is enabled in your IDE. Check: IDE Settings &rarr; Extensions &rarr; GitHub Copilot &rarr; Status: Active.</label>
+      </li>
+      <li>
+        <input type="checkbox" id="c3">
+        <label for="c3"><strong>Bookmark key resources:</strong></label>
+        <ul class="sub-list">
+          <li>Allot AI usage policy (Confluence) &mdash; <strong>you will need this for Part 5</strong></li>
+          <li>AI Champions Teams channel</li>
+          <li>AI program Jira board (ALLOTAI)</li>
+        </ul>
+      </li>
+      <li>
+        <input type="checkbox" id="c4">
+        <label for="c4"><strong>Bring to the workshop:</strong></label>
+        <ul class="sub-list">
+          <li>Your laptop with approved AI tools installed</li>
+          <li>2&ndash;3 real work examples you'd like to try with AI (code snippets, documents, reports, tickets &mdash; sanitized per the Data Classification table below)</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Part 2 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <h2>AI Foundations &mdash; Core Concepts</h2>
+      <span class="section-time">45 min</span>
+    </div>
+    <p class="intro-text">Read through these concepts. You don't need to memorize them &mdash; the goal is familiarity so we can build on them during the workshop.</p>
+
+    <h3>What is a Large Language Model (LLM)?</h3>
+    <p>An LLM is a machine learning model trained on vast amounts of text data. It predicts the most likely next word (token) given a sequence of input words. Key points:</p>
+    <ul>
+      <li><strong>It generates text, not truth.</strong> Output is statistically probable, not guaranteed to be correct.</li>
+      <li><strong>It has no memory between conversations.</strong> Each new conversation starts fresh unless context is provided.</li>
+      <li><strong>It works with a "context window."</strong> There's a limit to how much text it can process at once (think of it as working memory).</li>
+      <li><strong>It can follow instructions.</strong> Modern LLMs are fine-tuned to respond helpfully to prompts.</li>
+    </ul>
+
+    <h3>Key Terminology</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Term</th><th>What It Means</th><th>Why It Matters</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Prompt</strong></td><td>The text you send to the AI</td><td>Better prompts &rarr; better outputs</td></tr>
+          <tr><td><strong>Token</strong></td><td>A chunk of text (~4 characters or ~&frac34; of a word)</td><td>Determines cost and context limits</td></tr>
+          <tr><td><strong>Context window</strong></td><td>Maximum tokens the model can handle at once</td><td>Limits how much info you can provide</td></tr>
+          <tr><td><strong>Hallucination</strong></td><td>AI generating plausible but incorrect information</td><td>Always verify critical outputs</td></tr>
+          <tr><td><strong>Temperature</strong></td><td>Controls randomness (0 = deterministic, 1 = creative)</td><td>Lower for facts, higher for brainstorming</td></tr>
+          <tr><td><strong>System prompt</strong></td><td>Hidden instructions that shape AI behavior</td><td>Used to create consistent personas</td></tr>
+          <tr><td><strong>Few-shot learning</strong></td><td>Providing examples in your prompt to guide output</td><td>One of the most effective prompting techniques</td></tr>
+          <tr><td><strong>RAG (Retrieval-Augmented Generation)</strong></td><td>Feeding relevant documents to AI before asking a question</td><td>Grounds AI in your actual data</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Data Classification &amp; AI &mdash; Know Before You Paste</h3>
+    <p>This table governs what you can and cannot share with AI tools. <strong>Memorize it</strong> &mdash; as a champion, your team will ask you about this constantly.</p>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Data Classification</th><th>AI Usage</th><th>Examples</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Public</strong></td><td>Any approved tool</td><td>Published docs, open-source code, public website content</td></tr>
+          <tr><td><strong>Internal</strong></td><td>Approved tools with enterprise agreement</td><td>Internal specs, meeting notes, non-sensitive code</td></tr>
+          <tr><td><strong>Confidential</strong></td><td>Only on-premise/approved private instances</td><td>Customer data, financial reports, unreleased product details</td></tr>
+          <tr style="background:#fdecea;"><td><strong>Restricted</strong></td><td><strong>Never use with AI tools</strong></td><td>Credentials, API keys, PII, NDA-protected material, security configs</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><strong>When in doubt, treat it as Confidential.</strong> You can always ask in the Champions Teams channel.</p>
+
+    <div class="callout">
+      <strong>Note:</strong> Different AI tools have different security boundaries. For example, Claude (enterprise) may accept Internal data, while Copilot operates only on code context. The workshop will cover tool-specific rules in detail &mdash; for pre-work, use the table above as your baseline.
+    </div>
+
+    <h3>The V-C-A-F Verification Framework &mdash; Preview</h3>
+    <p>During the workshop, you'll learn and practice the <strong>V-C-A-F framework</strong> &mdash; the core habit every champion teaches their team. Here's a preview:</p>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Step</th><th>Question to Ask</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Verify</strong></td><td>Is this output factually correct? (Cross-reference against known data)</td></tr>
+          <tr><td><strong>Contextualize</strong></td><td>Does this fit Allot's specific situation? (AI doesn't know our business)</td></tr>
+          <tr><td><strong>Authorize</strong></td><td>Am I willing to put my name on this? (You own every AI output you use)</td></tr>
+          <tr><td><strong>Fairness Check</strong></td><td>Is this treating all groups/scenarios fairly? (AI can reflect biases from training data &mdash; critical for people-related analysis)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>For routine tasks, V-C-A may suffice. <strong>Always include the Fairness Check</strong> when the output involves people, decisions, or analysis that could impact groups differently.</p>
+
+    <div class="notice-inline">
+      <strong>Apply this during Exercise 4 below</strong> &mdash; when you spot mistakes, you're already doing V-C-A-F.
+    </div>
+
+    <h3>How AI Fits at Allot</h3>
+    <p>Allot is a network security and intelligence company. AI tools help us:</p>
+    <ul>
+      <li><strong>Accelerate development</strong> &mdash; code generation, test writing, code review</li>
+      <li><strong>Improve documentation</strong> &mdash; technical writing, summarization, translation</li>
+      <li><strong>Enhance analysis</strong> &mdash; log analysis, pattern detection, report generation</li>
+      <li><strong>Streamline operations</strong> &mdash; ticket management, knowledge base creation, process automation</li>
+    </ul>
+    <p>As a champion, you'll help your team find the right use cases and use AI tools effectively and safely.</p>
+  </div>
+
+  <!-- Part 3 -->
+  <div class="section section-alt">
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <h2>First Steps with AI</h2>
+      <span class="section-time">45 min</span>
+    </div>
+    <p class="intro-text">Try these exercises using an approved AI tool (Claude recommended). The goal is to get comfortable with the interaction, not to produce perfect results.</p>
+
+    <div class="exercise">
+      <h4>Exercise 1: Basic Conversation <span class="time-badge">10 min</span></h4>
+      <p>Ask the AI to:</p>
+      <ol>
+        <li>Explain what your team does in simple terms (as if to a new employee)</li>
+        <li>Follow up by asking it to make the explanation more technical</li>
+        <li>Then ask it to create 3 bullet points suitable for a slide deck</li>
+      </ol>
+      <div class="notice-inline"><strong>Notice:</strong> How the output changes based on your instructions. You're already prompting.</div>
+    </div>
+
+    <div class="exercise">
+      <h4>Exercise 2: Summarization <span class="time-badge">10 min</span></h4>
+      <p>Find a recent document you've worked with (a spec, report, email thread, or meeting notes). Paste it into the AI and ask:</p>
+      <ul>
+        <li>"Summarize this in 5 bullet points"</li>
+        <li>"What are the 3 most important action items?"</li>
+        <li>"Rewrite the summary for a non-technical audience"</li>
+      </ul>
+      <div class="notice-inline"><strong>Notice:</strong> How context and specificity affect the quality.</div>
+    </div>
+
+    <div class="exercise">
+      <h4>Exercise 3: The Power-User Prompt Template <span class="time-badge">15 min</span></h4>
+      <p>Think about a repetitive task in your daily work. Turn it into a prompt using <strong>Role Assignment</strong> and <strong>Few-Shot Examples</strong> &mdash; two of the most effective advanced techniques:</p>
+
+<pre><code>ROLE: You are a [SPECIFIC ROLE, e.g., "Senior QA Engineer at Allot,
+a network security company"]. Your expertise is in [DOMAINS].
+
+TASK: I need you to [TASK].
+
+CONTEXT:
+- I work on [TEAM/DOMAIN] at Allot
+- The input is [DESCRIBE INPUT]
+- The audience is [WHO WILL READ THIS]
+
+EXAMPLES (follow this style):
+- Example 1 Input &rarr; Example 1 Output
+- Example 2 Input &rarr; Example 2 Output
+
+REQUIREMENTS:
+- [REQUIREMENT 1]
+- [REQUIREMENT 2]
+
+FORMAT: [Specify: Markdown table, bullet points, numbered list, etc.]
+
+Here is the input:
+[PASTE INPUT]</code></pre>
+
+      <p>Try it a few times. Notice how the Role and Examples improve output quality compared to a plain request.</p>
+      <div class="notice-inline"><strong>Bring this prompt to the workshop</strong> &mdash; we'll refine it together.</div>
+    </div>
+
+    <div class="exercise">
+      <h4>Exercise 4: Spot the Mistakes &mdash; Apply V-C-A-F <span class="time-badge">10 min</span></h4>
+      <p>Ask the AI a factual question about something you know well (your team's technology stack, a protocol you work with, or a tool you use daily). Then apply the V-C-A framework from Part 2:</p>
+      <ul>
+        <li><strong>Verify:</strong> Did it get the facts right? Where did it hallucinate?</li>
+        <li><strong>Contextualize:</strong> Does the answer account for Allot's specific setup, or is it generic?</li>
+        <li><strong>Authorize:</strong> Would you send this output to your manager as-is? What would you change?</li>
+        <li><strong>Bonus &mdash; Red Team thinking:</strong> Could you trick the AI into giving a confidently wrong answer on this topic? Try rephrasing your question to mislead it. (On Day 1, you'll do a full "Red Team Your Prompts" exercise.)</li>
+      </ul>
+      <div class="notice-inline"><strong>This is the most important skill:</strong> knowing when to trust AI output and when to verify.</div>
+    </div>
+
+    <div class="exercise">
+      <h4>Exercise 5: Your First Prompt Chain <span class="time-badge">10 min</span></h4>
+      <p>On Day 1, you'll build multi-step AI workflows. Try a simple one now:</p>
+      <ol>
+        <li><strong>Step 1:</strong> Paste a short email or message into the AI and ask: <em>"Extract all action items from this text as a bullet list"</em></li>
+        <li><strong>Step 2:</strong> Take the AI's output and ask: <em>"For each action item, assign a priority (P1-Critical, P2-High, P3-Medium, P4-Low) and suggest a deadline"</em></li>
+        <li><strong>Step 3:</strong> Ask: <em>"Format this as a table with columns: Action Item, Owner, Priority, Deadline"</em></li>
+      </ol>
+      <div class="notice-inline"><strong>Notice:</strong> Each step feeds the next. This is "prompt chaining" &mdash; a core technique for Day 1.</div>
+    </div>
+  </div>
+
+  <!-- Part 4 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">4</div>
+      <h2>Security Sandbox &mdash; The Sanitization Challenge</h2>
+      <span class="section-time">15 min</span>
+    </div>
+    <p>As a champion, you'll be the "Quality Gate" for AI usage on your team. Practice identifying and removing sensitive data before it reaches an AI tool.</p>
+
+    <p><strong>Instructions:</strong> Below is a raw transcript from an internal Allot meeting. It contains <strong>Restricted</strong> and <strong>Confidential</strong> data that must never be shared with AI tools. Rewrite or redact the transcript so it is safe to send to an AI for summarization.</p>
+
+    <h4>Raw Transcript:</h4>
+    <div class="transcript-box">
+      <blockquote>
+        "Okay, let's start. For Project Firehawk, we're integrating the new deep-packet inspection module for our client, Verizon. To test the uplink, use the temporary staging API Key: AKIA-8821-ALLOT-TR-99. If you run into auth issues, contact our lead dev, Sarah Jenkins (s.jenkins@allot.com). Also, remember that the internal architecture specs for Firehawk are currently under an NDA and should not be discussed outside this group."
+      </blockquote>
+    </div>
+
+    <h4>Your sanitized version:</h4>
+    <div class="sanitization-prompt">
+      (Write it out &mdash; what did you remove or replace? Why?)
+    </div>
+  </div>
+
+  <!-- Part 5 -->
+  <div class="section section-alt">
+    <div class="section-header">
+      <div class="section-number">5</div>
+      <h2>Reflection &amp; Policy Questions</h2>
+      <span class="section-time">20 min</span>
+    </div>
+    <p class="intro-text">Write down brief answers. Bring these to the workshop &mdash; we'll discuss them in the opening session.</p>
+
+    <h3>Reflection Questions</h3>
+    <ol>
+      <li><strong>What repetitive tasks take up most of your time?</strong> (List 3&ndash;5)</li>
+      <li><strong>Where do you see AI helping your team the most?</strong> (Be specific)</li>
+      <li><strong>What concerns do you have about AI in your workflow?</strong> (Honest answers are valuable)</li>
+      <li><strong>What data do you work with daily?</strong> (Think about sensitivity levels &mdash; public, internal, confidential)</li>
+      <li><strong>Who on your team would be most enthusiastic about AI? Most skeptical?</strong> (You'll need to engage both)</li>
+    </ol>
+
+    <h3>Policy Scavenger Hunt</h3>
+    <p>As a champion, you'll be the first responder for policy questions. Use the Allot AI Usage Policy (bookmarked in Part 1) to answer these:</p>
+    <ol start="6">
+      <li><strong>The "Never" Rule:</strong> What classification of data is strictly prohibited from being used with any AI tools?</li>
+      <li><strong>The Oversight Requirement:</strong> List two scenarios where you are prohibited from using AI for final decision-making.</li>
+      <li><strong>The Incident Path:</strong> If you or a team member accidentally pastes customer PII into an AI prompt, what is the first action you should take and which team should you contact?</li>
+      <li><strong>Tool Legitimacy:</strong> You want to try a new AI "productivity Chrome extension" you found online. Is this allowed under Allot policy? Why or why not?</li>
+      <li><strong>Code Security:</strong> Before using an AI tool to review a code snippet, what specific elements must you remove to ensure the code is sanitized?</li>
+    </ol>
+  </div>
+
+  <!-- Part 6 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">6</div>
+      <h2>Domain-Specific Deep Dives</h2>
+      <span class="section-time">REQUIRED</span>
+    </div>
+
+    <div class="callout callout-danger">
+      <strong>This is the most important section for your Day 1 experience.</strong> If you're short on time, prioritize this over everything except tool setup. The Day 1 hands-on labs assume you've already tried these tasks with AI.
+    </div>
+
+    <p>Complete the section that matches your role.</p>
+
+    <div class="role-cards">
+      <div class="role-card">
+        <h4>R&amp;D / Engineering</h4>
+        <ul>
+          <li>Try using AI to write a unit test for existing code</li>
+          <li>Ask AI to review a recent code change and compare with your own review</li>
+          <li>Experiment with AI-generated documentation for a function or module</li>
+        </ul>
+      </div>
+      <div class="role-card">
+        <h4>Product / Business</h4>
+        <ul>
+          <li>Use AI to draft user stories from a feature description</li>
+          <li>Try having AI analyze customer feedback or support tickets</li>
+          <li>Experiment with AI-generated competitive analysis outlines</li>
+        </ul>
+      </div>
+      <div class="role-card">
+        <h4>Security</h4>
+        <ul>
+          <li>Ask AI to review a configuration snippet for security issues</li>
+          <li>Try using AI to explain a CVE in plain language</li>
+          <li>Experiment with AI-generated incident response checklists</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Completion Checklist -->
+  <div class="section section-alt">
+    <h2 style="color:var(--primary);font-size:1.4rem;margin-bottom:16px;">Pre-Work Completion Checklist</h2>
+    <p>Before the workshop, confirm:</p>
+
+    <ul class="checklist">
+      <li><input type="checkbox" id="f1"><label for="f1">I have access to approved AI tools and they work (Part 1 &mdash; start 1 week early!)</label></li>
+      <li><input type="checkbox" id="f2"><label for="f2">I've read the core concepts, data classification table, and V-C-A-F preview (Part 2)</label></li>
+      <li><input type="checkbox" id="f3"><label for="f3">I've completed all 5 AI exercises including prompt chaining (Part 3)</label></li>
+      <li><input type="checkbox" id="f4"><label for="f4">I've completed the Sanitization Challenge (Part 4)</label></li>
+      <li><input type="checkbox" id="f5"><label for="f5">I've written my reflection answers AND policy scavenger hunt (Part 5)</label></li>
+      <li><input type="checkbox" id="f6"><label for="f6">I've completed my domain-specific deep dive (Part 6)</label></li>
+      <li><input type="checkbox" id="f7"><label for="f7">I'm bringing 2&ndash;3 real work examples (sanitized per the Data Classification table)</label></li>
+      <li><input type="checkbox" id="f8"><label for="f8">I'm bringing the power-user prompt template I created in Exercise 3</label></li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <strong>See you at the training!</strong>
+  <p>If you get stuck during pre-work or have questions:</p>
+  <ul>
+    <li>Post in the AI Champions Teams channel</li>
+    <li>Contact your AI Champion program lead</li>
+    <li>Questions are welcome &mdash; that's what the workshop is for</li>
+  </ul>
+</div>
+
+</body>
+</html>

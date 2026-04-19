@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Allot AI Champion Hub</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+  body { font-family: 'Inter', sans-serif; }
+  .nav-btn.active { color: #2563eb; font-weight: 700; }
+  .nav-btn.active::after {
+    content: '';
+    display: block;
+    height: 2px;
+    background: #2563eb;
+    margin-top: 4px;
+    border-radius: 2px;
+  }
+  .prose p { margin-bottom: 0.9em; line-height: 1.7; }
+  .prose ul { padding-left: 1.25rem; margin-bottom: 0.9em; }
+  .prose ul li { list-style: disc; margin-bottom: 0.3em; }
+  .pw-nav-btn.active {
+    background: #eff6ff;
+    color: #2563eb;
+    border-left-color: #2563eb;
+    font-weight: 600;
+  }
+  .session-card { transition: box-shadow 0.15s, transform 0.15s; }
+  .session-card:hover { box-shadow: 0 8px 20px rgba(37, 99, 235, 0.10); transform: translateY(-1px); }
+  .session-detail { display: none; }
+  .session-detail.open { display: block; }
+  details summary { cursor: pointer; list-style: none; }
+  details summary::-webkit-details-marker { display: none; }
+  .chk-item:checked + .chk-label { text-decoration: line-through; color: #9ca3af; }
+  .exam-progress-dot { transition: background-color 0.2s, transform 0.2s; }
+  textarea { font-family: inherit; }
+  textarea.mono { font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', ui-monospace, monospace; }
+  @media print {
+    header, .no-print { display: none !important; }
+    .tab-content { display: block !important; }
+  }
+</style>
+</head>
+<body class="bg-gray-50 text-gray-900 flex flex-col min-h-screen">
+
+<!-- DRAFT banner -->
+<div class="bg-red-600 text-white text-center py-1.5 text-xs font-bold uppercase tracking-widest no-print">
+  DRAFT &middot; AI Champion Hub &middot; v1.0
+</div>
+
+<!-- Header -->
+<header class="bg-white border-b sticky top-0 z-40 no-print">
+  <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+    <div class="flex items-center space-x-3">
+      <div class="bg-blue-600 text-white w-10 h-10 rounded-lg flex items-center justify-center">
+        <i class="fas fa-microchip text-lg"></i>
+      </div>
+      <div class="leading-tight">
+        <div class="font-bold text-base tracking-tight">AI Champion Hub</div>
+        <div class="text-xs text-gray-500">Allot R&amp;D Enablement</div>
+      </div>
+    </div>
+    <nav class="hidden md:flex space-x-6 text-sm font-medium text-gray-600">
+      <button onclick="showTab('home')" class="nav-btn hover:text-blue-600 transition pb-1" id="btn-home"><i class="fas fa-home mr-1"></i> Home</button>
+      <button onclick="showTab('prework')" class="nav-btn hover:text-blue-600 transition pb-1" id="btn-prework"><i class="fas fa-book-open mr-1"></i> Pre-Work</button>
+      <button onclick="showTab('workshop')" class="nav-btn hover:text-blue-600 transition pb-1" id="btn-workshop"><i class="fas fa-chalkboard-teacher mr-1"></i> Workshop</button>
+      <button onclick="showTab('exam')" class="nav-btn hover:text-blue-600 transition pb-1" id="btn-exam"><i class="fas fa-clipboard-check mr-1"></i> Readiness Exam</button>
+      <button onclick="showTab('checklist')" class="nav-btn hover:text-blue-600 transition pb-1" id="btn-checklist"><i class="fas fa-tasks mr-1"></i> Checklist</button>
+    </nav>
+    <div>
+      <span class="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">2026 Cohort</span>
+    </div>
+  </div>
+  <!-- Mobile nav -->
+  <div class="md:hidden border-t bg-white">
+    <div class="max-w-7xl mx-auto px-4 py-2 flex overflow-x-auto gap-2 text-xs">
+      <button onclick="showTab('home')" class="nav-btn px-3 py-2 whitespace-nowrap rounded-md" id="btn-home-m">Home</button>
+      <button onclick="showTab('prework')" class="nav-btn px-3 py-2 whitespace-nowrap rounded-md" id="btn-prework-m">Pre-Work</button>
+      <button onclick="showTab('workshop')" class="nav-btn px-3 py-2 whitespace-nowrap rounded-md" id="btn-workshop-m">Workshop</button>
+      <button onclick="showTab('exam')" class="nav-btn px-3 py-2 whitespace-nowrap rounded-md" id="btn-exam-m">Exam</button>
+      <button onclick="showTab('checklist')" class="nav-btn px-3 py-2 whitespace-nowrap rounded-md" id="btn-checklist-m">Checklist</button>
+    </div>
+  </div>
+</header>
+
+<main class="flex-grow max-w-7xl mx-auto px-4 py-8 w-full">
+
+<!-- =========================================================== -->
+<!-- HOME -->
+<!-- =========================================================== -->
+<section id="tab-home" class="tab-content space-y-10">
+
+  <!-- Hero -->
+  <div class="bg-gradient-to-br from-blue-800 via-blue-600 to-blue-500 rounded-2xl p-8 md:p-14 text-white shadow-xl relative overflow-hidden">
+    <div class="absolute -top-20 -right-20 w-80 h-80 bg-white bg-opacity-10 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-amber-400 bg-opacity-20 rounded-full blur-3xl"></div>
+    <div class="relative max-w-3xl">
+      <p class="text-blue-200 text-xs font-bold uppercase tracking-widest mb-4">AI Enablement Program &middot; 2026</p>
+      <h1 class="text-3xl md:text-5xl font-extrabold mb-4 leading-tight">You are the bridge between your team and AI.</h1>
+      <p class="text-blue-100 text-lg mb-8">4 hours of pre-work. 2 days of hands-on training. 90 days of leading your team to smart, safe, and effective AI adoption.</p>
+      <div class="flex flex-wrap gap-3">
+        <button onclick="showTab('prework')" class="bg-white text-blue-700 px-6 py-3 rounded-lg font-bold shadow-md hover:bg-blue-50 transition">
+          <i class="fas fa-play mr-2"></i>Start Pre-Work
+        </button>
+        <button onclick="showTab('workshop')" class="border border-white border-opacity-40 bg-white bg-opacity-10 backdrop-blur px-6 py-3 rounded-lg font-bold hover:bg-opacity-20 transition">
+          <i class="fas fa-calendar mr-2"></i>Workshop Agenda
+        </button>
+        <button onclick="showTab('exam')" class="border border-white border-opacity-40 bg-white bg-opacity-10 backdrop-blur px-6 py-3 rounded-lg font-bold hover:bg-opacity-20 transition">
+          <i class="fas fa-clipboard-check mr-2"></i>Readiness Exam
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Three outcomes -->
+  <div>
+    <h2 class="text-2xl font-bold mb-6">What a Champion walks away with</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition">
+        <div class="bg-blue-100 text-blue-600 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+          <i class="fas fa-graduation-cap text-xl"></i>
+        </div>
+        <h3 class="font-bold text-lg mb-2">Personal capability</h3>
+        <p class="text-gray-600 text-sm">The Inigo 4-part prompt frame, model selection (Opus / Sonnet / Haiku), V-C-A-F verification. You get reliable work out of Claude every time.</p>
+      </div>
+      <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition">
+        <div class="bg-green-100 text-green-600 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+          <i class="fas fa-shield-alt text-xl"></i>
+        </div>
+        <h3 class="font-bold text-lg mb-2">Quality-Gate reflex</h3>
+        <p class="text-gray-600 text-sm">Sanitize before you paste. Verify before you ship. Teach your team to treat AI output as a draft, never as the final word.</p>
+      </div>
+      <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition">
+        <div class="bg-purple-100 text-purple-600 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+          <i class="fas fa-users text-xl"></i>
+        </div>
+        <h3 class="font-bold text-lg mb-2">Leadership playbook</h3>
+        <p class="text-gray-600 text-sm">Run the 60-min local workshop, handle the four stock objections, and seed a versioned team prompt library your team actually uses.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Outcome ladder -->
+  <div class="bg-white p-8 rounded-xl border border-gray-100 shadow-sm">
+    <h2 class="text-2xl font-bold mb-6">The 3-phase outcome ladder</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="border-l-4 border-blue-500 pl-5">
+        <div class="text-xs uppercase tracking-wider text-blue-500 font-bold mb-1">Phase 1</div>
+        <h3 class="font-bold text-lg mb-2">Pre-Work (4h)</h3>
+        <p class="text-sm text-gray-600 mb-3">Tools working, shared vocabulary, 2&ndash;3 real problems in hand, Readiness Exam submitted.</p>
+        <p class="text-xs text-gray-500"><i class="fas fa-clock mr-1"></i> Self-paced &middot; start 1 week before Day 1</p>
+      </div>
+      <div class="border-l-4 border-purple-500 pl-5">
+        <div class="text-xs uppercase tracking-wider text-purple-500 font-bold mb-1">Phase 2</div>
+        <h3 class="font-bold text-lg mb-2">Workshop (2 days)</h3>
+        <p class="text-sm text-gray-600 mb-3">Day 1: personal capability. Day 2: leadership capability + capstone build &amp; present.</p>
+        <p class="text-xs text-gray-500"><i class="fas fa-clock mr-1"></i> 10:00&ndash;18:00 IL &middot; hybrid (IL/EU/India)</p>
+      </div>
+      <div class="border-l-4 border-amber-500 pl-5">
+        <div class="text-xs uppercase tracking-wider text-amber-600 font-bold mb-1">Phase 3</div>
+        <h3 class="font-bold text-lg mb-2">Post-Training (90 days)</h3>
+        <p class="text-sm text-gray-600 mb-3">First local workshop delivered. 3+ prompts in shared library. 5 team use cases documented.</p>
+        <p class="text-xs text-gray-500"><i class="fas fa-clock mr-1"></i> Ongoing &middot; monthly champion sync</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- By the numbers -->
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="bg-white p-6 rounded-xl text-center border border-gray-100">
+      <div class="text-3xl font-black text-blue-600">4h</div>
+      <div class="text-sm text-gray-600 mt-1">Pre-work</div>
+    </div>
+    <div class="bg-white p-6 rounded-xl text-center border border-gray-100">
+      <div class="text-3xl font-black text-blue-600">2 days</div>
+      <div class="text-sm text-gray-600 mt-1">Hands-on workshop</div>
+    </div>
+    <div class="bg-white p-6 rounded-xl text-center border border-gray-100">
+      <div class="text-3xl font-black text-blue-600">5 hats</div>
+      <div class="text-sm text-gray-600 mt-1">Champion role</div>
+    </div>
+    <div class="bg-white p-6 rounded-xl text-center border border-gray-100">
+      <div class="text-3xl font-black text-blue-600">90 days</div>
+      <div class="text-sm text-gray-600 mt-1">To first local workshop</div>
+    </div>
+  </div>
+
+  <!-- The Five Hats -->
+  <div class="bg-white p-8 rounded-xl border border-gray-100 shadow-sm">
+    <h2 class="text-2xl font-bold mb-2">The Champion's five hats</h2>
+    <p class="text-gray-600 mb-6">You are not the team &mdash; you are the bridge. These are the roles you cover for the people around you.</p>
+    <div class="grid md:grid-cols-5 gap-3">
+      <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
+        <i class="fas fa-bullhorn text-blue-600 mb-2"></i>
+        <h4 class="font-bold text-sm mb-1">Evangelist</h4>
+        <p class="text-xs text-gray-600">Promote real use cases they can copy.</p>
+      </div>
+      <div class="bg-green-50 p-4 rounded-lg border border-green-100">
+        <i class="fas fa-life-ring text-green-600 mb-2"></i>
+        <h4 class="font-bold text-sm mb-1">First Responder</h4>
+        <p class="text-xs text-gray-600">First line for AI questions before they escalate.</p>
+      </div>
+      <div class="bg-purple-50 p-4 rounded-lg border border-purple-100">
+        <i class="fas fa-sync text-purple-600 mb-2"></i>
+        <h4 class="font-bold text-sm mb-1">Feedback Loop</h4>
+        <p class="text-xs text-gray-600">Channel team pain points back to the program.</p>
+      </div>
+      <div class="bg-amber-50 p-4 rounded-lg border border-amber-100">
+        <i class="fas fa-shield-alt text-amber-600 mb-2"></i>
+        <h4 class="font-bold text-sm mb-1">Quality Gate</h4>
+        <p class="text-xs text-gray-600">Ensure responsible, secure usage in your domain.</p>
+      </div>
+      <div class="bg-pink-50 p-4 rounded-lg border border-pink-100">
+        <i class="fas fa-chalkboard-teacher text-pink-600 mb-2"></i>
+        <h4 class="font-bold text-sm mb-1">Trainer</h4>
+        <p class="text-xs text-gray-600">Run the 60-min local workshop &amp; mentor 1:1.</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- =========================================================== -->
+<!-- PRE-WORK -->
+<!-- =========================================================== -->
+<section id="tab-prework" class="tab-content hidden space-y-6">
+  <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+    <div>
+      <h2 class="text-3xl font-bold">Pre-Workshop Preparation</h2>
+      <p class="text-gray-600 mt-1">Everything you do before Day 1. Submit the exam 48 hours ahead so your facilitator can tailor the session.</p>
+    </div>
+    <div class="flex gap-2">
+      <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-bold"><i class="fas fa-clock mr-1"></i>4 hours total</span>
+      <span class="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-xs font-bold"><i class="fas fa-exclamation-circle mr-1"></i>Start 1 week early</span>
+    </div>
+  </div>
+
+  <div class="bg-amber-50 border-l-4 border-amber-400 p-4 rounded-r-lg">
+    <p class="text-amber-900 text-sm"><strong>Deadline:</strong> Part 5 (Readiness Exam) must be submitted at least <strong>48 hours before Day 1</strong>. Facilitator reviews and schedules a 30-min coaching call only for anyone flagged "Needs work" in 2+ sections.</p>
+  </div>
+
+  <div class="grid md:grid-cols-4 gap-6">
+    <!-- Sidebar -->
+    <aside class="md:col-span-1">
+      <div class="sticky top-20 space-y-1.5 bg-white rounded-xl border border-gray-100 shadow-sm p-2">
+        <button onclick="showPrePart('p1')" class="pw-nav-btn w-full text-left px-3 py-2.5 rounded-md border-l-2 border-transparent text-sm text-gray-700 hover:bg-gray-50" id="pw-p1">
+          <span class="text-xs text-gray-400 font-bold">PART 1</span><br>
+          Tool Setup &amp; Access
+        </button>
+        <button onclick="showPrePart('p2')" class="pw-nav-btn w-full text-left px-3 py-2.5 rounded-md border-l-2 border-transparent text-sm text-gray-700 hover:bg-gray-50" id="pw-p2">
+          <span class="text-xs text-gray-400 font-bold">PART 2</span><br>
+          AI Foundations
+        </button>
+        <button onclick="showPrePart('p3')" class="pw-nav-btn w-full text-left px-3 py-2.5 rounded-md border-l-2 border-transparent text-sm text-gray-700 hover:bg-gray-50" id="pw-p3">
+          <span class="text-xs text-gray-400 font-bold">PART 3</span><br>
+          First Steps with AI
+        </button>
+        <button onclick="showPrePart('p4')" class="pw-nav-btn w-full text-left px-3 py-2.5 rounded-md border-l-2 border-transparent text-sm text-gray-700 hover:bg-gray-50" id="pw-p4">
+          <span class="text-xs text-gray-400 font-bold">PART 4</span><br>
+          Sanitization Challenge
+        </button>
+        <button onclick="showPrePart('p5')" class="pw-nav-btn w-full text-left px-3 py-2.5 rounded-md border-l-2 border-transparent text-sm text-gray-700 hover:bg-gray-50" id="pw-p5">
+          <span class="text-xs text-gray-400 font-bold">PART 5</span><br>
+          Readiness Exam
+        </button>
+        <button onclick="showPrePart('p6')" class="pw-nav-btn w-full text-left px-3 py-2.5 rounded-md border-l-2 border-transparent text-sm text-gray-700 hover:bg-gray-50" id="pw-p6">
+          <span class="text-xs text-gray-400 font-bold">PART 6</span><br>
+          Domain Deep-Dive
+        </button>
+      </div>
+    </aside>
+
+    <!-- Content panels -->
+    <div class="md:col-span-3">
+
+      <!-- Part 1 -->
+      <div class="pw-panel bg-white p-8 rounded-xl border border-gray-100 shadow-sm prose max-w-none" id="pw-panel-p1">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="bg-blue-100 text-blue-600 w-10 h-10 rounded-lg flex items-center justify-center"><i class="fas fa-plug"></i></span>
+          <h3 class="text-2xl font-bold m-0">Part 1 &middot; Tool Setup &amp; Access</h3>
+          <span class="ml-auto text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full font-semibold">30 min</span>
+        </div>
+        <div class="bg-red-50 border-l-4 border-red-400 p-3 rounded-r-lg mb-5">
+          <p class="text-sm text-red-800 m-0"><strong>Start this part at least 1 week before Day 1.</strong> IT ticket resolution can take 2&ndash;3 business days &mdash; don't let tool access block your preparation.</p>
+        </div>
+        <p>Complete each item so you're ready on Day 1:</p>
+        <ul>
+          <li><strong>Claude access</strong> &mdash; verify you can log in at the approved Allot instance. If not, submit an IT Service Desk ticket referencing "AI Tools License Request."</li>
+          <li><strong>GitHub Copilot</strong> (R&amp;D participants) &mdash; confirm Copilot is enabled in your IDE.</li>
+          <li><strong>Bookmark:</strong> Allot AI usage policy (Confluence), AI Champions Teams channel, ALLOTAI Jira board.</li>
+          <li><strong>Bring to Day 1:</strong> laptop with approved tools installed, 2&ndash;3 real work examples you'd like to try with AI (sanitized per data-classification rules in Part 2).</li>
+        </ul>
+      </div>
+
+      <!-- Part 2 -->
+      <div class="pw-panel bg-white p-8 rounded-xl border border-gray-100 shadow-sm prose max-w-none hidden" id="pw-panel-p2">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="bg-blue-100 text-blue-600 w-10 h-10 rounded-lg flex items-center justify-center"><i class="fas fa-brain"></i></span>
+          <h3 class="text-2xl font-bold m-0">Part 2 &middot; AI Foundations</h3>
+          <span class="ml-auto text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full font-semibold">45 min</span>
+        </div>
+
+        <h4 class="font-bold text-lg mt-0">What is a Large Language Model?</h4>
+        <p>An LLM predicts the most likely next token given a sequence of input tokens. Four things to internalize:</p>
+        <ul>
+          <li>It generates <strong>plausible</strong>, not <strong>true</strong>.</li>
+          <li>It has <strong>no memory between conversations</strong> unless you provide it.</li>
+          <li>It works with a <strong>context window</strong> &mdash; your working memory budget.</li>
+          <li>Output quality compounds with input quality.</li>
+        </ul>
+
+        <h4 class="font-bold text-lg">Terminology cheat sheet</h4>
+        <div class="overflow-x-auto my-4">
+          <table class="min-w-full text-sm border border-gray-200 rounded-lg overflow-hidden">
+            <thead class="bg-gray-50">
+              <tr>
+                <th class="px-4 py-2 text-left font-semibold">Term</th>
+                <th class="px-4 py-2 text-left font-semibold">What It Means</th>
+                <th class="px-4 py-2 text-left font-semibold">Why It Matters</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y">
+              <tr><td class="px-4 py-2 font-bold">Prompt</td><td class="px-4 py-2">The text you send the AI.</td><td class="px-4 py-2">Better prompts &rarr; better output.</td></tr>
+              <tr class="bg-gray-50"><td class="px-4 py-2 font-bold">Token</td><td class="px-4 py-2">~4 chars / ~&frac34; of a word.</td><td class="px-4 py-2">Drives cost and context limits.</td></tr>
+              <tr><td class="px-4 py-2 font-bold">Context window</td><td class="px-4 py-2">Max tokens in one call.</td><td class="px-4 py-2">200k is usually better than 1M.</td></tr>
+              <tr class="bg-gray-50"><td class="px-4 py-2 font-bold">Hallucination</td><td class="px-4 py-2">Plausible but wrong output.</td><td class="px-4 py-2">Always verify critical output.</td></tr>
+              <tr><td class="px-4 py-2 font-bold">System prompt</td><td class="px-4 py-2">Hidden instructions that shape behavior.</td><td class="px-4 py-2">Makes personas consistent.</td></tr>
+              <tr class="bg-gray-50"><td class="px-4 py-2 font-bold">Few-shot</td><td class="px-4 py-2">Provide examples in your prompt.</td><td class="px-4 py-2">One of the most effective techniques.</td></tr>
+              <tr><td class="px-4 py-2 font-bold">RAG</td><td class="px-4 py-2">Feed relevant docs before asking.</td><td class="px-4 py-2">Grounds AI in your real data.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 class="font-bold text-lg">Data classification &mdash; know before you paste</h4>
+        <div class="grid md:grid-cols-2 gap-3 my-4">
+          <div class="border rounded-lg p-4 bg-green-50 border-green-200">
+            <h5 class="font-bold text-green-800 text-sm uppercase tracking-wide">Public</h5>
+            <p class="text-sm m-0 mt-1">Any approved tool. <em>Docs, public marketing copy, open-source code.</em></p>
+          </div>
+          <div class="border rounded-lg p-4 bg-blue-50 border-blue-200">
+            <h5 class="font-bold text-blue-800 text-sm uppercase tracking-wide">Internal</h5>
+            <p class="text-sm m-0 mt-1">Approved tools with enterprise agreement. <em>Specs, meeting notes, non-sensitive code.</em></p>
+          </div>
+          <div class="border rounded-lg p-4 bg-orange-50 border-orange-200">
+            <h5 class="font-bold text-orange-800 text-sm uppercase tracking-wide">Confidential</h5>
+            <p class="text-sm m-0 mt-1">Only on-premise / approved private instances. <em>Customer data, financials, unreleased products.</em></p>
+          </div>
+          <div class="border rounded-lg p-4 bg-red-50 border-red-200">
+            <h5 class="font-bold text-red-800 text-sm uppercase tracking-wide">Restricted</h5>
+            <p class="text-sm m-0 mt-1"><strong>Never.</strong> <em>Credentials, API keys, PII, NDA material, security configs.</em></p>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600"><strong>Rule of thumb:</strong> when in doubt, treat it as Confidential and ask in the Champions Teams channel.</p>
+
+        <h4 class="font-bold text-lg">Model selection (preview)</h4>
+        <p class="text-sm">Day 1 covers this in depth. For now:</p>
+        <ul class="text-sm">
+          <li><strong>Opus</strong> &mdash; complex reasoning, architecture, novel analysis.</li>
+          <li><strong>Sonnet</strong> &mdash; the sensible day-to-day default.</li>
+          <li><strong>Haiku</strong> &mdash; fast, lightweight, repetitive / operational.</li>
+          <li><strong>Context size:</strong> 200k beats 1M for most tasks &mdash; cheaper, faster, less anchoring.</li>
+        </ul>
+
+        <h4 class="font-bold text-lg">V-C-A-F preview</h4>
+        <div class="overflow-x-auto my-3">
+          <table class="min-w-full text-sm border border-gray-200 rounded-lg overflow-hidden">
+            <thead class="bg-gray-50">
+              <tr>
+                <th class="px-4 py-2 text-left font-semibold">Step</th>
+                <th class="px-4 py-2 text-left font-semibold">Question to Ask</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y">
+              <tr><td class="px-4 py-2 font-bold">Verify</td><td class="px-4 py-2">Is this output factually correct?</td></tr>
+              <tr class="bg-gray-50"><td class="px-4 py-2 font-bold">Contextualize</td><td class="px-4 py-2">Does this fit Allot's specific situation?</td></tr>
+              <tr><td class="px-4 py-2 font-bold">Authorize</td><td class="px-4 py-2">Am I willing to put my name on this?</td></tr>
+              <tr class="bg-gray-50"><td class="px-4 py-2 font-bold">Fairness Check</td><td class="px-4 py-2">Is this treating all groups/scenarios fairly?</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Part 3 -->
+      <div class="pw-panel bg-white p-8 rounded-xl border border-gray-100 shadow-sm prose max-w-none hidden" id="pw-panel-p3">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="bg-blue-100 text-blue-600 w-10 h-10 rounded-lg flex items-center justify-center"><i class="fas fa-rocket"></i></span>
+          <h3 class="text-2xl font-bold m-0">Part 3 &middot; First Steps with AI</h3>
+          <span class="ml-auto text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full font-semibold">30 min</span>
+        </div>
+        <p>Two short exercises to warm up before the exam. Comfort with the interaction &mdash; not perfection &mdash; is the goal.</p>
+
+        <h4 class="font-bold text-lg">Exercise 3.1 &middot; Draft an Inigo-format prompt (20 min)</h4>
+        <p>Turn a repetitive task from your daily work into a prompt using the <strong>Inigo Montoya 4-part frame</strong> &mdash; the same structure you'll be drilled on during Day 1. A good prompt is basically how you introduce yourself properly in a meeting:</p>
+        <div class="bg-gray-900 text-gray-100 rounded-lg p-5 my-4 font-mono text-sm leading-relaxed overflow-x-auto">
+<span class="text-amber-400">[1. Greeting / framing]</span>    Why are we here &mdash; the task framing.
+<span class="text-amber-400">[2. Who am I]</span>               Your role, team, and relevant context about you.
+<span class="text-amber-400">[3. Who are you / context]</span>  Who the AI should be + what we're looking at together.
+<span class="text-amber-400">[4. Desired outcome]</span>        What should exist at the end (format + structure).
+<span class="text-amber-400">[5. Constraints]</span>            Optional &mdash; what to avoid or assume.
+        </div>
+        <p>Write your prompt, label each part explicitly, run it against Claude, and <strong>save it</strong> &mdash; you'll submit this as part of the Readiness Exam (Section C) and use it again on Day 1 Session 3.</p>
+
+        <h4 class="font-bold text-lg">Exercise 3.2 &middot; Spot the mistakes with V-C-A-F (10 min)</h4>
+        <p>Ask Claude a factual question about something you know deeply (a protocol, your team's stack, a tool you use daily). Apply V-C-A-F:</p>
+        <ul>
+          <li><strong>Verify:</strong> did it get the facts right? Where did it hallucinate?</li>
+          <li><strong>Contextualize:</strong> does the answer account for Allot's specific setup, or is it generic?</li>
+          <li><strong>Authorize:</strong> would you send this to your manager as-is?</li>
+          <li><strong>Fairness Check:</strong> if the question touched on people or groups, did it stereotype or exclude?</li>
+        </ul>
+        <p class="bg-blue-50 p-3 rounded-r-lg border-l-4 border-blue-400 text-sm"><strong>This is the most important Champion skill:</strong> knowing when to trust AI output and when to verify.</p>
+      </div>
+
+      <!-- Part 4 -->
+      <div class="pw-panel bg-white p-8 rounded-xl border border-gray-100 shadow-sm prose max-w-none hidden" id="pw-panel-p4">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="bg-red-100 text-red-600 w-10 h-10 rounded-lg flex items-center justify-center"><i class="fas fa-user-secret"></i></span>
+          <h3 class="text-2xl font-bold m-0">Part 4 &middot; Sanitization Challenge</h3>
+          <span class="ml-auto text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full font-semibold">15 min</span>
+        </div>
+        <p>As a Champion, you are the Quality Gate for AI usage on your team. Practice identifying and removing sensitive data <em>before</em> it reaches an AI tool.</p>
+        <p><strong>Task:</strong> the transcript below contains Restricted and Confidential data that must never be shared with AI. Rewrite or redact it so it's safe to send for summarization.</p>
+        <blockquote class="border-l-4 border-red-400 bg-red-50 p-4 rounded-r-lg italic text-sm not-italic" style="font-style: italic;">
+          "Okay, let's start. For Project Firehawk, we're integrating the new deep-packet inspection module for our client, <strong>Verizon</strong>. To test the uplink, use the temporary staging API Key: <code class="bg-red-100 text-red-800 px-1 rounded">AKIA-8821-ALLOT-TR-99</code>. If you run into auth issues, contact our lead dev, <strong>Sarah Jenkins (s.jenkins@allot.com)</strong>. Also, remember that the internal architecture specs for Firehawk are currently under an NDA and should not be discussed outside this group."
+        </blockquote>
+        <p>Write out your sanitized version and be ready to submit it in Section B of the Readiness Exam. A 3&ndash;5 line rationale covering <em>what you removed, why, and what you replaced it with</em> is required.</p>
+        <p class="text-sm text-gray-600"><strong>The one-question test:</strong> would I read this aloud to an auditor?</p>
+      </div>
+
+      <!-- Part 5 -->
+      <div class="pw-panel bg-white p-8 rounded-xl border border-gray-100 shadow-sm prose max-w-none hidden" id="pw-panel-p5">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="bg-purple-100 text-purple-600 w-10 h-10 rounded-lg flex items-center justify-center"><i class="fas fa-clipboard-check"></i></span>
+          <h3 class="text-2xl font-bold m-0">Part 5 &middot; Readiness Exam</h3>
+          <span class="ml-auto text-xs bg-purple-100 text-purple-700 px-3 py-1 rounded-full font-semibold">90 min &middot; REQUIRED</span>
+        </div>
+        <p>The exam isn't a trivia quiz &mdash; it's a set of five artifact-producing tasks that show you understand the tools, when to use them, and how to verify their output.</p>
+        <ul>
+          <li><strong>Section A</strong> &mdash; 8 scenario-based knowledge questions</li>
+          <li><strong>Section B</strong> &mdash; sanitization task (the Firehawk transcript from Part 4)</li>
+          <li><strong>Section C</strong> &mdash; Inigo 4-part prompt construction (the prompt from Exercise 3.1)</li>
+          <li><strong>Section D</strong> &mdash; V-C-A-F on a seeded AI output</li>
+          <li><strong>Section E</strong> &mdash; a hands-on 3-step prompt chain</li>
+        </ul>
+        <p class="bg-amber-50 border-l-4 border-amber-400 p-3 rounded-r-lg text-sm"><strong>Submit at least 48 hours before Day 1.</strong> Your answers auto-save in the browser. When done, click <em>Download Submission</em> and upload to the Microsoft Forms link from your facilitator.</p>
+        <div class="not-prose flex gap-3 mt-5">
+          <button onclick="showTab('exam')" class="bg-purple-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-purple-700 transition">
+            <i class="fas fa-clipboard-check mr-2"></i>Go to the Exam
+          </button>
+        </div>
+      </div>
+
+      <!-- Part 6 -->
+      <div class="pw-panel bg-white p-8 rounded-xl border border-gray-100 shadow-sm prose max-w-none hidden" id="pw-panel-p6">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="bg-green-100 text-green-600 w-10 h-10 rounded-lg flex items-center justify-center"><i class="fas fa-compass"></i></span>
+          <h3 class="text-2xl font-bold m-0">Part 6 &middot; Domain Deep-Dive</h3>
+          <span class="ml-auto text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full font-semibold">30 min</span>
+        </div>
+        <p>Pick <strong>one</strong> task from your track and complete it. The goal is to have a real domain touchpoint with AI before Day 2's parallel tracks &mdash; not to cover everything.</p>
+        <div class="grid md:grid-cols-3 gap-4 not-prose">
+          <div class="border border-blue-200 bg-blue-50 p-5 rounded-xl">
+            <i class="fas fa-code text-blue-600 text-xl mb-2"></i>
+            <h4 class="font-bold mb-2">R&amp;D / Engineering</h4>
+            <p class="text-sm text-gray-700">Use Claude to write a unit test for a function you maintain. Apply V-C-A-F to the output. Note one thing it got right and one it got wrong.</p>
+          </div>
+          <div class="border border-purple-200 bg-purple-50 p-5 rounded-xl">
+            <i class="fas fa-lightbulb text-purple-600 text-xl mb-2"></i>
+            <h4 class="font-bold mb-2">Product / Business</h4>
+            <p class="text-sm text-gray-700">Use Claude to draft a user story with acceptance criteria from a feature description. Apply V-C-A-F. Note what you had to fix.</p>
+          </div>
+          <div class="border border-red-200 bg-red-50 p-5 rounded-xl">
+            <i class="fas fa-lock text-red-600 text-xl mb-2"></i>
+            <h4 class="font-bold mb-2">Security</h4>
+            <p class="text-sm text-gray-700">Use Claude to explain a recent CVE in plain language for a non-security audience. Apply V-C-A-F. Note where it oversimplified.</p>
+          </div>
+        </div>
+        <p class="text-sm mt-4"><strong>Bring the output and your V-C-A-F notes to Day 2.</strong> Your track lead will call on 2&ndash;3 volunteers to share.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================== -->
+<!-- WORKSHOP -->
+<!-- =========================================================== -->
+<section id="tab-workshop" class="tab-content hidden space-y-6">
+  <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+    <div>
+      <h2 class="text-3xl font-bold">2-Day Workshop Agenda</h2>
+      <p class="text-gray-600 mt-1">10:00&ndash;18:00 IL &middot; hybrid (in-person Hod HaSharon + remote IL/EU/India via Teams).</p>
+    </div>
+    <div class="flex space-x-2 bg-gray-100 p-1 rounded-lg">
+      <button onclick="toggleDay(1)" id="day1-toggle" class="bg-white text-blue-700 px-4 py-2 rounded-md font-semibold shadow-sm text-sm">
+        Day 1 &middot; Foundations
+      </button>
+      <button onclick="toggleDay(2)" id="day2-toggle" class="text-gray-600 hover:text-gray-900 px-4 py-2 rounded-md font-semibold text-sm">
+        Day 2 &middot; Leadership
+      </button>
+    </div>
+  </div>
+
+  <!-- Day 1 -->
+  <div id="day1-content" class="space-y-4">
+    <div class="bg-blue-600 text-white p-5 rounded-xl">
+      <div class="flex items-center gap-3 mb-1">
+        <i class="fas fa-flag text-amber-300"></i>
+        <span class="text-xs uppercase tracking-wider font-bold text-blue-200">Outcome</span>
+      </div>
+      <p class="font-semibold">By 18:00, each Champion can structure a prompt, pick the right model, verify the output, chain steps, and knows when to reach for a Skill or <code>MEMORY.md</code> instead of retyping context.</p>
+    </div>
+
+    <details class="session-card bg-white p-5 rounded-xl border-l-4 border-blue-500 shadow-sm" open>
+      <summary class="flex items-start gap-4">
+        <div class="w-24 flex-shrink-0">
+          <div class="font-bold text-blue-600">10:00&ndash;10:30</div>
+          <div class="text-xs text-gray-500">30 min</div>
+        </div>
+        <div class="flex-grow">
+          <h4 class="font-bold">Welcome &amp; the Champion Role</h4>
+          <p class="text-sm text-gray-600">Audience framing, the five hats, the Champion&harr;Team bridge.</p>
+        </div>
+        <i class="fas fa-chevron-down text-gray-400 mt-1"></i>
+      </summary>
+      <div class="mt-4 pl-28 text-sm text-gray-700 space-y-2">
+        <p><strong>Who's in the room:</strong> Champions from R&amp;D, Product, Security, Support &mdash; <em>you are the bridge, not the team.</em></p>
+        <p><strong>The 3-phase outcome ladder:</strong> pre-work &rarr; workshop &rarr; 90-day post-training.</p>
+        <p><strong>Pre-work pulse check:</strong> tools working? Firehawk done? Scavenger hunt? Real examples in hand?</p>
+      </div>
+    </details>
+
+    <details class="session-card bg-white p-5 rounded-xl border-l-4 border-blue-500 shadow-sm" open>
+      <summary class="flex items-start gap-4">
+        <div class="w-24 flex-shrink-0">
+          <div class="font-bold text-blue-600">10:30&ndash;11:30</div>
+          <div class="text-xs text-gray-500">60 min</div>
+        </div>
+        <div class="flex-grow">
+          <h4 class="font-bold">Foundations &amp; Friction-Busters</h4>
+          <p class="text-sm text-gray-600">LLM refresher + model/context selection + Skills &amp; <code>MEMORY.md</code> preview.</p>
+        </div>
+        <i class="fas fa-chevron-down text-gray-400 mt-1"></i>
+      </summary>
+      <div class="mt-4 pl-28 text-sm text-gray-700 space-y-2">
+        <p><strong>Model &amp; context selection:</strong> Opus (deep reasoning) / Sonnet (default) / Haiku (high-volume). Why 200k usually beats 1M &mdash; cost, speed, anchoring risk.</p>
+        <p><strong>The relief message:</strong> Skills encapsulate reusable logic; <code>MEMORY.md</code> stores persistent context Claude reads automatically. You don't retype every prompt.</p>
+        <p><strong>Live demo:</strong> same realistic Allot task run against Opus / Sonnet / Haiku side-by-side.</p>
+      </div>
+    </details>
+
+    <div class="bg-gray-100 py-2 px-5 rounded-md text-center text-sm text-gray-500">
+      <i class="fas fa-coffee mr-2"></i>11:30&ndash;11:45 &middot; Break
+    </div>
+
+    <details class="session-card bg-white p-5 rounded-xl border-l-4 border-blue-500 shadow-sm" open>
+      <summary class="flex items-start gap-4">
+        <div class="w-24 flex-shrink-0">
+          <div class="font-bold text-blue-600">11:45&ndash;13:00</div>
+          <div class="text-xs text-gray-500">75 min</div>
+        </div>
+        <div class="flex-grow">
+          <h4 class="font-bold">Prompt Anatomy &mdash; The Inigo Frame</h4>
+          <p class="text-sm text-gray-600">4 parts (+ optional constraints). Pair rewrite of a pre-work prompt.</p>
+        </div>
+        <i class="fas fa-chevron-down text-gray-400 mt-1"></i>
+      </summary>
+      <div class="mt-4 pl-28 text-sm text-gray-700 space-y-2">
+        <p><strong>The 4 parts:</strong> 1. Greeting / framing &middot; 2. Who am I &middot; 3. Who are you / shared context &middot; 4. Desired outcome. Optional 5th: constraints.</p>
+        <p><strong>Worked example</strong> that demonstrably satisfies all 4 parts.</p>
+        <p><strong>Pair exercise:</strong> rewrite your pre-work Exercise 3.1 prompt to the Inigo frame, run it, compare. Hybrid-friendly breakout pairs.</p>
+      </div>
+    </details>
+
+    <div class="bg-gray-100 py-2 px-5 rounded-md text-center text-sm text-gray-500">
+      <i class="fas fa-utensils mr-2"></i>13:00&ndash;14:00 &middot; Lunch
+    </div>
+
+    <details class="session-card bg-white p-5 rounded-xl border-l-4 border-blue-500 shadow-sm" open>
+      <summary class="flex items-start gap-4">
+        <div class="w-24 flex-shrink-0">
+          <div class="font-bold text-blue-600">14:00&ndash;15:15</div>
+          <div class="text-xs text-gray-500">75 min</div>
+        </div>
+        <div class="flex-grow">
+          <h4 class="font-bold">V-C-A-F &mdash; The Trust Protocol</h4>
+          <p class="text-sm text-gray-600">Live hallucination demo + Fairness deep-dive + Firehawk sanitization debrief.</p>
+        </div>
+        <i class="fas fa-chevron-down text-gray-400 mt-1"></i>
+      </summary>
+      <div class="mt-4 pl-28 text-sm text-gray-700 space-y-2">
+        <p><strong>Why verification is the #1 Champion skill:</strong> you are the person your team trusts to say "this is safe" or "this isn't."</p>
+        <p><strong>Live hallucination demo:</strong> facilitator asks for something plausibly wrong in the Allot domain; the room spots what's off.</p>
+        <p><strong>Fairness deep-dive:</strong> performance reviews, hiring rubrics, customer segmentation &mdash; all carry demographic signal. Decision support, not decision making.</p>
+      </div>
+    </details>
+
+    <div class="bg-gray-100 py-2 px-5 rounded-md text-center text-sm text-gray-500">
+      <i class="fas fa-coffee mr-2"></i>15:15&ndash;15:30 &middot; Break
+    </div>
+
+    <details class="session-card bg-white p-5 rounded-xl border-l-4 border-blue-500 shadow-sm" open>
+      <summary class="flex items-start gap-4">
+        <div class="w-24 flex-shrink-0">
+          <div class="font-bold text-blue-600">15:30&ndash;17:00</div>
+          <div class="text-xs text-gray-500">90 min</div>
+        </div>
+        <div class="flex-grow">
+          <h4 class="font-bold">Lab &mdash; Prompt Chaining on Real Work</h4>
+          <p class="text-sm text-gray-600">Extract &rarr; Analyze &rarr; Format. 3-step chain on a real problem you brought.</p>
+        </div>
+        <i class="fas fa-chevron-down text-gray-400 mt-1"></i>
+      </summary>
+      <div class="mt-4 pl-28 text-sm text-gray-700 space-y-2">
+        <p><strong>Chaining pattern:</strong> each step's output is the next step's input. Smaller, more testable, more reliable than one mega-prompt.</p>
+        <p><strong>Build your chain:</strong> pick one real problem from pre-work, design on paper, build in Claude, apply V-C-A-F at the final step, document as a reusable template.</p>
+        <p><strong>Red-team swap:</strong> swap chains with another pair; break each other's chains; report back one finding.</p>
+      </div>
+    </details>
+
+    <div class="bg-gray-100 py-2 px-5 rounded-md text-center text-sm text-gray-500">
+      <i class="fas fa-coffee mr-2"></i>17:00&ndash;17:15 &middot; Break
+    </div>
+
+    <details class="session-card bg-white p-5 rounded-xl border-l-4 border-blue-500 shadow-sm" open>
+      <summary class="flex items-start gap-4">
+        <div class="w-24 flex-shrink-0">
+          <div class="font-bold text-blue-600">17:15&ndash;18:00</div>
+          <div class="text-xs text-gray-500">45 min</div>
+        </div>
+        <div class="flex-grow">
+          <h4 class="font-bold">Feasibility vs. Impact + Capstone Problem ID</h4>
+          <p class="text-sm text-gray-600">Map pre-work use cases. Pick a Day-2 capstone target. Write the problem statement.</p>
+        </div>
+        <i class="fas fa-chevron-down text-gray-400 mt-1"></i>
+      </summary>
+      <div class="mt-4 pl-28 text-sm text-gray-700 space-y-2">
+        <p><strong>Feasibility vs. Impact matrix:</strong> Quick Wins &rarr; Strategic &rarr; skip Avoid &middot; automate Low-Priority only if trivial.</p>
+        <p><strong>Capstone format:</strong> pairs within the same function / domain. One problem per pair. 2&ndash;3 sentence problem statement (what goes in, what comes out, who benefits).</p>
+        <p><strong>Day 1 close:</strong> "What did you un-learn today?" + Day 2 preview.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Day 2 -->
+  <div id="day2-content" class="space-y-4 hidden">
+    <div class="bg-purple-600 text-white p-5 rounded-xl">
+      <div class="flex items-center gap-3 mb-1">
+        <i class="fas fa-flag text-amber-300"></i>
+        <span class="text-xs uppercase tracking-wider font-bold text-purple-200">Outcome</span>
+      </div>
+      <p class="font-semibold">By end of Day 2, each Champion can run the 60-min local workshop, handle the four stock objections, and ship one capstone workflow with documentation.</p>
+    </div>
+
+    <details class="session-card bg-white p-5 rounded-xl border-l-4 border-purple-500 shadow-sm" open>
+      <summary class="flex items-start gap-4">
+        <div class="w-24 flex-shrink-0">
+          <div class="font-bold text-purple-600">09:00&ndash;10:30</div>
+          <div class="text-xs text-gray-500">90 min</div>
+        </div>
+        <div class="flex-grow">
+          <h4 class="font-bold">Advanced Prompting &amp; Domain Workflows (Tracks A / B)</h4>
+          <p class="text-sm text-gray-600">System prompts &middot; long documents &middot; Skills &middot; <code>MEMORY.md</code> &middot; parallel tracks.</p>
+        </div>
+        <i class="fas fa-chevron-down text-gray-400 mt-1"></i>
+      </summary>
+      <div class="mt-4 pl-28 text-sm text-gray-700 space-y-2">
+        <p><strong>System prompts &amp; personas:</strong> reusable roles for code review, tech writing, analysis.</p>
+        <p><strong>Long documents:</strong> chunking and summarize-then-analyze patterns.</p>
+        <p><strong>Skills &amp; <code>MEMORY.md</code> deep-dive:</strong> build and share reusable AI workflows.</p>
+        <p><strong>Track A (Technical):</strong> code review, test generation, doc generation, refactoring, log analysis. Lab: review a real PR using AI + V-C-A-F.</p>
+        <p><strong>Track B (Business):</strong> competitive intel, user stories from customer feedback, sentiment mapping, exec summaries. Lab: transform raw feedback into an insights report.</p>
+      </div>
+    </details>
+
+    <div class="bg-gray-100 py-2 px-5 rounded-md text-center text-sm text-gray-500">
+      <i class="fas fa-coffee mr-2"></i>10:30&ndash;10:45 &middot; Break
+    </div>
+
+    <details class="session-card bg-white p-5 rounded-xl border-l-4 border-purple-500 shadow-sm" open>
+      <summary class="flex items-start gap-4">
+        <div class="w-24 flex-shrink-0">
+          <div class="font-bold text-purple-600">10:45&ndash;12:00</div>
+          <div class="text-xs text-gray-500">75 min</div>
+        </div>
+        <div class="flex-grow">
+          <h4 class="font-bold">Responsible AI, Security, Ethics &amp; Incident Drill</h4>
+          <p class="text-sm text-gray-600">Data classification refresher, IP &amp; compliance, ethics deep-dive, live fire drill.</p>
+        </div>
+        <i class="fas fa-chevron-down text-gray-400 mt-1"></i>
+      </summary>
+      <div class="mt-4 pl-28 text-sm text-gray-700 space-y-2">
+        <p><strong>IP &amp; compliance:</strong> code ownership, export control, documentation for AI-assisted work.</p>
+        <p><strong>When NOT to use AI:</strong> final decisions on security-critical configs, legal/compliance determinations, situations requiring real-time accurate data.</p>
+        <p><strong>Live fire drill:</strong> "A team member pasted customer API credentials into Claude &mdash; what do I do?" Walk through immediate action, escalation, documentation, prevention in pairs.</p>
+      </div>
+    </details>
+
+    <div class="bg-gray-100 py-2 px-5 rounded-md text-center text-sm text-gray-500">
+      <i class="fas fa-utensils mr-2"></i>12:00&ndash;13:00 &middot; Lunch
+    </div>
+
+    <details class="session-card bg-white p-5 rounded-xl border-l-4 border-purple-500 shadow-sm" open>
+      <summary class="flex items-start gap-4">
+        <div class="w-24 flex-shrink-0">
+          <div class="font-bold text-purple-600">13:00&ndash;14:30</div>
+          <div class="text-xs text-gray-500">90 min</div>
+        </div>
+        <div class="flex-grow">
+          <h4 class="font-bold">Champion Playbook &mdash; Workshops, Resistance, Metrics</h4>
+          <p class="text-sm text-gray-600">60-min local workshop template, prompt library, resistance roleplay, analytics.</p>
+        </div>
+        <i class="fas fa-chevron-down text-gray-400 mt-1"></i>
+      </summary>
+      <div class="mt-4 pl-28 text-sm text-gray-700 space-y-2">
+        <p><strong>60-min local workshop template:</strong> intro &rarr; live demo &rarr; hands-on &rarr; share &rarr; next steps.</p>
+        <p><strong>Prompt library:</strong> version, test-against-model, monthly re-test of top 5.</p>
+        <p><strong>Roleplay:</strong> Accuracy Skeptic &middot; Anxious Junior &middot; Overwhelmed Manager &middot; Security Concern &mdash; the four stock objections.</p>
+        <p><strong>Analytics dashboard:</strong> monthly active users, queries per user, tool utilization. Qualitative: time-saved, wins, blockers, requests.</p>
+      </div>
+    </details>
+
+    <div class="bg-gray-100 py-2 px-5 rounded-md text-center text-sm text-gray-500">
+      <i class="fas fa-coffee mr-2"></i>14:30&ndash;14:45 &middot; Break
+    </div>
+
+    <details class="session-card bg-white p-5 rounded-xl border-l-4 border-purple-500 shadow-sm" open>
+      <summary class="flex items-start gap-4">
+        <div class="w-24 flex-shrink-0">
+          <div class="font-bold text-purple-600">14:45&ndash;16:30</div>
+          <div class="text-xs text-gray-500">105 min</div>
+        </div>
+        <div class="flex-grow">
+          <h4 class="font-bold">Capstone &mdash; Design, Build, Present</h4>
+          <p class="text-sm text-gray-600">Refine the Day 1 problem. Build the workflow. Present to the group.</p>
+        </div>
+        <i class="fas fa-chevron-down text-gray-400 mt-1"></i>
+      </summary>
+      <div class="mt-4 pl-28 text-sm text-gray-700 space-y-2">
+        <p><strong>Refine (10 min):</strong> lock scope on the problem statement picked Day 1.</p>
+        <p><strong>Design (30 min):</strong> prompt chain or template, inputs/outputs, V-C-A-F steps, data classification.</p>
+        <p><strong>Build &amp; test (45 min):</strong> build, test with real (sanitized) data, iterate, document.</p>
+        <p><strong>Present (5 min per pair):</strong> problem &middot; solution &middot; live demo &middot; lessons.</p>
+      </div>
+    </details>
+
+    <details class="session-card bg-white p-5 rounded-xl border-l-4 border-purple-500 shadow-sm" open>
+      <summary class="flex items-start gap-4">
+        <div class="w-24 flex-shrink-0">
+          <div class="font-bold text-purple-600">16:30&ndash;17:30</div>
+          <div class="text-xs text-gray-500">60 min</div>
+        </div>
+        <div class="flex-grow">
+          <h4 class="font-bold">Wrap-Up &middot; Roadmap &middot; Next Steps</h4>
+          <p class="text-sm text-gray-600">Certification, commitments, 90-day roadmap, support channels, feedback survey.</p>
+        </div>
+        <i class="fas fa-chevron-down text-gray-400 mt-1"></i>
+      </summary>
+      <div class="mt-4 pl-28 text-sm text-gray-700 space-y-2">
+        <p><strong>Commitments:</strong> first local workshop within 2 weeks &middot; 3 prompts to shared library within 1 month &middot; 5 team use cases documented within 1 month.</p>
+        <p><strong>Champion roadmap:</strong> Weeks 1&ndash;2, Month 1, Months 2&ndash;3, Months 4&ndash;6, ongoing.</p>
+        <p><strong>Support:</strong> Champions Teams channel, IT Service Desk, AppSec, Confluence AI Champions space.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- =========================================================== -->
+<!-- EXAM -->
+<!-- =========================================================== -->
+<section id="tab-exam" class="tab-content hidden">
+  <!-- Exam intro (shown before start) -->
+  <div id="exam-intro" class="text-center space-y-5 py-10 max-w-2xl mx-auto">
+    <div class="bg-blue-100 text-blue-600 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-2">
+      <i class="fas fa-clipboard-check text-3xl"></i>
+    </div>
+    <h2 class="text-3xl font-bold">Champion Readiness Exam</h2>
+    <p class="text-gray-600">Five artifact-producing tasks that show you understand the AI tools, when to use them, and how to verify their output. Not multiple-choice trivia.</p>
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-3 text-sm">
+      <div class="bg-white border border-gray-100 shadow-sm p-3 rounded-lg"><div class="font-bold text-blue-600">A</div>Knowledge (15m)</div>
+      <div class="bg-white border border-gray-100 shadow-sm p-3 rounded-lg"><div class="font-bold text-blue-600">B</div>Sanitization (10m)</div>
+      <div class="bg-white border border-gray-100 shadow-sm p-3 rounded-lg"><div class="font-bold text-blue-600">C</div>Inigo prompt (20m)</div>
+      <div class="bg-white border border-gray-100 shadow-sm p-3 rounded-lg"><div class="font-bold text-blue-600">D</div>V-C-A-F (15m)</div>
+      <div class="bg-white border border-gray-100 shadow-sm p-3 rounded-lg"><div class="font-bold text-blue-600">E</div>Chain (20m)</div>
+    </div>
+    <div class="bg-amber-50 border-l-4 border-amber-400 p-4 rounded-r-lg text-left">
+      <p class="text-amber-900 text-sm m-0"><strong>How submission works:</strong> Your answers auto-save in this browser. When you finish, click <em>Download Submission</em> &mdash; a Markdown file downloads. Upload it to the Microsoft Forms link from your facilitator, at least 48 hours before Day 1.</p>
+    </div>
+    <button onclick="startExam()" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-700 transition shadow-md">
+      <i class="fas fa-play mr-2"></i>Start Exam
+    </button>
+  </div>
+
+  <!-- Exam body -->
+  <div id="exam-container" class="hidden space-y-6">
+
+    <!-- Progress bar -->
+    <div class="sticky top-16 z-30 bg-white border border-gray-100 shadow-sm rounded-xl p-3 no-print">
+      <div class="flex items-center justify-between mb-2">
+        <div class="text-xs text-gray-500 font-semibold uppercase tracking-wide">Progress</div>
+        <div class="text-xs" id="save-status">Auto-save ready</div>
+      </div>
+      <div class="flex gap-2">
+        <div class="exam-progress-dot flex-1 h-2 rounded-full bg-gray-200" id="prog-A"></div>
+        <div class="exam-progress-dot flex-1 h-2 rounded-full bg-gray-200" id="prog-B"></div>
+        <div class="exam-progress-dot flex-1 h-2 rounded-full bg-gray-200" id="prog-C"></div>
+        <div class="exam-progress-dot flex-1 h-2 rounded-full bg-gray-200" id="prog-D"></div>
+        <div class="exam-progress-dot flex-1 h-2 rounded-full bg-gray-200" id="prog-E"></div>
+      </div>
+      <div class="flex gap-2 mt-1 text-xs text-gray-500">
+        <div class="flex-1 text-center">A</div>
+        <div class="flex-1 text-center">B</div>
+        <div class="flex-1 text-center">C</div>
+        <div class="flex-1 text-center">D</div>
+        <div class="flex-1 text-center">E</div>
+      </div>
+    </div>
+
+    <!-- Identity -->
+    <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
+      <h3 class="font-bold text-lg mb-4">Your details</h3>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">Full name</label>
+          <input type="text" data-save="name" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">Allot email</label>
+          <input type="email" data-save="email" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">Team / function</label>
+          <input type="text" data-save="team" placeholder="e.g., DPI R&D, Product, Security" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">Region</label>
+          <select data-save="region" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
+            <option value="">Select...</option>
+            <option value="IL">Israel</option>
+            <option value="EU">Europe</option>
+            <option value="India">India</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section A -->
+    <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">A</span>
+        <h3 class="text-xl font-bold m-0">Knowledge Check</h3>
+        <span class="ml-auto text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full font-semibold">15 min</span>
+      </div>
+      <p class="text-gray-600 text-sm mb-4">Pick the best answer. Be prepared to explain your reasoning on Day 1.</p>
+      <div id="mcq-container" class="space-y-4"></div>
+    </div>
+
+    <!-- Section B -->
+    <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="bg-red-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">B</span>
+        <h3 class="text-xl font-bold m-0">Sanitization Task</h3>
+        <span class="ml-auto text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full font-semibold">10 min</span>
+      </div>
+      <p class="text-gray-700 mb-3">Rewrite the Firehawk transcript (from Pre-Work Part 4) so it's safe to send to an AI tool.</p>
+      <blockquote class="border-l-4 border-red-400 bg-red-50 p-4 rounded-r-lg text-sm mb-4">
+        "Okay, let's start. For Project Firehawk, we're integrating the new deep-packet inspection module for our client, Verizon. To test the uplink, use the temporary staging API Key: AKIA-8821-ALLOT-TR-99. If you run into auth issues, contact our lead dev, Sarah Jenkins (s.jenkins@allot.com). Also, remember that the internal architecture specs for Firehawk are currently under an NDA and should not be discussed outside this group."
+      </blockquote>
+      <label class="block text-sm font-semibold text-gray-700 mb-1">Your sanitized version</label>
+      <textarea data-save="B-sanitized" rows="6" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none text-sm"></textarea>
+      <label class="block text-sm font-semibold text-gray-700 mb-1 mt-3">Rationale (3&ndash;5 lines): what did you remove, why, and what did you replace it with?</label>
+      <textarea data-save="B-rationale" rows="4" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none text-sm"></textarea>
+    </div>
+
+    <!-- Section C -->
+    <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="bg-amber-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">C</span>
+        <h3 class="text-xl font-bold m-0">Inigo Prompt Construction</h3>
+        <span class="ml-auto text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full font-semibold">20 min</span>
+      </div>
+      <p class="text-gray-700 mb-3"><strong>Scenario:</strong> You need Claude to turn a 2-page customer feature request into a structured user story with acceptance criteria for your Product team to triage.</p>
+      <p class="text-gray-600 text-sm mb-3">Write a prompt using the 4-part Inigo frame (part 5 is optional). Each part goes in its own box.</p>
+
+      <div class="space-y-3">
+        <div>
+          <label class="block text-sm font-semibold text-blue-700 mb-1">Part 1 &mdash; Greeting / framing</label>
+          <p class="text-xs text-gray-500 mb-1">Why are we here? The task framing.</p>
+          <textarea data-save="C-1" rows="2" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none text-sm"></textarea>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-blue-700 mb-1">Part 2 &mdash; Who am I</label>
+          <p class="text-xs text-gray-500 mb-1">Your role, team, and relevant context about you.</p>
+          <textarea data-save="C-2" rows="2" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none text-sm"></textarea>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-blue-700 mb-1">Part 3 &mdash; Who are you / shared context</label>
+          <p class="text-xs text-gray-500 mb-1">Who the AI should be, and what you're looking at together.</p>
+          <textarea data-save="C-3" rows="2" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none text-sm"></textarea>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-blue-700 mb-1">Part 4 &mdash; Desired outcome</label>
+          <p class="text-xs text-gray-500 mb-1">What should exist at the end. Format, structure, length.</p>
+          <textarea data-save="C-4" rows="2" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none text-sm"></textarea>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-blue-700 mb-1">Part 5 &mdash; Constraints (optional)</label>
+          <p class="text-xs text-gray-500 mb-1">What to avoid or assume. Leave blank if not needed.</p>
+          <textarea data-save="C-5" rows="2" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none text-sm"></textarea>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">First-run output from Claude</label>
+          <p class="text-xs text-gray-500 mb-1">Paste the actual response you got when you ran your prompt.</p>
+          <textarea data-save="C-output" rows="6" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none text-sm mono"></textarea>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">Self-critique (2 lines): what would you change for v2?</label>
+          <textarea data-save="C-critique" rows="2" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none text-sm"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section D -->
+    <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="bg-purple-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">D</span>
+        <h3 class="text-xl font-bold m-0">V-C-A-F on Seeded Output</h3>
+        <span class="ml-auto text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full font-semibold">15 min</span>
+      </div>
+      <p class="text-gray-700 mb-2">Below is a Claude-generated response to <em>"Analyze this customer support team's ticket resolution metrics and identify patterns."</em></p>
+      <p class="text-gray-700 mb-2 text-sm">The input data said: <strong>avg resolution time 6.1 hours, 200 tickets, mixed enterprise and SMB customers, Allot is a global company headquartered in Israel with its own defined SLAs.</strong></p>
+      <div class="bg-red-50 border border-red-200 rounded-lg p-3 mb-3">
+        <p class="text-red-800 text-sm m-0"><i class="fas fa-exclamation-triangle mr-2"></i><strong>Seeded response (contains deliberate errors &mdash; find them all):</strong></p>
+      </div>
+      <blockquote class="border-l-4 border-gray-400 bg-gray-50 p-4 rounded-r-lg text-sm mb-4">
+        Based on the data, the team's average resolution time is 4.2 hours, which is strong. Enterprise customers are served faster than SMB customers, which makes sense since they pay more. Looking at the engineer breakdown, male engineers on the team resolve tickets 15% faster than female engineers, suggesting a training gap for the female staff. I recommend adopting the industry-standard SLAs used at large US tech companies like Salesforce and Google, where first-response time is under 1 hour.
+      </blockquote>
+      <p class="text-sm text-gray-600 mb-4">Apply V-C-A-F. There are at least <strong>3 distinct issues</strong> across the layers. Find them all.</p>
+
+      <div class="space-y-3">
+        <div>
+          <label class="block text-sm font-semibold text-purple-700 mb-1">Verify &mdash; factual errors or unverifiable claims</label>
+          <textarea data-save="D-verify" rows="2" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none text-sm"></textarea>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-purple-700 mb-1">Contextualize &mdash; what's missing that an Allot expert would include?</label>
+          <textarea data-save="D-context" rows="2" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none text-sm"></textarea>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-purple-700 mb-1">Authorize &mdash; would you put your name on this? What needs to change first?</label>
+          <textarea data-save="D-auth" rows="2" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none text-sm"></textarea>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-purple-700 mb-1">Fairness Check &mdash; bias or group-asymmetry risks?</label>
+          <textarea data-save="D-fair" rows="2" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none text-sm"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section E -->
+    <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="bg-green-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">E</span>
+        <h3 class="text-xl font-bold m-0">Hands-On Chain &amp; Reflection</h3>
+        <span class="ml-auto text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full font-semibold">20 min</span>
+      </div>
+      <p class="text-gray-700 mb-3">Build a 3-step prompt chain in Claude using one of the real work examples you prepared in Part 1.</p>
+      <ul class="text-sm text-gray-600 mb-4 space-y-1">
+        <li><strong>Step 1 &mdash; Extract:</strong> pull structured data from your raw input.</li>
+        <li><strong>Step 2 &mdash; Analyze:</strong> classify, prioritize, or score the extracted data.</li>
+        <li><strong>Step 3 &mdash; Format:</strong> produce the final deliverable (ticket, table, summary).</li>
+      </ul>
+      <div class="space-y-3">
+        <div>
+          <label class="block text-sm font-semibold text-green-700 mb-1">Step 1 prompt &mdash; Extract</label>
+          <textarea data-save="E-step1" rows="5" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none text-sm mono"></textarea>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-green-700 mb-1">Step 2 prompt &mdash; Analyze</label>
+          <textarea data-save="E-step2" rows="5" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none text-sm mono"></textarea>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-green-700 mb-1">Step 3 prompt &mdash; Format</label>
+          <textarea data-save="E-step3" rows="5" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none text-sm mono"></textarea>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">Final output from Step 3</label>
+          <textarea data-save="E-output" rows="5" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none text-sm mono"></textarea>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">Reflection (3 lines): where did V-C-A-F catch something? What surprised you?</label>
+          <textarea data-save="E-reflection" rows="3" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none text-sm"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Self-assessment -->
+    <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="bg-gray-700 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold"><i class="fas fa-check"></i></span>
+        <h3 class="text-xl font-bold m-0">Self-Assessment</h3>
+        <span class="ml-auto text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full font-semibold">5 min</span>
+      </div>
+      <p class="text-sm text-gray-600 mb-4">Score yourself honestly. If you land in <strong>Needs work</strong> on two or more sections, your facilitator will schedule a 30-min coaching call before Day 1.</p>
+      <div id="rubric-container" class="space-y-3"></div>
+    </div>
+
+    <!-- Submit -->
+    <div class="bg-gradient-to-br from-green-50 to-blue-50 p-6 rounded-xl border border-green-200">
+      <h3 class="font-bold text-lg mb-2"><i class="fas fa-paper-plane mr-2 text-green-600"></i>Submit your exam</h3>
+      <p class="text-sm text-gray-700 mb-4">Click <strong>Download Submission</strong> to generate a Markdown file. Upload it to the Microsoft Forms link from your facilitator.</p>
+      <div class="flex flex-wrap gap-3">
+        <button onclick="exportSubmission()" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition shadow-md">
+          <i class="fas fa-download mr-2"></i>Download Submission (.md)
+        </button>
+        <button onclick="clearExam()" class="bg-white text-gray-600 border border-gray-300 px-6 py-3 rounded-lg font-semibold hover:bg-red-50 hover:text-red-600 hover:border-red-300 transition">
+          <i class="fas fa-trash mr-2"></i>Clear all answers
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================== -->
+<!-- CHECKLIST -->
+<!-- =========================================================== -->
+<section id="tab-checklist" class="tab-content hidden space-y-6">
+  <h2 class="text-3xl font-bold">Pre-Workshop Checklist</h2>
+  <p class="text-gray-600">Check these off as you complete them. Your progress saves automatically in this browser.</p>
+
+  <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+    <div class="p-5 bg-gray-50 border-b flex items-center justify-between">
+      <h3 class="font-bold">Final verification before Day 1</h3>
+      <span id="checklist-progress" class="text-sm text-gray-500">0 / 7 complete</span>
+    </div>
+    <div class="divide-y p-2" id="checklist-items">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+
+  <div class="bg-blue-50 border border-blue-100 p-6 rounded-xl text-center">
+    <p class="italic text-blue-800 m-0">"By checking these boxes, I confirm I am ready to act as the Quality Gate and Trainer for my team."</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="bg-white border-t py-8 mt-auto no-print">
+  <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 space-y-3 md:space-y-0">
+    <div>&copy; 2026 Allot Ltd. &middot; AI Enablement &amp; Standards &middot; v1.0</div>
+    <div class="flex space-x-6">
+      <a href="#" class="hover:text-blue-600">AI Usage Policy</a>
+      <a href="#" class="hover:text-blue-600">Confluence Wiki</a>
+      <a href="#" class="hover:text-blue-600">Teams Channel</a>
+      <a href="#" class="hover:text-blue-600">IT Service Desk</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  var STORAGE_KEY = 'allot_ai_champion_hub_v1';
+  var saveTimer = null;
+
+  // ========== Navigation ==========
+  window.showTab = function(name) {
+    document.querySelectorAll('.tab-content').forEach(function(el) { el.classList.add('hidden'); });
+    var target = document.getElementById('tab-' + name);
+    if (target) target.classList.remove('hidden');
+    document.querySelectorAll('.nav-btn').forEach(function(el) { el.classList.remove('active'); });
+    var a = document.getElementById('btn-' + name);
+    var b = document.getElementById('btn-' + name + '-m');
+    if (a) a.classList.add('active');
+    if (b) b.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // ========== Pre-Work Parts ==========
+  window.showPrePart = function(part) {
+    document.querySelectorAll('.pw-panel').forEach(function(el) { el.classList.add('hidden'); });
+    var panel = document.getElementById('pw-panel-' + part);
+    if (panel) panel.classList.remove('hidden');
+    document.querySelectorAll('.pw-nav-btn').forEach(function(el) { el.classList.remove('active'); });
+    var btn = document.getElementById('pw-' + part);
+    if (btn) btn.classList.add('active');
+  };
+
+  // ========== Workshop Day toggle ==========
+  window.toggleDay = function(day) {
+    var d1 = document.getElementById('day1-content');
+    var d2 = document.getElementById('day2-content');
+    var b1 = document.getElementById('day1-toggle');
+    var b2 = document.getElementById('day2-toggle');
+    if (day === 1) {
+      d1.classList.remove('hidden'); d2.classList.add('hidden');
+      b1.className = 'bg-white text-blue-700 px-4 py-2 rounded-md font-semibold shadow-sm text-sm';
+      b2.className = 'text-gray-600 hover:text-gray-900 px-4 py-2 rounded-md font-semibold text-sm';
+    } else {
+      d1.classList.add('hidden'); d2.classList.remove('hidden');
+      b1.className = 'text-gray-600 hover:text-gray-900 px-4 py-2 rounded-md font-semibold text-sm';
+      b2.className = 'bg-white text-purple-700 px-4 py-2 rounded-md font-semibold shadow-sm text-sm';
+    }
+  };
+
+  // ========== Exam ==========
+  var mcqData = [
+    { id: 'A1', q: "You're debugging a function that handles customer IP addresses in production logs. Before pasting the code into Claude, you should:",
+      opts: [
+        "Paste it as-is — Allot has an enterprise agreement with Claude",
+        "Remove only the IP addresses",
+        "Remove IPs and any customer identifiers; note in the prompt that IPs were masked",
+        "Never paste customer-related code into Claude — only Copilot in the IDE"
+      ]
+    },
+    { id: 'A2', q: "You need to classify 500 support tickets by severity. Which model is most appropriate?",
+      opts: [
+        "Opus with 1M context — for maximum quality",
+        "Sonnet with 200k context — the day-to-day default",
+        "Haiku — fast and cheap for repetitive classification",
+        "Any model works equally well"
+      ]
+    },
+    { id: 'A3', q: "You default to Opus with 1M context for \"quality.\" What's the main risk?",
+      opts: [
+        "Opus doesn't support 1M context",
+        "Higher cost, slower responses, and signal dilution from irrelevant earlier content",
+        "1M context is less accurate than 200k",
+        "Allot's license doesn't cover 1M"
+      ]
+    },
+    { id: 'A4', q: "A teammate wants to paste a customer's production API key into Claude to debug why it's being rejected. You say:",
+      opts: [
+        "OK if it's the test environment",
+        "OK if other parts of the request are sanitized",
+        "Never — credentials are Restricted. Use a dummy key and describe the error symptoms.",
+        "OK if they delete the conversation afterward"
+      ]
+    },
+    { id: 'A5', q: "You find a new AI Chrome extension that summarizes web pages. It's not on the approved tools list. Can you use it for Allot work?",
+      opts: [
+        "Yes — it only sees public web pages",
+        "Yes — personal browsing is outside policy scope",
+        "No — unapproved tools bypass Allot's data governance. Request it via IT.",
+        "Yes, if you don't paste internal content"
+      ]
+    },
+    { id: 'A6', q: "You ask Claude \"What version of our DPI module shipped in 2024?\" It confidently answers \"v7.2.\" You should:",
+      opts: [
+        "Trust and use — Claude has broad general knowledge",
+        "Verify against internal release notes before using",
+        "Trust — confidence correlates with accuracy",
+        "Ask again with more detail to confirm"
+      ]
+    },
+    { id: 'A7', q: "You're drafting performance review feedback for a team member using AI. Which V-C-A-F step is most critical?",
+      opts: [
+        "Verify — facts must be right",
+        "Contextualize — must match Allot's review format",
+        "Authorize — you own the output",
+        "Fairness Check — people-related output, bias risk is highest here"
+      ]
+    },
+    { id: 'A8', q: "A teammate asks \"can I upload this 400-page PDF into the chat?\" Your answer should touch on:",
+      opts: [
+        "Model choice (Opus for deep reasoning) and context size (200k likely enough)",
+        "Whether the PDF contains Confidential/Restricted data",
+        "Whether summarize-then-analyze chunking would work better",
+        "All of the above"
+      ]
+    }
+  ];
+
+  var rubricData = [
+    { id: 'rubric-A', label: 'A. Knowledge Check', opts: ['Mastery (7-8)', 'Proficient (5-6)', 'Needs work (<5)'] },
+    { id: 'rubric-B', label: 'B. Sanitization',    opts: ['Mastery', 'Proficient', 'Needs work'] },
+    { id: 'rubric-C', label: 'C. Inigo Prompt',    opts: ['Mastery', 'Proficient', 'Needs work'] },
+    { id: 'rubric-D', label: 'D. V-C-A-F',          opts: ['Mastery (all 3)', 'Proficient (2)', 'Needs work (0-1)'] },
+    { id: 'rubric-E', label: 'E. Chain & Reflect',  opts: ['Mastery', 'Proficient', 'Needs work'] }
+  ];
+
+  var checklistItems = [
+    { id: 'c-tools', title: 'Tool access working', desc: 'Claude + Copilot confirmed. I can log in at the Allot instance.' },
+    { id: 'c-foundations', title: 'Foundations read', desc: "I've read the core concepts, data-classification table, and V-C-A-F preview." },
+    { id: 'c-ex3', title: 'Exercise 3.1 complete', desc: "I've written an Inigo-format prompt and run it against Claude." },
+    { id: 'c-vcaf', title: 'Exercise 3.2 complete', desc: "I've applied V-C-A-F to a factual question I asked Claude." },
+    { id: 'c-sanitized', title: 'Sanitization challenge complete', desc: "I've rewritten the Firehawk transcript to a safe version with rationale." },
+    { id: 'c-exam', title: 'Readiness Exam submitted', desc: "I've downloaded my submission and uploaded to Microsoft Forms (48h+ before Day 1)." },
+    { id: 'c-deepdive', title: 'Domain deep-dive complete', desc: "I've done one R&D / Product / Security task and taken V-C-A-F notes." }
+  ];
+
+  window.startExam = function() {
+    document.getElementById('exam-intro').classList.add('hidden');
+    document.getElementById('exam-container').classList.remove('hidden');
+    renderMCQs();
+    renderRubric();
+    restoreExam();
+    updateProgress();
+  };
+
+  function renderMCQs() {
+    var c = document.getElementById('mcq-container');
+    var letters = ['a', 'b', 'c', 'd'];
+    c.innerHTML = mcqData.map(function(q) {
+      return '<div class="border border-gray-200 rounded-lg p-4">' +
+        '<p class="font-semibold mb-3"><span class="inline-block bg-blue-600 text-white text-xs font-bold px-2 py-0.5 rounded mr-2">' + q.id + '</span>' + q.q + '</p>' +
+        '<div class="space-y-1">' +
+          q.opts.map(function(opt, i) {
+            return '<label class="flex items-start gap-2 p-2 rounded-md hover:bg-gray-50 cursor-pointer text-sm">' +
+              '<input type="radio" name="' + q.id + '" value="' + letters[i] + '" data-save="' + q.id + '" class="mt-1 w-4 h-4 text-blue-600">' +
+              '<span>' + letters[i] + ') ' + opt + '</span>' +
+            '</label>';
+          }).join('') +
+        '</div>' +
+      '</div>';
+    }).join('');
+  }
+
+  function renderRubric() {
+    var c = document.getElementById('rubric-container');
+    c.innerHTML = rubricData.map(function(r) {
+      return '<div class="grid md:grid-cols-[1.2fr_2fr] gap-3 items-center py-2 border-b last:border-b-0">' +
+        '<div class="font-semibold text-gray-700 text-sm">' + r.label + '</div>' +
+        '<div class="flex gap-2 flex-wrap">' +
+          r.opts.map(function(opt, i) {
+            var val = i === 0 ? 'mastery' : (i === 1 ? 'proficient' : 'needs-work');
+            return '<label class="inline-flex items-center gap-2 px-3 py-1.5 border border-gray-200 rounded-full hover:border-blue-400 cursor-pointer text-xs">' +
+              '<input type="radio" name="' + r.id + '" value="' + val + '" data-save="' + r.id + '" class="w-3.5 h-3.5 text-blue-600">' +
+              '<span>' + opt + '</span>' +
+            '</label>';
+          }).join('') +
+        '</div>' +
+      '</div>';
+    }).join('');
+  }
+
+  function allFields() {
+    return document.querySelectorAll('[data-save]');
+  }
+
+  function saveExam() {
+    var data = {};
+    allFields().forEach(function(el) {
+      var key = el.getAttribute('data-save');
+      if (el.type === 'radio') { if (el.checked) data[key] = el.value; }
+      else if (el.type === 'checkbox') { data[key] = el.checked; }
+      else { data[key] = el.value; }
+    });
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      var s = document.getElementById('save-status');
+      if (s) { s.textContent = 'Saved ' + new Date().toLocaleTimeString(); s.className = 'text-xs text-green-600'; }
+    } catch (e) {}
+    updateProgress();
+  }
+
+  function scheduleSave() {
+    if (saveTimer) clearTimeout(saveTimer);
+    var s = document.getElementById('save-status');
+    if (s) { s.textContent = 'Saving...'; s.className = 'text-xs text-gray-500'; }
+    saveTimer = setTimeout(saveExam, 400);
+  }
+
+  function restoreExam() {
+    var raw;
+    try { raw = localStorage.getItem(STORAGE_KEY); } catch (e) { return; }
+    if (!raw) return;
+    var data;
+    try { data = JSON.parse(raw); } catch (e) { return; }
+    allFields().forEach(function(el) {
+      var key = el.getAttribute('data-save');
+      var val = data[key];
+      if (val === undefined) return;
+      if (el.type === 'radio') { if (el.value === val) el.checked = true; }
+      else if (el.type === 'checkbox') { el.checked = !!val; }
+      else { el.value = val; }
+    });
+    var s = document.getElementById('save-status');
+    if (s) { s.textContent = 'Restored previous progress'; s.className = 'text-xs text-green-600'; }
+  }
+
+  function updateProgress() {
+    // Section A: any MCQ answered
+    var sections = { A: false, B: false, C: false, D: false, E: false };
+    mcqData.forEach(function(q) {
+      if (document.querySelector('input[name="' + q.id + '"]:checked')) sections.A = true;
+    });
+    ['B-sanitized', 'B-rationale'].forEach(function(k) {
+      var el = document.querySelector('[data-save="' + k + '"]');
+      if (el && el.value.trim()) sections.B = true;
+    });
+    ['C-1', 'C-2', 'C-3', 'C-4', 'C-output', 'C-critique'].forEach(function(k) {
+      var el = document.querySelector('[data-save="' + k + '"]');
+      if (el && el.value.trim()) sections.C = true;
+    });
+    ['D-verify', 'D-context', 'D-auth', 'D-fair'].forEach(function(k) {
+      var el = document.querySelector('[data-save="' + k + '"]');
+      if (el && el.value.trim()) sections.D = true;
+    });
+    ['E-step1', 'E-step2', 'E-step3', 'E-output', 'E-reflection'].forEach(function(k) {
+      var el = document.querySelector('[data-save="' + k + '"]');
+      if (el && el.value.trim()) sections.E = true;
+    });
+    Object.keys(sections).forEach(function(k) {
+      var dot = document.getElementById('prog-' + k);
+      if (dot) dot.className = 'exam-progress-dot flex-1 h-2 rounded-full ' + (sections[k] ? 'bg-blue-500' : 'bg-gray-200');
+    });
+  }
+
+  function collect() {
+    var d = {};
+    allFields().forEach(function(el) {
+      var k = el.getAttribute('data-save');
+      if (el.type === 'radio') { if (el.checked) d[k] = el.value; }
+      else if (el.type === 'checkbox') { d[k] = el.checked; }
+      else { d[k] = (el.value || '').trim(); }
+    });
+    return d;
+  }
+
+  function esc(s) { return s == null ? '' : String(s); }
+
+  function safeFilename(name) {
+    return (name || 'champion').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 40) || 'champion';
+  }
+
+  function buildMarkdown(d) {
+    var today = new Date().toISOString().slice(0, 10);
+    var md = '';
+    md += '# AI Champion Readiness Exam — Submission\n\n';
+    md += '**Name:** ' + esc(d.name) + '\n';
+    md += '**Email:** ' + esc(d.email) + '\n';
+    md += '**Team:** ' + esc(d.team) + '\n';
+    md += '**Region:** ' + esc(d.region) + '\n';
+    md += '**Submitted:** ' + today + '\n\n---\n\n';
+
+    md += '## Section A — Knowledge Check\n\n';
+    for (var i = 1; i <= 8; i++) {
+      md += '- **A' + i + ':** ' + (d['A' + i] ? d['A' + i].toUpperCase() : '_(no answer)_') + '\n';
+    }
+    md += '\n---\n\n';
+
+    md += '## Section B — Sanitization Task\n\n';
+    md += '### Sanitized version\n```\n' + esc(d['B-sanitized']) + '\n```\n\n';
+    md += '### Rationale\n' + esc(d['B-rationale']) + '\n\n---\n\n';
+
+    md += '## Section C — Inigo Prompt Construction\n\n### The Prompt\n\n';
+    md += '**[1. Greeting / framing]**\n' + esc(d['C-1']) + '\n\n';
+    md += '**[2. Who am I]**\n' + esc(d['C-2']) + '\n\n';
+    md += '**[3. Who are you / shared context]**\n' + esc(d['C-3']) + '\n\n';
+    md += '**[4. Desired outcome]**\n' + esc(d['C-4']) + '\n\n';
+    md += '**[5. Constraints]**\n' + esc(d['C-5']) + '\n\n';
+    md += '### First-run output\n```\n' + esc(d['C-output']) + '\n```\n\n';
+    md += '### Self-critique\n' + esc(d['C-critique']) + '\n\n---\n\n';
+
+    md += '## Section D — V-C-A-F on Seeded Output\n\n';
+    md += '| Step | Finding |\n|---|---|\n';
+    md += '| Verify | ' + esc(d['D-verify']).replace(/\n/g, ' ') + ' |\n';
+    md += '| Contextualize | ' + esc(d['D-context']).replace(/\n/g, ' ') + ' |\n';
+    md += '| Authorize | ' + esc(d['D-auth']).replace(/\n/g, ' ') + ' |\n';
+    md += '| Fairness Check | ' + esc(d['D-fair']).replace(/\n/g, ' ') + ' |\n\n---\n\n';
+
+    md += '## Section E — Hands-On Chain & Reflection\n\n';
+    md += '### Step 1 — Extract\n```\n' + esc(d['E-step1']) + '\n```\n\n';
+    md += '### Step 2 — Analyze\n```\n' + esc(d['E-step2']) + '\n```\n\n';
+    md += '### Step 3 — Format\n```\n' + esc(d['E-step3']) + '\n```\n\n';
+    md += '### Final output\n```\n' + esc(d['E-output']) + '\n```\n\n';
+    md += '### Reflection\n' + esc(d['E-reflection']) + '\n\n---\n\n';
+
+    md += '## Self-Assessment\n\n| Section | Self-rating |\n|---|---|\n';
+    md += '| A. Knowledge | ' + esc(d['rubric-A']) + ' |\n';
+    md += '| B. Sanitization | ' + esc(d['rubric-B']) + ' |\n';
+    md += '| C. Inigo Prompt | ' + esc(d['rubric-C']) + ' |\n';
+    md += '| D. V-C-A-F | ' + esc(d['rubric-D']) + ' |\n';
+    md += '| E. Chain & Reflection | ' + esc(d['rubric-E']) + ' |\n';
+
+    return md;
+  }
+
+  window.exportSubmission = function() {
+    var d = collect();
+    if (!d.name || !d.email) {
+      if (!confirm('You haven\'t filled in your name and/or email. Download anyway?')) return;
+    }
+    var today = new Date().toISOString().slice(0, 10);
+    var filename = safeFilename(d.name) + '_readiness-exam_' + today + '.md';
+    var blob = new Blob([buildMarkdown(d)], { type: 'text/markdown;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url; a.download = filename;
+    document.body.appendChild(a); a.click();
+    setTimeout(function() { document.body.removeChild(a); URL.revokeObjectURL(url); }, 100);
+  };
+
+  window.clearExam = function() {
+    if (!confirm('Clear all your exam answers? This cannot be undone.')) return;
+    try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+    allFields().forEach(function(el) {
+      if (el.type === 'radio' || el.type === 'checkbox') el.checked = false;
+      else el.value = '';
+    });
+    updateProgress();
+  };
+
+  // ========== Checklist ==========
+  function renderChecklist() {
+    var c = document.getElementById('checklist-items');
+    if (!c) return;
+    c.innerHTML = checklistItems.map(function(item) {
+      return '<label class="p-4 flex items-start space-x-4 cursor-pointer hover:bg-gray-50 rounded-md transition">' +
+        '<input type="checkbox" id="' + item.id + '" data-save="' + item.id + '" class="chk-item mt-1 h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500">' +
+        '<span class="chk-label flex-grow">' +
+          '<span class="font-semibold block">' + item.title + '</span>' +
+          '<span class="text-sm text-gray-500">' + item.desc + '</span>' +
+        '</span>' +
+      '</label>';
+    }).join('');
+    updateChecklistProgress();
+  }
+
+  function updateChecklistProgress() {
+    var done = 0;
+    checklistItems.forEach(function(item) {
+      var el = document.getElementById(item.id);
+      if (el && el.checked) done++;
+    });
+    var p = document.getElementById('checklist-progress');
+    if (p) p.textContent = done + ' / ' + checklistItems.length + ' complete';
+  }
+
+  // ========== Init ==========
+  document.addEventListener('DOMContentLoaded', function() {
+    renderChecklist();
+    restoreExam();
+    // Bind auto-save on all inputs (exam + checklist)
+    document.addEventListener('input', function(e) {
+      if (e.target.hasAttribute('data-save')) scheduleSave();
+    });
+    document.addEventListener('change', function(e) {
+      if (e.target.hasAttribute('data-save')) {
+        scheduleSave();
+        if (e.target.classList.contains('chk-item')) updateChecklistProgress();
+      }
+    });
+    showTab('home');
+    showPrePart('p1');
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Office temp files
+~$*
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Facilitator private files (do NOT commit answer keys)
+*_Facilitator_Key.*
+*_Answer_Key.*

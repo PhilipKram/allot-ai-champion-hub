@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Champion Enablement Training — 2-Day Program | Allot</title>
+<style>
+  :root {
+    --primary: #1a3a5c;
+    --primary-light: #2a5a8c;
+    --primary-dark: #0e2440;
+    --accent: #3498db;
+    --bg-white: #ffffff;
+    --bg-alt: #f5f7fa;
+    --bg-dark: #1e1e2e;
+    --text-primary: #2c3e50;
+    --text-secondary: #5a6a7a;
+    --border: #dde3ea;
+    --success: #27ae60;
+    --warning: #f39c12;
+    --danger: #e74c3c;
+    --table-header: #1a3a5c;
+    --table-row-alt: #f0f4f8;
+    --code-bg: #1e1e2e;
+    --code-text: #e0e0e0;
+    --draft-color: rgba(26, 58, 92, 0.07);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    color: var(--text-primary);
+    background: var(--bg-white);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* Draft watermark */
+  body::before {
+    content: 'DRAFT';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-35deg);
+    font-size: 12vw;
+    font-weight: 900;
+    color: var(--draft-color);
+    pointer-events: none;
+    z-index: 0;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+
+  /* Draft banner */
+  .draft-banner {
+    background: linear-gradient(135deg, var(--warning), #e67e22);
+    color: #fff;
+    text-align: center;
+    padding: 8px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 30px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light));
+    color: #fff;
+    padding: 50px 0 40px;
+  }
+  .header .container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .logo-placeholder {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .logo-placeholder .logo-box {
+    width: 48px;
+    height: 48px;
+    background: rgba(255,255,255,0.15);
+    border: 2px solid rgba(255,255,255,0.4);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 1px;
+  }
+  .logo-placeholder .logo-text {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+  .header h1 {
+    font-size: 2.2em;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 5px;
+  }
+  .header-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin-top: 10px;
+  }
+  .header-meta-item {
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+  .header-meta-item strong {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.7;
+    margin-bottom: 3px;
+  }
+
+  /* Table of Contents */
+  .toc-section {
+    background: var(--bg-alt);
+    padding: 40px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .toc-section h2 {
+    font-size: 1.3em;
+    color: var(--primary);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--primary);
+    display: inline-block;
+  }
+  .toc-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 40px;
+  }
+  .toc-day-label {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 10px;
+    margin-bottom: 6px;
+    grid-column: 1 / -1;
+  }
+  .toc-columns a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 15px;
+    padding: 5px 0;
+    display: block;
+    transition: color 0.2s;
+    border-bottom: 1px solid transparent;
+  }
+  .toc-columns a:hover {
+    color: var(--accent);
+  }
+  .toc-columns a .toc-number {
+    color: var(--accent);
+    font-weight: 600;
+    margin-right: 6px;
+  }
+
+  /* Sections */
+  .section {
+    padding: 50px 0;
+  }
+  .section:nth-child(even) {
+    background: var(--bg-alt);
+  }
+  .section-divider {
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    border-radius: 2px;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-size: 1.8em;
+    color: var(--primary);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  h3 {
+    font-size: 1.35em;
+    color: var(--primary);
+    margin-top: 35px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--border);
+  }
+  h4 {
+    font-size: 1.1em;
+    color: var(--primary-light);
+    margin-top: 25px;
+    margin-bottom: 10px;
+  }
+
+  p { margin-bottom: 14px; }
+
+  .session-header {
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: #fff;
+    padding: 18px 24px;
+    border-radius: 10px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+  .session-header h3 {
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: 1.3em;
+  }
+
+  .objective {
+    background: linear-gradient(135deg, #eaf4fd, #dbeafe);
+    border-left: 4px solid var(--accent);
+    padding: 14px 20px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 20px;
+    font-style: italic;
+    color: var(--primary);
+  }
+
+  .note {
+    background: #fff8e1;
+    border-left: 4px solid var(--warning);
+    padding: 14px 20px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #6d5a00;
+  }
+
+  ul, ol {
+    margin-bottom: 14px;
+    padding-left: 24px;
+  }
+  li { margin-bottom: 6px; }
+  ul ul { margin-top: 6px; margin-bottom: 6px; }
+
+  /* Tables */
+  .table-wrapper {
+    overflow-x: auto;
+    margin: 18px 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+    background: #fff;
+  }
+  thead th {
+    background: var(--table-header);
+    color: #fff;
+    padding: 13px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+  }
+  thead th:first-child { border-radius: 10px 0 0 0; }
+  thead th:last-child { border-radius: 0 10px 0 0; }
+  tbody tr:nth-child(even) { background: var(--table-row-alt); }
+  tbody tr:hover { background: #e8eff7; }
+  td {
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:last-child td:first-child { border-radius: 0 0 0 10px; }
+  tbody tr:last-child td:last-child { border-radius: 0 0 10px 0; }
+
+  /* Agenda tables */
+  .agenda-table {
+    border: 2px solid var(--primary);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .agenda-table thead th {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    font-size: 14px;
+    letter-spacing: 0.5px;
+  }
+  .agenda-table tbody tr.break-row {
+    background: #f9f0d8;
+    font-style: italic;
+    color: var(--text-secondary);
+  }
+
+  /* Code blocks */
+  pre {
+    background: var(--code-bg);
+    color: var(--code-text);
+    padding: 20px 24px;
+    border-radius: 10px;
+    overflow-x: auto;
+    margin: 16px 0;
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+    font-size: 13.5px;
+    line-height: 1.6;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    position: relative;
+  }
+  code {
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+    font-size: 0.9em;
+    background: #edf2f7;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: var(--primary);
+  }
+  pre code {
+    background: none;
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
+  }
+
+  /* Blockquotes (scenarios) */
+  blockquote {
+    background: #f8f9fa;
+    border-left: 4px solid var(--primary-light);
+    padding: 16px 20px;
+    margin: 14px 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    color: var(--text-secondary);
+  }
+
+  /* Checkbox list */
+  .checklist { list-style: none; padding-left: 0; }
+  .checklist li {
+    padding: 8px 0 8px 32px;
+    position: relative;
+  }
+  .checklist li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--primary);
+    border-radius: 4px;
+    background: #fff;
+  }
+
+  /* Exercise / tip boxes */
+  .exercise-box {
+    background: #f0f9f0;
+    border: 1px solid #b7e4b7;
+    border-left: 4px solid var(--success);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 16px 0;
+  }
+  .exercise-box strong { color: #1a7a1a; }
+
+  .tip-box {
+    background: #f0f4ff;
+    border: 1px solid #b7c8e4;
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 16px 0;
+  }
+
+  /* Scenario styling */
+  .scenario {
+    background: #fafafa;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 16px 0;
+  }
+  .scenario-label {
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 8px;
+  }
+
+  /* Footer */
+  .footer {
+    background: var(--primary-dark);
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 30px;
+    font-size: 13px;
+  }
+
+  /* Separator */
+  hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 40px 0;
+  }
+
+  strong { color: inherit; }
+
+  /* Matrix diagram */
+  .matrix-diagram {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+
+  /* Print styles */
+  @media print {
+    body::before { display: none; }
+    .draft-banner {
+      position: static;
+      background: #ccc;
+      color: #333;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .draft-banner::after { content: ' — Printed copy'; }
+    .header {
+      background: var(--primary) !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .toc-section { page-break-after: always; }
+    .session-header {
+      background: var(--primary) !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      page-break-after: avoid;
+    }
+    .section { padding: 25px 0; }
+    h2, h3, h4 { page-break-after: avoid; }
+    table, pre, blockquote { page-break-inside: avoid; }
+    thead th {
+      background: var(--primary) !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    pre {
+      background: #f0f0f0 !important;
+      color: #333 !important;
+      border: 1px solid #ccc;
+      box-shadow: none;
+    }
+    a { color: var(--text-primary); text-decoration: none; }
+    .container { max-width: 100%; padding: 0 20px; }
+    body { font-size: 11pt; }
+  }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.6em; }
+    .header-meta { grid-template-columns: 1fr; }
+    .toc-columns { grid-template-columns: 1fr; }
+    .container { padding: 0 16px; }
+    .section { padding: 30px 0; }
+    table { font-size: 13px; }
+    td, thead th { padding: 8px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="draft-banner">DRAFT — For Internal Review</div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="container">
+    <div class="logo-placeholder">
+      <div class="logo-box">A</div>
+      <span class="logo-text">ALLOT</span>
+    </div>
+    <h1>AI Champion Enablement Training</h1>
+    <p style="font-size:1.15em; opacity:0.9;">2-Day Program</p>
+    <div class="header-meta">
+      <div class="header-meta-item">
+        <strong>Program</strong>
+        ALLOT AI Champions
+      </div>
+      <div class="header-meta-item">
+        <strong>Duration</strong>
+        2 days (8 hours per day)
+      </div>
+      <div class="header-meta-item">
+        <strong>Audience</strong>
+        Newly selected AI Champions across R&amp;D, Product, and Business teams
+      </div>
+      <div class="header-meta-item">
+        <strong>Objective</strong>
+        Equip champions with the knowledge, skills, and confidence to drive AI adoption within their local teams
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- TABLE OF CONTENTS -->
+<nav class="toc-section">
+  <div class="container">
+    <h2>Table of Contents</h2>
+    <div class="toc-columns">
+      <div class="toc-day-label">Day 1 — Foundations &amp; Core Skills</div>
+      <a href="#session1"><span class="toc-number">1</span> Welcome &amp; Program Overview</a>
+      <a href="#session2"><span class="toc-number">2</span> Allot's AI Landscape &amp; Live Demo</a>
+      <a href="#session2b"><span class="toc-number">2B</span> Workflow Opportunity Mapping</a>
+      <a href="#session3"><span class="toc-number">3</span> Core Prompt Engineering</a>
+      <a href="#session4"><span class="toc-number">4</span> Hands-On Lab — Prompt Engineering</a>
+      <div class="toc-day-label">Day 2 — Advanced Skills &amp; Champion Leadership</div>
+      <a href="#session5"><span class="toc-number">5</span> Advanced Prompting &amp; Domain Workflows</a>
+      <a href="#session6"><span class="toc-number">6</span> Responsible AI, Security &amp; Ethics</a>
+      <a href="#session7"><span class="toc-number">7</span> Leading Your Team — The Champion Playbook</a>
+      <a href="#session8"><span class="toc-number">8</span> Capstone Exercise</a>
+      <a href="#session9"><span class="toc-number">9</span> Wrap-Up &amp; Next Steps</a>
+      <div class="toc-day-label">Appendices</div>
+      <a href="#appendixA"><span class="toc-number">A</span> Quick Reference — Prompt Patterns</a>
+      <a href="#appendixB"><span class="toc-number">B</span> Agenda at a Glance</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ========== DAY 1 ========== -->
+<div class="section" style="background: var(--bg-alt);">
+  <div class="container">
+    <h2>Day 1 — Foundations &amp; Core Skills</h2>
+    <div class="section-divider"></div>
+  </div>
+</div>
+
+<!-- SESSION 1 -->
+<div class="section" id="session1">
+  <div class="container">
+    <div class="session-header">
+      <h3>Session 1: Welcome &amp; Program Overview (09:00–10:00)</h3>
+    </div>
+    <div class="objective"><strong>Objective:</strong> Understand the AI Champions program, your role, and what success looks like.</div>
+
+    <h4>1.1 Why AI Champions?</h4>
+    <ul>
+      <li>The shift from centralized AI expertise to distributed enablement</li>
+      <li>Allot's AI strategy and where champions fit in</li>
+      <li>The champion as a bridge: connecting teams with AI capabilities</li>
+    </ul>
+
+    <h4>1.2 The Champion Role</h4>
+    <div class="table-wrapper">
+      <table>
+        <thead><tr><th>Responsibility</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Evangelist</strong></td><td>Promote AI tools and use cases within your team</td></tr>
+          <tr><td><strong>First Responder</strong></td><td>Be the go-to person for AI questions and troubleshooting</td></tr>
+          <tr><td><strong>Feedback Loop</strong></td><td>Channel team insights and needs back to the AI program</td></tr>
+          <tr><td><strong>Quality Gate</strong></td><td>Ensure responsible and secure AI usage in your domain</td></tr>
+          <tr><td><strong>Trainer</strong></td><td>Run local workshops and share knowledge</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4>1.3 Program Structure &amp; Support</h4>
+    <ul>
+      <li>Monthly champion syncs and community of practice</li>
+      <li>Dedicated Teams channel and knowledge base</li>
+      <li>Access to advanced AI tools and early feature previews</li>
+      <li>Direct line to AI program leadership</li>
+    </ul>
+
+    <h4>1.4 Success Metrics</h4>
+    <ul>
+      <li>Team adoption rate of AI tools</li>
+      <li>Number of local workshops delivered</li>
+      <li>Use cases identified and implemented</li>
+      <li>Team satisfaction with AI support</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SESSION 2 -->
+<div class="section" id="session2">
+  <div class="container">
+    <div class="session-header">
+      <h3>Session 2: Allot's AI Landscape &amp; Live Demo (10:15–11:30)</h3>
+    </div>
+    <div class="objective"><strong>Objective:</strong> Deepen your pre-work knowledge with Allot-specific tool details and live workflows.</div>
+
+    <div class="note"><strong>Note:</strong> LLM fundamentals (tokens, context windows, hallucinations, terminology) were covered in pre-work. This session builds on that foundation — bring your questions.</div>
+
+    <h4>2.1 Allot's AI Tool Landscape — Deep Dive</h4>
+    <ul>
+      <li>Approved tools and platforms (Claude, Copilot, internal tools)</li>
+      <li><strong>Tool-specific security boundaries:</strong> what each tool can and cannot access
+        <ul>
+          <li>Claude (enterprise): Internal data OK, no Restricted</li>
+          <li>GitHub Copilot: Code context only, no secrets in comments</li>
+          <li>Internal tools: Specific use-case scoping</li>
+        </ul>
+      </li>
+      <li>License tiers and access levels</li>
+      <li>Compliance and usage policies</li>
+    </ul>
+
+    <h4>2.2 AI Capabilities &amp; Limitations in Our Context</h4>
+    <div class="table-wrapper">
+      <table>
+        <thead><tr><th>AI Excels At</th><th>AI Struggles With</th></tr></thead>
+        <tbody>
+          <tr><td>Drafting, summarizing, translating</td><td>Factual accuracy without grounding</td></tr>
+          <tr><td>Code generation &amp; review</td><td>Understanding full business context</td></tr>
+          <tr><td>Pattern recognition &amp; analysis</td><td>Real-time or proprietary data access</td></tr>
+          <tr><td>Brainstorming &amp; ideation</td><td>Replacing human judgment on critical decisions</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4>2.3 Interactive Demo &amp; Pre-Work Review</h4>
+    <ul>
+      <li>Live walkthrough of key tools in real Allot workflows</li>
+      <li>Review pre-work sanitization challenge — common mistakes</li>
+      <li>Review pre-work policy scavenger hunt answers</li>
+      <li>Q&amp;A: bring your skepticism and your curiosity</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SESSION 2B -->
+<div class="section" id="session2b">
+  <div class="container">
+    <div class="session-header">
+      <h3>Session 2B: Workflow Opportunity Mapping (11:30–12:00)</h3>
+    </div>
+    <div class="objective"><strong>Objective:</strong> Learn to systematically identify where AI adds the most value.</div>
+
+    <h4>2.4 The Feasibility vs. Impact Matrix</h4>
+    <p>Use this framework to evaluate AI opportunities for your team:</p>
+    <pre><code>                    HIGH IMPACT
+                        │
+        ┌───────────────┼───────────────┐
+        │  QUICK WINS   │  STRATEGIC    │
+        │  Do first     │  Plan &amp; invest│
+  EASY ─┼───────────────┼───────────────┼─ HARD
+        │  LOW PRIORITY │  AVOID        │
+        │  Automate if  │  (for now)    │
+        │  trivial      │               │
+        └───────────────┼───────────────┘
+                        │
+                    LOW IMPACT</code></pre>
+
+    <div class="exercise-box">
+      <strong>Exercise (15 min):</strong> Map your pre-work use cases onto this matrix. Identify your team's top "Quick Win" and top "Strategic" opportunity. You'll use one of these for the Day 2 Capstone.
+    </div>
+  </div>
+</div>
+
+<!-- SESSION 3 -->
+<div class="section" id="session3">
+  <div class="container">
+    <div class="session-header">
+      <h3>Session 3: Core Prompt Engineering (13:00–15:00)</h3>
+    </div>
+    <div class="objective"><strong>Objective:</strong> Master the fundamentals of effective prompting.</div>
+
+    <h4>3.1 The Anatomy of a Good Prompt</h4>
+    <pre><code>ROLE:      Who should the AI act as?
+CONTEXT:   What background does it need?
+TASK:      What exactly should it do?
+FORMAT:    How should the output look?
+CONSTRAINTS: What should it avoid?</code></pre>
+
+    <h4>3.2 Prompting Techniques</h4>
+
+    <p><strong>Technique 1: Be Specific</strong></p>
+    <pre><code>&#x274C; "Summarize this document"
+&#x2705; "Summarize this 20-page security audit report in 5 bullet points,
+    focusing on critical findings and recommended remediations,
+    for a VP-level audience"</code></pre>
+
+    <p><strong>Technique 2: Few-Shot Examples</strong></p>
+    <pre><code>"Classify these support tickets by severity. Examples:
+- 'Server is down, all users affected' → P1-Critical
+- 'Button color is wrong on settings page' → P4-Low
+Now classify: 'API response times degraded by 40% since deployment'"</code></pre>
+
+    <p><strong>Technique 3: Chain of Thought</strong></p>
+    <pre><code>"Analyze this code change for security risks.
+Think step by step:
+1. What inputs does this function accept?
+2. Are inputs validated and sanitized?
+3. What could an attacker control?
+4. What's the worst-case impact?
+Then provide your assessment."</code></pre>
+
+    <p><strong>Technique 4: Role Assignment</strong></p>
+    <pre><code>"You are a senior QA engineer at a network security company.
+Review this test plan and identify gaps in edge case coverage."</code></pre>
+
+    <p><strong>Technique 5: Iterative Refinement</strong></p>
+    <ul>
+      <li>Start broad, then narrow down</li>
+      <li>Use follow-ups: "Now make it more concise" / "Add error handling" / "Rewrite for a technical audience"</li>
+    </ul>
+
+    <h4>3.3 The V-C-A-F Verification Framework (Human-in-the-Loop)</h4>
+    <p>Every AI output must pass through this four-step check before it leaves your desk. As a champion and "Quality Gate," teach this to your team:</p>
+
+    <div class="table-wrapper">
+      <table>
+        <thead><tr><th>Step</th><th>Action</th><th>Key Question</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Verify</strong></td><td>Check technical &amp; factual integrity</td><td>Is this actually correct? Cross-reference claims, dates, and specs against internal data. For code, use Chain of Thought: ask the AI "Explain your reasoning for this logic."</td></tr>
+          <tr><td><strong>Contextualize</strong></td><td>Check business &amp; domain alignment</td><td>Does this fit Allot's specific context? AI lacks knowledge of our architecture, branding, and project goals. Adjust for domain nuance.</td></tr>
+          <tr><td><strong>Authorize</strong></td><td>Take human accountability</td><td>Am I willing to own this output? If you use AI-generated content, you own the result. Security-critical configs and legal determinations require a mandatory second-set-of-eyes review.</td></tr>
+          <tr><td><strong>Fairness Check</strong></td><td>Check for bias &amp; ethical risks</td><td>Is this output treating all groups fairly? AI can reflect biases from training data — especially watch for this in hiring, reviews, customer segmentation, or any people-related analysis.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tip-box">
+      <strong>Rule of thumb:</strong> The higher the stakes, the more rigorous each step must be. For routine tasks, V-C-A may suffice. For anything involving people or decisions, always include the Fairness Check.
+    </div>
+
+    <h4>3.4 Common Pitfalls</h4>
+    <ul>
+      <li>Vague instructions → vague outputs</li>
+      <li>Overloading a single prompt with multiple unrelated tasks</li>
+      <li>Not providing enough context about your domain</li>
+      <li>Trusting output without verification (skip the V-C-A-F framework at your peril)</li>
+      <li>Copy-pasting sensitive data into prompts</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SESSION 4 -->
+<div class="section" id="session4">
+  <div class="container">
+    <div class="session-header">
+      <h3>Session 4: Hands-On Lab — Prompt Engineering (15:15–17:00)</h3>
+    </div>
+    <div class="objective"><strong>Objective:</strong> Practice prompting in real-world Allot scenarios.</div>
+
+    <h4>Exercise 1: The Rewrite &amp; Sanitize Challenge (20 min)</h4>
+    <p>Take these weak prompts, improve them, <strong>and</strong> ensure they are safe to send to an AI tool:</p>
+    <ol>
+      <li>"Write a test for this function" <em>(contains a hardcoded DB connection string)</em></li>
+      <li>"Explain this error" <em>(includes a customer's IP address in the stack trace)</em></li>
+      <li>"Help me with my presentation" <em>(references an unreleased product name under NDA)</em></li>
+      <li>"Review this code" <em>(contains an API key in a comment)</em></li>
+    </ol>
+    <p><em>Work in pairs. First sanitize, then rewrite. Compare results between the original and improved prompts.</em></p>
+
+    <h4>Exercise 2: Domain-Specific Prompting (25 min)</h4>
+    <p>Choose your team's domain and craft prompts for:</p>
+    <ul>
+      <li><strong>R&amp;D:</strong> Generate unit tests for a given module with edge cases</li>
+      <li><strong>Security:</strong> Analyze a config file for misconfigurations</li>
+      <li><strong>Product:</strong> Draft user stories from a feature brief</li>
+      <li><strong>Support:</strong> Create a troubleshooting decision tree from a knowledge base article</li>
+    </ul>
+    <p><em>Share your best prompt with the group. Discuss what made it effective.</em></p>
+
+    <h4>Exercise 3: The Prompt Chain (25 min)</h4>
+    <p>Build a multi-step workflow using prompt chaining:</p>
+    <ol>
+      <li>Start with raw input (a bug report, a feature request, a meeting transcript)</li>
+      <li>Step 1: Extract structured data</li>
+      <li>Step 2: Analyze or classify</li>
+      <li>Step 3: Generate an actionable output (ticket, summary, recommendation)</li>
+    </ol>
+    <p><em>Document your chain as a reusable template.</em></p>
+
+    <h4>Exercise 4: Red Team Your Prompts (15 min)</h4>
+    <p>Swap prompts with another pair. Try to:</p>
+    <ul>
+      <li>Make the prompt produce incorrect output</li>
+      <li>Find edge cases where it breaks</li>
+      <li>Suggest improvements</li>
+    </ul>
+
+    <h4>Day 1 Wrap-Up &amp; Capstone Prep (17:00–17:30)</h4>
+    <ul>
+      <li>Key takeaways and "aha moments"</li>
+      <li><strong>Capstone Problem Identification</strong> (start now, refine overnight):
+        <ul>
+          <li>Each team identifies a real problem from their daily work they want to solve with AI</li>
+          <li>Write a 2–3 sentence problem statement</li>
+          <li>Think about: What data goes in? What output do you need? Who benefits?</li>
+        </ul>
+      </li>
+      <li>Homework: refine your problem statement and sketch an initial approach</li>
+      <li>Preview of Day 2</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ========== DAY 2 ========== -->
+<div class="section" style="background: var(--bg-alt);">
+  <div class="container">
+    <h2>Day 2 — Advanced Skills &amp; Champion Leadership</h2>
+    <div class="section-divider"></div>
+  </div>
+</div>
+
+<!-- SESSION 5 -->
+<div class="section" id="session5">
+  <div class="container">
+    <div class="session-header">
+      <h3>Session 5: Advanced Prompting &amp; Domain Workflows (09:00–10:30)</h3>
+    </div>
+    <div class="objective"><strong>Objective:</strong> Go beyond basics into production-grade AI usage with hands-on practice.</div>
+
+    <h4>5.1 System Prompts &amp; Personas (20 min)</h4>
+    <ul>
+      <li>Crafting reusable system prompts for consistent behavior</li>
+      <li>Building personas for different use cases (code reviewer, tech writer, analyst)</li>
+      <li>Template:</li>
+    </ul>
+    <pre><code>You are [ROLE] at Allot, a network security company.
+Your expertise: [DOMAINS]
+Your communication style: [STYLE]
+When uncertain: [BEHAVIOR]
+Output format: [FORMAT]</code></pre>
+
+    <h4>5.2 Working with Long Documents (15 min)</h4>
+    <ul>
+      <li>Chunking strategies for large inputs</li>
+      <li>Summarize-then-analyze patterns</li>
+      <li>Using AI to navigate and extract from lengthy specs, logs, or reports</li>
+    </ul>
+
+    <h4>5.3 AI Agents &amp; Reusable Custom Tools (15 min)</h4>
+    <ul>
+      <li>Building custom AI agents for repeatable team tasks</li>
+      <li>Sharing agents and prompt configurations across the team</li>
+      <li>When to build an agent vs. use a one-off prompt</li>
+      <li>Demo: create a simple agent for a common team workflow</li>
+    </ul>
+
+    <h4>5.4 Domain Workflows — Parallel Tracks (40 min)</h4>
+    <p><em>Split into tracks. Each track includes a 10-min teaching block + 30-min hands-on lab.</em></p>
+
+    <div class="scenario">
+      <div class="scenario-label">Track A (Technical): Code-Focused Workflows</div>
+      <p><em>For R&amp;D, Security, and Engineering champions</em></p>
+      <ul>
+        <li>Code review prompts that catch real bugs</li>
+        <li>Test generation with meaningful coverage</li>
+        <li>Documentation generation from code</li>
+        <li>Refactoring assistance with safety checks</li>
+        <li>Log analysis and anomaly detection</li>
+        <li><em>Lab: Review a real code PR using AI, apply V-C-A-F to the output</em></li>
+      </ul>
+    </div>
+
+    <div class="scenario">
+      <div class="scenario-label">Track B (Business): Analysis &amp; Communication Workflows</div>
+      <p><em>For Product, Support, and Business champions</em></p>
+      <ul>
+        <li>Market analysis and competitive intelligence prompts</li>
+        <li>User story generation from feature briefs and customer feedback</li>
+        <li>Customer sentiment mapping and ticket categorization</li>
+        <li>Executive summary creation from technical reports</li>
+        <li><em>Lab: Transform raw customer feedback into a structured insights report using AI</em></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SESSION 6 -->
+<div class="section" id="session6">
+  <div class="container">
+    <div class="session-header">
+      <h3>Session 6: Responsible AI, Security &amp; Ethics (10:45–12:00)</h3>
+    </div>
+    <div class="objective"><strong>Objective:</strong> Ensure champions can guide their teams on safe AI usage.</div>
+
+    <h4>6.1 Data Classification &amp; AI</h4>
+    <div class="table-wrapper">
+      <table>
+        <thead><tr><th>Data Classification</th><th>AI Usage</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Public</strong></td><td>Any approved tool</td></tr>
+          <tr><td><strong>Internal</strong></td><td>Approved tools with enterprise agreement</td></tr>
+          <tr><td><strong>Confidential</strong></td><td>Only on-premise/approved private instances</td></tr>
+          <tr><td><strong>Restricted</strong></td><td>Never use with AI tools</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4>6.2 Security Best Practices</h4>
+    <ul>
+      <li>Never paste credentials, tokens, or PII into prompts</li>
+      <li>Sanitize code before sharing (remove connection strings, API keys)</li>
+      <li>Verify AI-generated code for security vulnerabilities</li>
+      <li>Review AI suggestions against OWASP Top 10</li>
+    </ul>
+
+    <h4>6.3 Intellectual Property &amp; Compliance</h4>
+    <ul>
+      <li>AI-generated code ownership and licensing considerations</li>
+      <li>Export control considerations for AI outputs</li>
+      <li>Documentation requirements for AI-assisted work</li>
+    </ul>
+
+    <h4>6.4 When NOT to Use AI</h4>
+    <ul>
+      <li>Final decisions on security-critical configurations</li>
+      <li>Legal or compliance determinations</li>
+      <li>Situations requiring real-time accurate data</li>
+      <li>When you can't verify the output</li>
+    </ul>
+
+    <h4>6.5 AI Ethics: Bias, Fairness &amp; Decision-Making — Deep Dive</h4>
+    <p>You learned the <strong>Fairness Check</strong> as the fourth step of V-C-A-F on Day 1. Now let's go deeper into <em>why</em> it matters and <em>how</em> to apply it rigorously.</p>
+
+    <p><strong>Understanding Algorithmic Bias:</strong></p>
+    <ul>
+      <li>LLMs are trained on vast public datasets that contain historical and societal biases</li>
+      <li>Risk: AI may generate suggestions that favor certain demographics or exclude others — especially in hiring, performance reviews, or customer segmentation</li>
+    </ul>
+
+    <p><strong>Ethical Decision-Making Rules:</strong></p>
+    <ul>
+      <li><strong>Decision support, not decision making</strong> — AI is for brainstorming and analysis, not final calls on people or high-stakes strategy</li>
+      <li><strong>Transparency</strong> — Always disclose when AI has been used to generate substantial portions of a report or decision-support document</li>
+      <li><strong>Accountability</strong> — If you use it, you own it. AI output with your name on it is your responsibility</li>
+    </ul>
+
+    <h4>6.6 Incident Response &amp; Live Drill (20 min)</h4>
+    <p><strong>Process:</strong></p>
+    <ol>
+      <li>What to do if sensitive data is accidentally shared with AI</li>
+      <li>Reporting process and escalation path</li>
+      <li>Post-incident review template</li>
+    </ol>
+
+    <p><strong>Live Fire Drill:</strong></p>
+    <blockquote>
+      <em>Scenario: A team member sends you a Teams message: "Hey, I accidentally pasted a customer's full API credentials and account details into Claude while debugging an integration issue. What do I do?"</em>
+    </blockquote>
+
+    <p>In pairs, walk through the full response:</p>
+    <ol>
+      <li><strong>Immediate action</strong> — What do you tell them to do right now?</li>
+      <li><strong>Escalation</strong> — Who do you contact and how?</li>
+      <li><strong>Documentation</strong> — What do you record?</li>
+      <li><strong>Prevention</strong> — What process change do you recommend?</li>
+    </ol>
+    <p><em>Debrief: Compare responses. Did everyone follow the same escalation path?</em></p>
+  </div>
+</div>
+
+<!-- SESSION 7 -->
+<div class="section" id="session7">
+  <div class="container">
+    <div class="session-header">
+      <h3>Session 7: Leading Your Team — The Champion Playbook (13:00–14:30)</h3>
+    </div>
+    <div class="objective"><strong>Objective:</strong> Prepare champions to drive adoption in their local teams.</div>
+
+    <h4>7.1 Running a Local Workshop</h4>
+    <p><strong>Workshop Template (60 min):</strong></p>
+    <div class="table-wrapper">
+      <table>
+        <thead><tr><th>Time</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr><td>0–10 min</td><td>Intro: Why AI matters for our team</td></tr>
+          <tr><td>10–20 min</td><td>Live demo: AI solving a real team problem</td></tr>
+          <tr><td>20–40 min</td><td>Hands-on: Team members try with their own tasks</td></tr>
+          <tr><td>40–50 min</td><td>Share results and discuss</td></tr>
+          <tr><td>50–60 min</td><td>Next steps and ongoing support</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><strong>Tips for effective workshops:</strong></p>
+    <ul>
+      <li>Use real examples from your team's domain, not generic demos</li>
+      <li>Start with quick wins to build confidence</li>
+      <li>Pair skeptics with enthusiasts</li>
+      <li>Follow up individually within a week</li>
+    </ul>
+
+    <h4>7.2 Building &amp; Maintaining a Team Prompt Library</h4>
+    <ul>
+      <li>Create a shared space for team-specific prompts</li>
+      <li>Categories: code review, testing, documentation, analysis, communication</li>
+      <li>Template for documenting prompts:</li>
+    </ul>
+    <pre><code>Name:        [Descriptive name]
+Version:     [v1.0, v1.1, etc.]
+Last tested: [Date and model version]
+Purpose:     [What it does]
+When to use: [Situation]
+Prompt:      [The actual prompt with placeholders]
+Example:     [Real example with sample output]
+Tips:        [What to watch out for]</code></pre>
+
+    <p><strong>Prompt Versioning &amp; Maintenance:</strong></p>
+    <ul>
+      <li>AI models update regularly — a prompt that works today may behave differently next month</li>
+      <li>Version your prompts (v1.0, v1.1) and record which model they were tested on</li>
+      <li><strong>Monthly check:</strong> Re-test your top 5 team prompts after any model update</li>
+      <li>If a prompt degrades, document the change and adjust — don't just delete it</li>
+    </ul>
+
+    <h4>7.3 Handling Resistance — Roleplay Exercise (30 min)</h4>
+
+    <p><strong>Quick Reference:</strong></p>
+    <div class="table-wrapper">
+      <table>
+        <thead><tr><th>Objection</th><th>Response Strategy</th></tr></thead>
+        <tbody>
+          <tr><td>"AI will replace my job"</td><td>Focus on augmentation and higher-value work</td></tr>
+          <tr><td>"I don't trust AI output"</td><td>Validate the concern, pivot to V-C-A-F verification</td></tr>
+          <tr><td>"It's too slow/complicated"</td><td>Demonstrate a 2-minute quick win</td></tr>
+          <tr><td>"Security risk"</td><td>Walk through approved tools and policies</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><strong>Exercise: The Champion's Response</strong></p>
+    <p><em>Work in pairs. One person plays the Skeptic, the other the Champion. Switch roles after each scenario.</em></p>
+
+    <div class="scenario">
+      <div class="scenario-label">Scenario 1: The Accuracy Skeptic (Senior Dev)</div>
+      <blockquote><em>"I tried using Copilot for a complex refactor, and it hallucinated a library that doesn't even exist. It's a waste of time if I have to fix its mistakes."</em></blockquote>
+      <p>Champion's goal: Validate the frustration, then pivot to the "Verify, don't trust" mindset. Suggest Few-Shot prompting to constrain output to the actual tech stack.</p>
+    </div>
+
+    <div class="scenario">
+      <div class="scenario-label">Scenario 2: The Anxious Junior (Junior Analyst)</div>
+      <blockquote><em>"If the AI can summarize these 50-page reports in two minutes, why does the company need me to do it? I feel like I'm training my own replacement."</em></blockquote>
+      <p>Champion's goal: Focus on augmentation. The AI handles the initial summary; their value is the analysis and the "so what?" — the parts AI can't do because it doesn't know Allot's strategy.</p>
+    </div>
+
+    <div class="scenario">
+      <div class="scenario-label">Scenario 3: The Overwhelmed Manager (Project Manager)</div>
+      <blockquote><em>"I don't have time to learn 'prompt engineering.' I have a backlog of 200 tickets. It's faster if I just write the user stories myself."</em></blockquote>
+      <p>Champion's goal: Don't argue about time. Show a 30-second demo — turn rough notes into a structured user story on the spot.</p>
+    </div>
+
+    <p><em>Debrief: What responses worked? What felt forced? How would you adapt for your real team?</em></p>
+
+    <h4>7.4 Measuring Team Adoption &amp; Your Analytics Dashboard</h4>
+    <p><strong>Your metrics toolkit:</strong> As a champion, you have access to the following dashboards:</p>
+
+    <div class="table-wrapper">
+      <table>
+        <thead><tr><th>Metric</th><th>Where to Find It</th><th>Target</th></tr></thead>
+        <tbody>
+          <tr><td>Monthly active users</td><td>AI Platform Admin → Team Usage</td><td>60%+ of team within 3 months</td></tr>
+          <tr><td>Queries per user</td><td>AI Platform Admin → User Activity</td><td>10+ per week per active user</td></tr>
+          <tr><td>Tool utilization by type</td><td>AI Platform Admin → Tool Breakdown</td><td>Balanced across available tools</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><strong>Qualitative tracking (you own this):</strong></p>
+    <ul>
+      <li>Collect time-saved estimates from team members monthly</li>
+      <li>Document use cases and wins for sharing across the organization</li>
+      <li>Track quality improvements (fewer review cycles, fewer bugs, faster onboarding)</li>
+      <li>Report insights back through the champion community</li>
+    </ul>
+
+    <p><strong>Monthly reporting template:</strong></p>
+    <pre><code>Champion Monthly Update — [Team Name] — [Month]
+- Active users: X/Y (Z%)
+- Top use cases this month: [list]
+- Time saved estimate: [hours]
+- Wins: [specific examples]
+- Blockers: [what's preventing adoption]
+- Requests: [tools, features, training needed]</code></pre>
+  </div>
+</div>
+
+<!-- SESSION 8 -->
+<div class="section" id="session8">
+  <div class="container">
+    <div class="session-header">
+      <h3>Session 8: Capstone Exercise (14:45–16:30)</h3>
+    </div>
+    <div class="objective"><strong>Objective:</strong> Apply everything learned in a realistic end-to-end scenario.</div>
+
+    <h4>The Challenge</h4>
+    <p>Each champion team will (problem was identified in Day 1 wrap-up):</p>
+
+    <ol>
+      <li><strong>Refine</strong> the problem statement and align on scope (10 min)</li>
+      <li><strong>Design</strong> an AI-assisted workflow to address it (30 min)
+        <ul>
+          <li>Define the prompt chain or template</li>
+          <li>Identify inputs, outputs, and V-C-A-F verification steps</li>
+          <li>Consider security and data classification</li>
+        </ul>
+      </li>
+      <li><strong>Build &amp; Test</strong> the workflow using AI tools (45 min)
+        <ul>
+          <li>Build the prompt chain or agent</li>
+          <li>Test with real (sanitized) data</li>
+          <li>Debug and iterate</li>
+          <li>Document the workflow</li>
+        </ul>
+      </li>
+      <li><strong>Present</strong> the workflow to the group (5 min per team, 20 min total)
+        <ul>
+          <li>Problem statement</li>
+          <li>Solution design</li>
+          <li>Live demo</li>
+          <li>Lessons learned</li>
+        </ul>
+      </li>
+    </ol>
+
+    <h4>Evaluation Criteria</h4>
+    <ul>
+      <li>Practical value to the team</li>
+      <li>Prompt quality and effectiveness</li>
+      <li>V-C-A-F applied: verification steps, context awareness, accountability, and fairness check</li>
+      <li>Security and data classification compliance</li>
+      <li>Reusability, documentation, and versioning</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SESSION 9 -->
+<div class="section" id="session9">
+  <div class="container">
+    <div class="session-header">
+      <h3>Session 9: Wrap-Up &amp; Next Steps (16:30–17:30)</h3>
+    </div>
+
+    <h4>9.1 Certification &amp; Commitments</h4>
+    <p>Each champion commits to:</p>
+    <ul class="checklist">
+      <li>Run their first local team workshop within 2 weeks</li>
+      <li>Contribute at least 3 prompts to the shared prompt library within 1 month</li>
+      <li>Identify and document 5 AI use cases for their team within 1 month</li>
+      <li>Attend monthly champion community syncs</li>
+    </ul>
+
+    <h4>9.2 Your Champion Roadmap</h4>
+    <div class="table-wrapper">
+      <table>
+        <thead><tr><th>Timeframe</th><th>Focus</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Weeks 1–2</strong></td><td>Run first local workshop, set up team prompt library</td></tr>
+          <tr><td><strong>Month 1</strong></td><td>Document 5 use cases, contribute prompts to shared library</td></tr>
+          <tr><td><strong>Months 2–3</strong></td><td>Identify automation opportunities, mentor team members</td></tr>
+          <tr><td><strong>Months 4–6</strong></td><td>Propose AI-assisted workflow improvements, present wins to leadership</td></tr>
+          <tr><td><strong>Ongoing</strong></td><td>Stay current on AI developments, scout new tools, share via Champions Teams channel</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tip-box">
+      <strong>AI Scouting:</strong> Use the Champions Teams channel to report new AI tools, features, or techniques you discover. Champions are the organization's scouts — not just implementers of current tools.
+    </div>
+
+    <h4>9.3 Your Champion Toolkit</h4>
+    <p>You leave with:</p>
+    <ul>
+      <li>This training guide</li>
+      <li>Prompt cookbook (companion document)</li>
+      <li>Workshop facilitation template</li>
+      <li>Quick-start reference card</li>
+      <li>Access to the Champions Teams channel and knowledge base</li>
+    </ul>
+
+    <h4>9.4 Support &amp; Escalation</h4>
+    <div class="table-wrapper">
+      <table>
+        <thead><tr><th>Need</th><th>Where to Go</th></tr></thead>
+        <tbody>
+          <tr><td>Prompt help</td><td>Champions Teams channel</td></tr>
+          <tr><td>Tool access issues</td><td>IT Service Desk + tag AI Champions</td></tr>
+          <tr><td>Security questions</td><td>AppSec team / AI program lead</td></tr>
+          <tr><td>Feature requests</td><td>AI program backlog (Jira)</td></tr>
+          <tr><td>Training materials</td><td>Confluence AI Champions space</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4>9.5 Feedback</h4>
+    <ul>
+      <li>Training evaluation survey (sent after the session)</li>
+      <li>Ongoing feedback through the champion community</li>
+      <li>Suggestions for improving the program are always welcome</li>
+    </ul>
+  </div>
+</div>
+
+<!-- APPENDIX A -->
+<div class="section" id="appendixA" style="background: var(--bg-alt);">
+  <div class="container">
+    <h2>Appendix A: Quick Reference — Prompt Patterns</h2>
+    <div class="section-divider"></div>
+    <div class="table-wrapper">
+      <table>
+        <thead><tr><th>Pattern</th><th>Template</th><th>Use Case</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Summarize</strong></td><td>"Summarize [X] in [N] points for [audience]"</td><td>Reports, docs, meeting notes</td></tr>
+          <tr><td><strong>Analyze</strong></td><td>"Analyze [X] for [criteria]. Think step by step."</td><td>Code review, security audit</td></tr>
+          <tr><td><strong>Generate</strong></td><td>"Generate [output type] based on [input]. Format as [format]."</td><td>Tests, docs, stories</td></tr>
+          <tr><td><strong>Transform</strong></td><td>"Convert [input format] to [output format]. Preserve [requirements]."</td><td>Data conversion, reformatting</td></tr>
+          <tr><td><strong>Compare</strong></td><td>"Compare [A] and [B] across [dimensions]. Present as a table."</td><td>Architecture decisions, tool eval</td></tr>
+          <tr><td><strong>Debug</strong></td><td>"This [code/config] produces [error]. Expected: [X]. Actual: [Y]. Diagnose."</td><td>Troubleshooting</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- APPENDIX B -->
+<div class="section" id="appendixB">
+  <div class="container">
+    <h2>Appendix B: Agenda at a Glance</h2>
+    <div class="section-divider"></div>
+
+    <h3 style="border: none; margin-top: 10px;">Day 1 — Foundations &amp; Core Skills</h3>
+    <div class="table-wrapper agenda-table">
+      <table>
+        <thead><tr><th>Time</th><th>Session</th><th>Duration</th></tr></thead>
+        <tbody>
+          <tr><td>09:00–10:00</td><td>Welcome &amp; Program Overview</td><td>60 min</td></tr>
+          <tr class="break-row"><td>10:00–10:15</td><td><em>Break</em></td><td>15 min</td></tr>
+          <tr><td>10:15–11:30</td><td>Allot's AI Landscape &amp; Live Demo</td><td>75 min</td></tr>
+          <tr><td>11:30–12:00</td><td>Workflow Opportunity Mapping (Feasibility vs. Impact)</td><td>30 min</td></tr>
+          <tr class="break-row"><td>12:00–13:00</td><td><em>Lunch</em></td><td>60 min</td></tr>
+          <tr><td>13:00–15:00</td><td>Core Prompt Engineering (incl. V-C-A Framework)</td><td>120 min</td></tr>
+          <tr class="break-row"><td>15:00–15:15</td><td><em>Break</em></td><td>15 min</td></tr>
+          <tr><td>15:15–17:00</td><td>Hands-On Lab — Prompt Engineering</td><td>105 min</td></tr>
+          <tr><td>17:00–17:30</td><td>Day 1 Wrap-Up &amp; Capstone Problem ID</td><td>30 min</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="border: none;">Day 2 — Advanced Skills &amp; Champion Leadership</h3>
+    <div class="table-wrapper agenda-table">
+      <table>
+        <thead><tr><th>Time</th><th>Session</th><th>Duration</th></tr></thead>
+        <tbody>
+          <tr><td>09:00–10:30</td><td>Advanced Prompting &amp; Domain Workflows (Track A/B)</td><td>90 min</td></tr>
+          <tr class="break-row"><td>10:30–10:45</td><td><em>Break</em></td><td>15 min</td></tr>
+          <tr><td>10:45–12:00</td><td>Responsible AI, Security, Ethics &amp; Incident Drill</td><td>75 min</td></tr>
+          <tr class="break-row"><td>12:00–13:00</td><td><em>Lunch</em></td><td>60 min</td></tr>
+          <tr><td>13:00–14:30</td><td>Champion Playbook (Workshops, Resistance, Metrics)</td><td>90 min</td></tr>
+          <tr class="break-row"><td>14:30–14:45</td><td><em>Break</em></td><td>15 min</td></tr>
+          <tr><td>14:45–16:30</td><td>Capstone Exercise</td><td>105 min</td></tr>
+          <tr><td>16:30–17:30</td><td>Wrap-Up, Roadmap &amp; Next Steps</td><td>60 min</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <p style="margin-bottom: 6px;"><strong style="color: rgba(255,255,255,0.85);">ALLOT</strong> &mdash; AI Champion Enablement Training</p>
+    <p>DRAFT — For Internal Review &nbsp;|&nbsp; Confidential</p>
+  </div>
+</footer>
+
+</body>
+</html>

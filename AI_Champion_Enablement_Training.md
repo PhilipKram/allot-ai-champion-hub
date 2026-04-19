@@ -243,14 +243,27 @@ Place each use case on the matrix. Identify your personal Top Quick Win and Top 
 
 ## Day 2 — Advanced Skills & Champion Leadership
 
-### Session 5: Advanced Prompting & Domain Workflows (09:00–10:30)
+### Session 5: Advanced Workflows — Align, Split, Share (10:00–11:30)
 
-**Objective:** Go beyond basics into production-grade AI usage with hands-on practice.
+**Objective:** Align everyone on advanced techniques first, then specialize into tracks to build a real, presentable artifact.
 
-#### 5.1 System Prompts & Personas (20 min)
-- Crafting reusable system prompts for consistent behavior
-- Building personas for different use cases (code reviewer, tech writer, analyst)
-- Template:
+**Pedagogy:** Align first, diversify second. Every Champion sees the same foundation (system prompts, long documents, Skills/`MEMORY.md`, agents) before the room splits.
+
+**Session shape (90 min):**
+
+| Block | Time | What |
+|---|---|---|
+| 5.1 Shared alignment | 20 min | Advanced techniques everyone applies |
+| 5.2 Parallel labs | 50 min | Track A and Track B run simultaneously |
+| 5.3 Cross-track share | 10 min × 2 | Each track walks the whole room through their deliverable |
+
+---
+
+#### 5.1 Shared Alignment (20 min)
+
+Brisk, hands-on coverage of the advanced techniques both tracks will apply:
+
+- **System prompts & personas** — reusable roles for code review, tech writing, analysis. Template:
 ```
 You are [ROLE] at Allot, a network security company.
 Your expertise: [DOMAINS]
@@ -258,42 +271,52 @@ Your communication style: [STYLE]
 When uncertain: [BEHAVIOR]
 Output format: [FORMAT]
 ```
+- **Working with long documents** — chunking strategies, summarize-then-analyze patterns, navigating lengthy specs/logs/reports.
+- **Skills & `MEMORY.md`** — encapsulate reusable team workflows; `MEMORY.md` persists context across sessions.
+- **AI agents** — when to build a custom agent vs. use a one-off prompt.
 
-#### 5.2 Working with Long Documents (15 min)
-- Chunking strategies for large inputs
-- Summarize-then-analyze patterns
-- Using AI to navigate and extract from lengthy specs, logs, or reports
+---
 
-#### 5.3 AI Agents & Reusable Custom Tools (15 min)
-- Building custom AI agents for repeatable team tasks
-- Sharing agents and prompt configurations across the team
-- When to build an agent vs. use a one-off prompt
-- Demo: create a simple agent for a common team workflow
+#### 5.2 Parallel Tracks — Domain Labs (50 min)
 
-#### 5.4 Domain Workflows — Parallel Tracks (40 min)
-
-*Split into tracks. Each track includes a 10-min teaching block + 30-min hands-on lab.*
+Split into tracks. Each lab applies the alignment material to domain-specific workflows and produces a **deliverable** for cross-track share.
 
 **Track A (Technical):** Code-Focused Workflows
 *For R&D, Security, and Engineering champions*
+
+Apply alignment material to:
 - Code review prompts that catch real bugs
 - Test generation with meaningful coverage
 - Documentation generation from code
 - Refactoring assistance with safety checks
 - Log analysis and anomaly detection
-- *Lab: Review a real code PR using AI, apply V-C-A-F to the output*
+
+**Deliverable:** an annotated PR review done by AI — what the AI caught, what it missed, and V-C-A-F applied to its suggestions.
+
+---
 
 **Track B (Business):** Analysis & Communication Workflows
 *For Product, Support, and Business champions*
+
+Apply alignment material to:
 - Market analysis and competitive intelligence prompts
 - User story generation from feature briefs and customer feedback
 - Customer sentiment mapping and ticket categorization
 - Executive summary creation from technical reports
-- *Lab: Transform raw customer feedback into a structured insights report using AI*
+
+**Deliverable:** a structured insights report built from raw (sanitized) customer feedback — themes, sentiment, prioritized action items.
 
 ---
 
-### Session 6: Responsible AI, Security & Ethics (10:45–12:00)
+#### 5.3 Cross-Track Share (20 min, 10 min per track)
+
+Each track walks the whole room through their deliverable: raw input → prompt chain → final output → what V-C-A-F caught along the way.
+
+**Why this matters:** a Product Champion who never sees how Engineering uses AI can't coach an Engineering teammate who transfers in. The Champion role is cross-functional by design; both halves of the room need exposure to both workflows.
+
+---
+
+### Session 6: Responsible AI, Security & Ethics (11:45–13:00)
 
 **Objective:** Ensure champions can guide their teams on safe AI usage.
 
@@ -355,7 +378,7 @@ In pairs, walk through the full response:
 
 ---
 
-### Session 7: Leading Your Team — The Champion Playbook (13:00–14:30)
+### Session 7: Leading Your Team — The Champion Playbook (14:00–15:30)
 
 **Objective:** Prepare champions to drive adoption in their local teams.
 
@@ -410,7 +433,7 @@ Tips:        [What to watch out for]
 *Work in pairs. One person plays the Skeptic, the other the Champion. Switch roles after each scenario.*
 
 **Scenario 1: The Accuracy Skeptic** (Senior Dev)
-> *"I tried using Copilot for a complex refactor, and it hallucinated a library that doesn't even exist. It's a waste of time if I have to fix its mistakes."*
+> *"I tried using Claude for a complex refactor, and it hallucinated a library that doesn't even exist. It's a waste of time if I have to fix its mistakes."*
 
 Champion's goal: Validate the frustration, then pivot to the "Verify, don't trust" mindset. Suggest Few-Shot prompting to constrain output to the actual tech stack.
 
@@ -455,7 +478,7 @@ Champion Monthly Update — [Team Name] — [Month]
 
 ---
 
-### Session 8: Capstone Exercise (14:45–16:30)
+### Session 8: Capstone Exercise (15:45–17:15)
 
 **Objective:** Apply everything learned in a realistic end-to-end scenario.
 
@@ -487,7 +510,7 @@ Each champion team will (problem was identified in Day 1 wrap-up):
 
 ---
 
-### Session 9: Wrap-Up & Next Steps (16:30–17:30)
+### Session 9: Wrap-Up & Next Steps (17:15–18:00)
 
 #### 9.1 Certification & Commitments
 
@@ -523,7 +546,7 @@ You leave with:
 | Need | Where to Go |
 |---|---|
 | Prompt help | **AI Champions - Training** Teams channel |
-| AI tool access (Claude / Copilot licenses) | Email Philip Kramer (pkramer@allot.com) |
+| AI tool access (Claude licenses) | Email Philip Kramer (pkramer@allot.com) |
 | General IT issues (laptop, VPN, login) | IT Service Desk |
 | Security questions | AppSec team / AI program lead |
 | Feature requests | AI program backlog (Jira) |
@@ -563,14 +586,14 @@ You leave with:
 | 17:00–17:15 | *Break* | 15 min |
 | 17:15–18:00 | Feasibility vs. Impact + Capstone Problem ID + Day 1 Close | 45 min |
 
-### Day 2 — Advanced Skills & Champion Leadership
-| Time | Session | Duration |
+### Day 2 — Advanced Skills & Champion Leadership (10:00–18:00 IL, hybrid)
+| Time (IL) | Session | Duration |
 |---|---|---|
-| 09:00–10:30 | Advanced Prompting & Domain Workflows (Track A/B) | 90 min |
-| 10:30–10:45 | *Break* | 15 min |
-| 10:45–12:00 | Responsible AI, Security, Ethics & Incident Drill | 75 min |
-| 12:00–13:00 | *Lunch* | 60 min |
-| 13:00–14:30 | Champion Playbook (Workshops, Resistance, Metrics) | 90 min |
-| 14:30–14:45 | *Break* | 15 min |
-| 14:45–16:30 | Capstone Exercise | 105 min |
-| 16:30–17:30 | Wrap-Up, Roadmap & Next Steps | 60 min |
+| 10:00–11:30 | Advanced Workflows — Align, Split, Share (Track A/B) | 90 min |
+| 11:30–11:45 | *Break* | 15 min |
+| 11:45–13:00 | Responsible AI, Security, Ethics & Incident Drill | 75 min |
+| 13:00–14:00 | *Lunch* | 60 min |
+| 14:00–15:30 | Champion Playbook (Workshops, Resistance, Metrics) | 90 min |
+| 15:30–15:45 | *Break* | 15 min |
+| 15:45–17:15 | Capstone Exercise | 90 min |
+| 17:15–18:00 | Wrap-Up, Roadmap & Next Steps | 45 min |

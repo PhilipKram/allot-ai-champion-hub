@@ -45,11 +45,6 @@
 </head>
 <body class="bg-gray-50 text-gray-900 flex flex-col min-h-screen">
 
-<!-- DRAFT banner -->
-<div class="bg-red-600 text-white text-center py-1.5 text-xs font-bold uppercase tracking-widest no-print">
-  DRAFT &middot; AI Champion Hub &middot; v1.0
-</div>
-
 <!-- Header -->
 <header class="bg-white border-b sticky top-0 z-40 no-print">
   <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
@@ -113,6 +108,35 @@
         <button onclick="showTab('exam')" class="border border-white border-opacity-40 bg-white bg-opacity-10 backdrop-blur px-6 py-3 rounded-lg font-bold hover:bg-opacity-20 transition">
           <i class="fas fa-award mr-2"></i>Certification Exam
         </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Countdown -->
+  <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm" id="countdown-card">
+    <div class="flex items-start justify-between mb-5 flex-wrap gap-3">
+      <div>
+        <p class="text-xs uppercase tracking-widest font-bold text-amber-600" id="countdown-label">Countdown to Day 1</p>
+        <p class="text-sm text-gray-600 mt-1" id="countdown-date">Wed 29 Apr 2026 &middot; 10:00 IL</p>
+      </div>
+      <span class="text-xs text-gray-400" id="countdown-status">Live &middot; updated every second</span>
+    </div>
+    <div class="grid grid-cols-4 gap-3">
+      <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-4 text-center">
+        <div class="text-3xl md:text-4xl font-black text-blue-700" id="cd-days">--</div>
+        <div class="text-xs text-blue-800 font-semibold uppercase tracking-wider mt-1">Days</div>
+      </div>
+      <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-4 text-center">
+        <div class="text-3xl md:text-4xl font-black text-blue-700" id="cd-hours">--</div>
+        <div class="text-xs text-blue-800 font-semibold uppercase tracking-wider mt-1">Hours</div>
+      </div>
+      <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-4 text-center">
+        <div class="text-3xl md:text-4xl font-black text-blue-700" id="cd-mins">--</div>
+        <div class="text-xs text-blue-800 font-semibold uppercase tracking-wider mt-1">Minutes</div>
+      </div>
+      <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-4 text-center">
+        <div class="text-3xl md:text-4xl font-black text-blue-700" id="cd-secs">--</div>
+        <div class="text-xs text-blue-800 font-semibold uppercase tracking-wider mt-1">Seconds</div>
       </div>
     </div>
   </div>
@@ -288,7 +312,6 @@
         <p>Complete each item so you're ready on Day 1:</p>
         <ul>
           <li><strong>Claude access</strong> &mdash; verify you can log in at the approved Allot instance. If not, email <a href="mailto:pkramer@allot.com?subject=AI%20Tools%20License%20Request" class="text-blue-600 underline">Philip Kramer (pkramer@allot.com)</a>, the AI Enablement lead &mdash; subject line "AI Tools License Request."</li>
-          <li><strong>GitHub Copilot</strong> (R&amp;D participants) &mdash; confirm Copilot is enabled in your IDE.</li>
           <li><strong>Bookmark:</strong> Allot AI usage policy (Confluence), "AI Champions - Training" Teams channel, ALLOTAI Jira board.</li>
           <li><strong>Bring to Day 1:</strong> laptop with approved tools installed, 2&ndash;3 real work examples you'd like to try with AI (sanitized per data-classification rules in Part 2).</li>
         </ul>
@@ -297,7 +320,7 @@
             <input type="checkbox" id="c-tools" data-save="c-tools" class="chk-item mt-1 h-5 w-5 rounded border-gray-300 text-green-600 focus:ring-green-500">
             <span class="chk-label flex-grow">
               <span class="font-semibold block text-green-900">I've completed Part 1</span>
-              <span class="text-sm text-gray-700">Tool access confirmed: Claude + Copilot working.</span>
+              <span class="text-sm text-gray-700">Tool access confirmed: I can log in to Claude at the Allot instance.</span>
             </span>
           </label>
         </div>
@@ -686,7 +709,7 @@
     <details class="session-card bg-white p-5 rounded-xl border-l-4 border-purple-500 shadow-sm" open>
       <summary class="flex items-start gap-4">
         <div class="w-24 flex-shrink-0">
-          <div class="font-bold text-purple-600">09:00&ndash;10:30</div>
+          <div class="font-bold text-purple-600">10:00&ndash;11:30</div>
           <div class="text-xs text-gray-500">90 min</div>
         </div>
         <div class="flex-grow">
@@ -695,23 +718,49 @@
         </div>
         <i class="fas fa-chevron-down text-gray-400 mt-1"></i>
       </summary>
-      <div class="mt-4 pl-28 text-sm text-gray-700 space-y-2">
-        <p><strong>System prompts &amp; personas:</strong> reusable roles for code review, tech writing, analysis.</p>
-        <p><strong>Long documents:</strong> chunking and summarize-then-analyze patterns.</p>
-        <p><strong>Skills &amp; <code>MEMORY.md</code> deep-dive:</strong> build and share reusable AI workflows.</p>
-        <p><strong>Track A (Technical):</strong> code review, test generation, doc generation, refactoring, log analysis. Lab: review a real PR using AI + V-C-A-F.</p>
-        <p><strong>Track B (Business):</strong> competitive intel, user stories from customer feedback, sentiment mapping, exec summaries. Lab: transform raw feedback into an insights report.</p>
+      <div class="mt-4 pl-28 text-sm text-gray-700 space-y-3">
+        <p><strong>Structure:</strong> 20-min shared alignment &rarr; 50-min parallel track labs &rarr; 10-min Track A share &rarr; 10-min Track B share. Everyone gets the same foundation before specializing, then both tracks see each other's deliverable.</p>
+
+        <div class="bg-gray-50 border-l-4 border-gray-400 p-3 rounded-r">
+          <p class="font-semibold text-gray-900 mb-1">5.1 Shared alignment &middot; 20 min</p>
+          <p class="text-xs">Quick, hands-on coverage of the advanced techniques both tracks will apply:</p>
+          <ul class="list-disc pl-5 text-xs mt-1 space-y-0.5">
+            <li><strong>System prompts &amp; personas</strong> &mdash; reusable roles (code reviewer, tech writer, analyst).</li>
+            <li><strong>Long-document handling</strong> &mdash; chunking and summarize-then-analyze patterns.</li>
+            <li><strong>Skills &amp; <code>MEMORY.md</code></strong> &mdash; encapsulate reusable team workflows.</li>
+            <li><strong>AI agents</strong> &mdash; when to build vs. use a one-off prompt.</li>
+          </ul>
+        </div>
+
+        <div class="bg-blue-50 border-l-4 border-blue-400 p-3 rounded-r">
+          <p class="font-semibold text-blue-900 mb-1">5.2a Track A &middot; Technical &middot; 50 min lab</p>
+          <p class="text-xs mb-1"><em>For R&amp;D, Security, Engineering champions</em></p>
+          <p class="text-xs mb-1">Apply the alignment material to: code review, test generation, doc generation, refactoring, log analysis.</p>
+          <p class="text-xs"><strong>Deliverable:</strong> an annotated PR review done by AI &mdash; what the AI caught, what it missed, V-C-A-F applied to its suggestions.</p>
+        </div>
+
+        <div class="bg-purple-50 border-l-4 border-purple-400 p-3 rounded-r">
+          <p class="font-semibold text-purple-900 mb-1">5.2b Track B &middot; Business &middot; 50 min lab</p>
+          <p class="text-xs mb-1"><em>For Product, Support, Business champions</em></p>
+          <p class="text-xs mb-1">Apply the alignment material to: competitive intel, user stories from customer feedback, sentiment mapping, exec summaries.</p>
+          <p class="text-xs"><strong>Deliverable:</strong> a structured insights report built from sanitized customer feedback &mdash; themes, sentiment, prioritized action items.</p>
+        </div>
+
+        <div class="bg-amber-50 border-l-4 border-amber-400 p-3 rounded-r">
+          <p class="font-semibold text-amber-900 mb-1">5.3 Cross-track share &middot; 10 min per track</p>
+          <p class="text-xs">Each track walks the whole room through their deliverable: raw input &rarr; chain &rarr; final output, and what V-C-A-F caught along the way. Champions need exposure to both workflows &mdash; a Product Champion may coach an incoming Engineer, and vice versa.</p>
+        </div>
       </div>
     </details>
 
     <div class="bg-gray-100 py-2 px-5 rounded-md text-center text-sm text-gray-500">
-      <i class="fas fa-coffee mr-2"></i>10:30&ndash;10:45 &middot; Break
+      <i class="fas fa-coffee mr-2"></i>11:30&ndash;11:45 &middot; Break
     </div>
 
     <details class="session-card bg-white p-5 rounded-xl border-l-4 border-purple-500 shadow-sm" open>
       <summary class="flex items-start gap-4">
         <div class="w-24 flex-shrink-0">
-          <div class="font-bold text-purple-600">10:45&ndash;12:00</div>
+          <div class="font-bold text-purple-600">11:45&ndash;13:00</div>
           <div class="text-xs text-gray-500">75 min</div>
         </div>
         <div class="flex-grow">
@@ -728,13 +777,13 @@
     </details>
 
     <div class="bg-gray-100 py-2 px-5 rounded-md text-center text-sm text-gray-500">
-      <i class="fas fa-utensils mr-2"></i>12:00&ndash;13:00 &middot; Lunch
+      <i class="fas fa-utensils mr-2"></i>13:00&ndash;14:00 &middot; Lunch
     </div>
 
     <details class="session-card bg-white p-5 rounded-xl border-l-4 border-purple-500 shadow-sm" open>
       <summary class="flex items-start gap-4">
         <div class="w-24 flex-shrink-0">
-          <div class="font-bold text-purple-600">13:00&ndash;14:30</div>
+          <div class="font-bold text-purple-600">14:00&ndash;15:30</div>
           <div class="text-xs text-gray-500">90 min</div>
         </div>
         <div class="flex-grow">
@@ -752,14 +801,14 @@
     </details>
 
     <div class="bg-gray-100 py-2 px-5 rounded-md text-center text-sm text-gray-500">
-      <i class="fas fa-coffee mr-2"></i>14:30&ndash;14:45 &middot; Break
+      <i class="fas fa-coffee mr-2"></i>15:30&ndash;15:45 &middot; Break
     </div>
 
     <details class="session-card bg-white p-5 rounded-xl border-l-4 border-purple-500 shadow-sm" open>
       <summary class="flex items-start gap-4">
         <div class="w-24 flex-shrink-0">
-          <div class="font-bold text-purple-600">14:45&ndash;16:30</div>
-          <div class="text-xs text-gray-500">105 min</div>
+          <div class="font-bold text-purple-600">15:45&ndash;17:15</div>
+          <div class="text-xs text-gray-500">90 min</div>
         </div>
         <div class="flex-grow">
           <h4 class="font-bold">Capstone &mdash; Design, Build, Present</h4>
@@ -769,17 +818,17 @@
       </summary>
       <div class="mt-4 pl-28 text-sm text-gray-700 space-y-2">
         <p><strong>Refine (10 min):</strong> lock scope on the problem statement picked Day 1.</p>
-        <p><strong>Design (30 min):</strong> prompt chain or template, inputs/outputs, V-C-A-F steps, data classification.</p>
-        <p><strong>Build &amp; test (45 min):</strong> build, test with real (sanitized) data, iterate, document.</p>
-        <p><strong>Present (5 min per pair):</strong> problem &middot; solution &middot; live demo &middot; lessons.</p>
+        <p><strong>Design (25 min):</strong> prompt chain or template, inputs/outputs, V-C-A-F steps, data classification.</p>
+        <p><strong>Build &amp; test (40 min):</strong> build, test with real (sanitized) data, iterate, document.</p>
+        <p><strong>Present (5 min per pair, ~15 min total):</strong> problem &middot; solution &middot; live demo &middot; lessons.</p>
       </div>
     </details>
 
     <details class="session-card bg-white p-5 rounded-xl border-l-4 border-purple-500 shadow-sm" open>
       <summary class="flex items-start gap-4">
         <div class="w-24 flex-shrink-0">
-          <div class="font-bold text-purple-600">16:30&ndash;17:30</div>
-          <div class="text-xs text-gray-500">60 min</div>
+          <div class="font-bold text-purple-600">17:15&ndash;18:00</div>
+          <div class="text-xs text-gray-500">45 min</div>
         </div>
         <div class="flex-grow">
           <h4 class="font-bold">Wrap-Up &middot; Roadmap &middot; Next Steps</h4>
@@ -886,7 +935,7 @@
 
         <div class="border border-gray-200 rounded-lg p-4">
           <p class="font-semibold mb-2"><span class="inline-block bg-blue-600 text-white text-xs font-bold px-2 py-0.5 rounded mr-2">A3</span>Handling the Accuracy Skeptic</p>
-          <p class="text-sm text-gray-700 mb-3">A senior dev on your team says: <em>"I tried Copilot for a complex refactor and it made up a library that doesn't exist. Total waste of time."</em> How do you respond as the Champion &mdash; without dismissing the concern, but also without letting it shut down adoption on the team?</p>
+          <p class="text-sm text-gray-700 mb-3">A senior dev on your team says: <em>"I tried Claude for a complex refactor and it made up a library that doesn't exist. Total waste of time."</em> How do you respond as the Champion &mdash; without dismissing the concern, but also without letting it shut down adoption on the team?</p>
           <textarea data-save="A3" rows="4" class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none text-sm"></textarea>
         </div>
 
@@ -1071,14 +1120,8 @@
 </main>
 
 <footer class="bg-white border-t py-8 mt-auto no-print">
-  <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 space-y-3 md:space-y-0">
-    <div>&copy; 2026 Allot Ltd. &middot; AI Enablement &amp; Standards &middot; v1.0</div>
-    <div class="flex space-x-6">
-      <a href="#" class="hover:text-blue-600">AI Usage Policy</a>
-      <a href="#" class="hover:text-blue-600">Confluence Wiki</a>
-      <a href="#" class="hover:text-blue-600">"AI Champions - Training"</a>
-      <a href="#" class="hover:text-blue-600">IT Service Desk</a>
-    </div>
+  <div class="max-w-7xl mx-auto px-4 text-center text-sm text-gray-500">
+    &copy; 2026 Allot Ltd. &middot; AI Enablement &amp; Standards &middot; v1.0
   </div>
 </footer>
 
@@ -1352,10 +1395,63 @@
     if (p) p.innerHTML = '<i class="fas fa-check-circle mr-1"></i>' + doneChecks + ' / ' + totalChecks + ' complete';
   }
 
+  // ========== Countdown ==========
+  // IDT (Israel Daylight Time) is UTC+3. Day 1 and Day 2 fall within DST.
+  var DAY1_MS = Date.UTC(2026, 3, 29, 7, 0, 0); // 29 Apr 2026 10:00 IDT = 07:00 UTC
+  var DAY2_MS = Date.UTC(2026, 4, 4,  7, 0, 0); // 4  May 2026 10:00 IDT = 07:00 UTC
+
+  function pad2(n) { return (n < 10 ? '0' : '') + n; }
+
+  function tickCountdown() {
+    var now = Date.now();
+    var target, label, dateStr;
+
+    if (now < DAY1_MS) {
+      target = DAY1_MS;
+      label = 'Countdown to Day 1';
+      dateStr = 'Wed 29 Apr 2026 · 10:00 IL';
+    } else if (now < DAY2_MS) {
+      target = DAY2_MS;
+      label = 'Day 1 in session · Countdown to Day 2';
+      dateStr = 'Mon 4 May 2026 · 10:00 IL';
+    } else {
+      var lbl = document.getElementById('countdown-label');
+      var dt = document.getElementById('countdown-date');
+      if (lbl) lbl.textContent = 'Training Complete';
+      if (dt) dt.textContent = 'Certification Exam due Mon 11 May 2026 · 10:00 IL';
+      ['cd-days', 'cd-hours', 'cd-mins', 'cd-secs'].forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) el.textContent = '✓';
+      });
+      var status = document.getElementById('countdown-status');
+      if (status) status.textContent = 'Both days complete';
+      return false; // stop ticking
+    }
+
+    var diff = target - now;
+    var days = Math.floor(diff / 86400000);
+    var hours = Math.floor((diff % 86400000) / 3600000);
+    var mins = Math.floor((diff % 3600000) / 60000);
+    var secs = Math.floor((diff % 60000) / 1000);
+
+    var set = function(id, v) { var el = document.getElementById(id); if (el) el.textContent = v; };
+    set('countdown-label', label);
+    set('countdown-date', dateStr);
+    set('cd-days', days);
+    set('cd-hours', pad2(hours));
+    set('cd-mins', pad2(mins));
+    set('cd-secs', pad2(secs));
+    return true;
+  }
+
   // ========== Init ==========
   document.addEventListener('DOMContentLoaded', function() {
     restoreExam();
     updatePrePartCompletion();
+    tickCountdown();
+    var cdTimer = setInterval(function() {
+      if (tickCountdown() === false) clearInterval(cdTimer);
+    }, 1000);
     // Bind auto-save on all inputs (exam + pre-work completion checkboxes)
     document.addEventListener('input', function(e) {
       if (e.target.hasAttribute('data-save')) scheduleSave();

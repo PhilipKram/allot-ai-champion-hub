@@ -22,7 +22,6 @@ Complete these before the workshop so you're ready to go on Day 1.
 > **Start this part at least 1 week early.** IT ticket resolution can take 2–3 business days. Don't let tool access block your preparation.
 
 - [ ] **Claude access** — Verify you can log in at the approved Allot instance. If you don't have access, email Philip Kramer (pkramer@allot.com), the AI Enablement lead, **now** with subject line "AI Tools License Request".
-- [ ] **GitHub Copilot** (R&D participants) — Confirm Copilot is enabled in your IDE. Check: IDE Settings → Extensions → GitHub Copilot → Status: Active.
 - [ ] **Bookmark key resources:**
   - Allot AI usage policy (Confluence)
   - **AI Champions - Training** Teams channel
@@ -72,7 +71,7 @@ This table governs what you can and cannot share with AI tools. **Memorize it** 
 
 **When in doubt, treat it as Confidential.** You can always ask in the **AI Champions - Training** Teams channel.
 
-> **Note:** Different AI tools have different security boundaries. For example, Claude (enterprise) may accept Internal data, while Copilot operates only on code context. The workshop will cover tool-specific rules in detail — for pre-work, use the table above as your baseline.
+> **Note:** Different AI tools have different security boundaries. Claude (enterprise) may accept Internal data under Allot's enterprise agreement; other approved tools may differ. The workshop covers tool-specific rules in detail — for pre-work, use the table above as your baseline.
 
 ### The V-C-A-F Verification Framework — Preview
 

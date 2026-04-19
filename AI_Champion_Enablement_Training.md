@@ -40,7 +40,7 @@
 #### 1.3 The 3-phase outcome ladder
 - **Pre-work (done):** baseline access, shared vocabulary, real problems in hand
 - **Workshop (today + tomorrow):** personal capability → leadership capability
-- **Post-training (60 days):** first local workshop delivered, prompt library seeded, eNPS pulse
+- **Post-training (30 days):** first local workshop delivered, prompt library seeded, eNPS pulse
 
 #### 1.4 Pre-work pulse
 Quick show of hands: tools working? Firehawk sanitization done? Policy scavenger hunt? Real examples in hand?

@@ -27,7 +27,7 @@ Champions across Allot R&D, Product, Security, and Support. Multi-region cohort:
 - **Pre-Work** — 2.5 hours self-paced. No gating exam; per-part completion checkboxes.
 - **Workshop** — 2 days, 10:00–18:00 IL, hybrid.
 - **Certification Exam** — post-training, submitted within 7 days of Day 2.
-- **Post-Training** — 60-day roadmap. First local workshop within 2 weeks.
+- **Post-Training** — 30-day roadmap. First local workshop within 2 weeks.
 
 ## Editing
 

@@ -67,7 +67,6 @@
       <button onclick="showTab('prework')" class="nav-btn hover:text-blue-600 transition pb-1" id="btn-prework"><i class="fas fa-book-open mr-1"></i> Pre-Work</button>
       <button onclick="showTab('workshop')" class="nav-btn hover:text-blue-600 transition pb-1" id="btn-workshop"><i class="fas fa-chalkboard-teacher mr-1"></i> Workshop</button>
       <button onclick="showTab('exam')" class="nav-btn hover:text-blue-600 transition pb-1" id="btn-exam"><i class="fas fa-clipboard-check mr-1"></i> Readiness Exam</button>
-      <button onclick="showTab('checklist')" class="nav-btn hover:text-blue-600 transition pb-1" id="btn-checklist"><i class="fas fa-tasks mr-1"></i> Checklist</button>
     </nav>
     <div>
       <span class="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">2026 Cohort</span>
@@ -80,7 +79,6 @@
       <button onclick="showTab('prework')" class="nav-btn px-3 py-2 whitespace-nowrap rounded-md" id="btn-prework-m">Pre-Work</button>
       <button onclick="showTab('workshop')" class="nav-btn px-3 py-2 whitespace-nowrap rounded-md" id="btn-workshop-m">Workshop</button>
       <button onclick="showTab('exam')" class="nav-btn px-3 py-2 whitespace-nowrap rounded-md" id="btn-exam-m">Exam</button>
-      <button onclick="showTab('checklist')" class="nav-btn px-3 py-2 whitespace-nowrap rounded-md" id="btn-checklist-m">Checklist</button>
     </div>
   </div>
 </header>
@@ -97,9 +95,14 @@
     <div class="absolute -top-20 -right-20 w-80 h-80 bg-white bg-opacity-10 rounded-full blur-3xl"></div>
     <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-amber-400 bg-opacity-20 rounded-full blur-3xl"></div>
     <div class="relative max-w-3xl">
-      <p class="text-blue-200 text-xs font-bold uppercase tracking-widest mb-4">AI Enablement Program &middot; 2026</p>
+      <p class="text-blue-200 text-xs font-bold uppercase tracking-widest mb-4">AI Enablement Program &middot; 2026 Cohort</p>
       <h1 class="text-3xl md:text-5xl font-extrabold mb-4 leading-tight">You are the bridge between your team and AI.</h1>
-      <p class="text-blue-100 text-lg mb-8">4 hours of pre-work. 2 days of hands-on training. 90 days of leading your team to smart, safe, and effective AI adoption.</p>
+      <p class="text-blue-100 text-lg mb-6">4 hours of pre-work. 2 days of hands-on training. 90 days of leading your team to smart, safe, and effective AI adoption.</p>
+      <div class="flex flex-wrap gap-2 mb-8">
+        <span class="bg-white bg-opacity-15 backdrop-blur border border-white border-opacity-25 px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-calendar-day mr-2 text-amber-300"></i>Day 1 &middot; Wed 29 Apr 2026 &middot; 10:00 IL</span>
+        <span class="bg-white bg-opacity-15 backdrop-blur border border-white border-opacity-25 px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-calendar-day mr-2 text-amber-300"></i>Day 2 &middot; Mon 4 May 2026 &middot; 10:00 IL</span>
+        <span class="bg-amber-400 text-blue-900 px-4 py-2 rounded-lg text-sm font-bold"><i class="fas fa-hourglass-half mr-2"></i>Exam due Mon 27 Apr 10:00 IL</span>
+      </div>
       <div class="flex flex-wrap gap-3">
         <button onclick="showTab('prework')" class="bg-white text-blue-700 px-6 py-3 rounded-lg font-bold shadow-md hover:bg-blue-50 transition">
           <i class="fas fa-play mr-2"></i>Start Pre-Work
@@ -238,7 +241,7 @@
   </div>
 
   <div class="bg-amber-50 border-l-4 border-amber-400 p-4 rounded-r-lg">
-    <p class="text-amber-900 text-sm"><strong>Deadline:</strong> Part 5 (Readiness Exam) must be submitted at least <strong>48 hours before Day 1</strong>. Facilitator reviews and schedules a 30-min coaching call only for anyone flagged "Needs work" in 2+ sections.</p>
+    <p class="text-amber-900 text-sm"><strong>Deadline:</strong> Part 5 (Readiness Exam) must be submitted at least <strong>Mon 27 Apr 2026 at 10:00 IL (48h before Day 1)</strong>. Facilitator reviews and schedules a 30-min coaching call only for anyone flagged "Needs work" in 2+ sections.</p>
   </div>
 
   <div class="grid md:grid-cols-4 gap-6">
@@ -269,6 +272,11 @@
           <span class="text-xs text-gray-400 font-bold">PART 6</span><br>
           Domain Deep-Dive
         </button>
+        <div class="border-t border-gray-100 my-2"></div>
+        <button onclick="showPrePart('checklist')" class="pw-nav-btn w-full text-left px-3 py-2.5 rounded-md border-l-2 border-transparent text-sm text-gray-700 hover:bg-gray-50" id="pw-checklist">
+          <span class="text-xs text-amber-600 font-bold"><i class="fas fa-clipboard-check mr-1"></i>FINAL CHECK</span><br>
+          Completion Checklist
+        </button>
       </div>
     </aside>
 
@@ -287,9 +295,9 @@
         </div>
         <p>Complete each item so you're ready on Day 1:</p>
         <ul>
-          <li><strong>Claude access</strong> &mdash; verify you can log in at the approved Allot instance. If not, submit an IT Service Desk ticket referencing "AI Tools License Request."</li>
+          <li><strong>Claude access</strong> &mdash; verify you can log in at the approved Allot instance. If not, email <a href="mailto:pkramer@allot.com?subject=AI%20Tools%20License%20Request" class="text-blue-600 underline">Philip Kramer (pkramer@allot.com)</a>, the AI Enablement lead &mdash; subject line "AI Tools License Request."</li>
           <li><strong>GitHub Copilot</strong> (R&amp;D participants) &mdash; confirm Copilot is enabled in your IDE.</li>
-          <li><strong>Bookmark:</strong> Allot AI usage policy (Confluence), AI Champions Teams channel, ALLOTAI Jira board.</li>
+          <li><strong>Bookmark:</strong> Allot AI usage policy (Confluence), "AI Champions - Training" Teams channel, ALLOTAI Jira board.</li>
           <li><strong>Bring to Day 1:</strong> laptop with approved tools installed, 2&ndash;3 real work examples you'd like to try with AI (sanitized per data-classification rules in Part 2).</li>
         </ul>
       </div>
@@ -352,7 +360,7 @@
             <p class="text-sm m-0 mt-1"><strong>Never.</strong> <em>Credentials, API keys, PII, NDA material, security configs.</em></p>
           </div>
         </div>
-        <p class="text-sm text-gray-600"><strong>Rule of thumb:</strong> when in doubt, treat it as Confidential and ask in the Champions Teams channel.</p>
+        <p class="text-sm text-gray-600"><strong>Rule of thumb:</strong> when in doubt, treat it as Confidential and ask in the "AI Champions - Training" Teams channel.</p>
 
         <h4 class="font-bold text-lg">Model selection (preview)</h4>
         <p class="text-sm">Day 1 covers this in depth. For now:</p>
@@ -444,7 +452,7 @@
           <li><strong>Section D</strong> &mdash; V-C-A-F on a seeded AI output</li>
           <li><strong>Section E</strong> &mdash; a hands-on 3-step prompt chain</li>
         </ul>
-        <p class="bg-amber-50 border-l-4 border-amber-400 p-3 rounded-r-lg text-sm"><strong>Submit at least 48 hours before Day 1.</strong> Your answers auto-save in the browser. When done, click <em>Download Submission</em> and upload to the Microsoft Forms link from your facilitator.</p>
+        <p class="bg-amber-50 border-l-4 border-amber-400 p-3 rounded-r-lg text-sm"><strong>Submit at least Mon 27 Apr 2026 at 10:00 IL (48h before Day 1).</strong> Your answers auto-save in the browser. When done, click <em>Download Submission</em> and upload to the Microsoft Forms link from your facilitator.</p>
         <div class="not-prose flex gap-3 mt-5">
           <button onclick="showTab('exam')" class="bg-purple-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-purple-700 transition">
             <i class="fas fa-clipboard-check mr-2"></i>Go to the Exam
@@ -480,6 +488,22 @@
         <p class="text-sm mt-4"><strong>Bring the output and your V-C-A-F notes to Day 2.</strong> Your track lead will call on 2&ndash;3 volunteers to share.</p>
       </div>
 
+      <!-- Completion Checklist (moved from top-level nav) -->
+      <div class="pw-panel bg-white p-8 rounded-xl border border-gray-100 shadow-sm hidden" id="pw-panel-checklist">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="bg-amber-100 text-amber-600 w-10 h-10 rounded-lg flex items-center justify-center"><i class="fas fa-clipboard-check"></i></span>
+          <h3 class="text-2xl font-bold m-0">Completion Checklist</h3>
+          <span class="ml-auto text-xs bg-amber-100 text-amber-800 px-3 py-1 rounded-full font-semibold" id="checklist-progress">0 / 7 complete</span>
+        </div>
+        <p class="text-gray-600 mb-5">Check these off as you complete them. Your progress saves automatically in this browser.</p>
+        <div class="divide-y border border-gray-100 rounded-xl bg-gray-50 p-2" id="checklist-items">
+          <!-- Populated by JS -->
+        </div>
+        <div class="bg-blue-50 border border-blue-100 p-5 rounded-xl text-center mt-5">
+          <p class="italic text-blue-800 m-0 text-sm">"By checking these boxes, I confirm I am ready to act as the Quality Gate and Trainer for my team."</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -491,7 +515,7 @@
   <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
     <div>
       <h2 class="text-3xl font-bold">2-Day Workshop Agenda</h2>
-      <p class="text-gray-600 mt-1">10:00&ndash;18:00 IL &middot; hybrid (in-person Hod HaSharon + remote IL/EU/India via Teams).</p>
+      <p class="text-gray-600 mt-1"><strong>Day 1:</strong> Wed 29 Apr 2026 &middot; <strong>Day 2:</strong> Mon 4 May 2026 &middot; 10:00&ndash;18:00 IL &middot; hybrid (in-person Hod HaSharon + remote IL/EU/India via Teams).</p>
     </div>
     <div class="flex space-x-2 bg-gray-100 p-1 rounded-lg">
       <button onclick="toggleDay(1)" id="day1-toggle" class="bg-white text-blue-700 px-4 py-2 rounded-md font-semibold shadow-sm text-sm">
@@ -761,7 +785,7 @@
       <div class="mt-4 pl-28 text-sm text-gray-700 space-y-2">
         <p><strong>Commitments:</strong> first local workshop within 2 weeks &middot; 3 prompts to shared library within 1 month &middot; 5 team use cases documented within 1 month.</p>
         <p><strong>Champion roadmap:</strong> Weeks 1&ndash;2, Month 1, Months 2&ndash;3, Months 4&ndash;6, ongoing.</p>
-        <p><strong>Support:</strong> Champions Teams channel, IT Service Desk, AppSec, Confluence AI Champions space.</p>
+        <p><strong>Support:</strong> "AI Champions - Training" Teams channel, IT Service Desk, AppSec, Confluence AI Champions space.</p>
       </div>
     </details>
   </div>
@@ -786,7 +810,7 @@
       <div class="bg-white border border-gray-100 shadow-sm p-3 rounded-lg"><div class="font-bold text-blue-600">E</div>Chain (20m)</div>
     </div>
     <div class="bg-amber-50 border-l-4 border-amber-400 p-4 rounded-r-lg text-left">
-      <p class="text-amber-900 text-sm m-0"><strong>How submission works:</strong> Your answers auto-save in this browser. When you finish, click <em>Download Submission</em> &mdash; a Markdown file downloads. Upload it to the Microsoft Forms link from your facilitator, at least 48 hours before Day 1.</p>
+      <p class="text-amber-900 text-sm m-0"><strong>How submission works:</strong> Your answers auto-save in this browser. When you finish, click <em>Download Submission</em> &mdash; a Markdown file downloads. Upload it to the Microsoft Forms link from your facilitator, at least Mon 27 Apr 2026 at 10:00 IL (48h before Day 1).</p>
     </div>
     <button onclick="startExam()" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-700 transition shadow-md">
       <i class="fas fa-play mr-2"></i>Start Exam
@@ -1023,28 +1047,6 @@
   </div>
 </section>
 
-<!-- =========================================================== -->
-<!-- CHECKLIST -->
-<!-- =========================================================== -->
-<section id="tab-checklist" class="tab-content hidden space-y-6">
-  <h2 class="text-3xl font-bold">Pre-Workshop Checklist</h2>
-  <p class="text-gray-600">Check these off as you complete them. Your progress saves automatically in this browser.</p>
-
-  <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
-    <div class="p-5 bg-gray-50 border-b flex items-center justify-between">
-      <h3 class="font-bold">Final verification before Day 1</h3>
-      <span id="checklist-progress" class="text-sm text-gray-500">0 / 7 complete</span>
-    </div>
-    <div class="divide-y p-2" id="checklist-items">
-      <!-- Populated by JS -->
-    </div>
-  </div>
-
-  <div class="bg-blue-50 border border-blue-100 p-6 rounded-xl text-center">
-    <p class="italic text-blue-800 m-0">"By checking these boxes, I confirm I am ready to act as the Quality Gate and Trainer for my team."</p>
-  </div>
-</section>
-
 </main>
 
 <footer class="bg-white border-t py-8 mt-auto no-print">
@@ -1053,7 +1055,7 @@
     <div class="flex space-x-6">
       <a href="#" class="hover:text-blue-600">AI Usage Policy</a>
       <a href="#" class="hover:text-blue-600">Confluence Wiki</a>
-      <a href="#" class="hover:text-blue-600">Teams Channel</a>
+      <a href="#" class="hover:text-blue-600">"AI Champions - Training"</a>
       <a href="#" class="hover:text-blue-600">IT Service Desk</a>
     </div>
   </div>

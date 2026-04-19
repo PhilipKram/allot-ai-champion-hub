@@ -2,7 +2,9 @@
 
 Self-contained training hub for the Allot AI Champion Enablement Program — pre-work, 2-day workshop agenda, readiness exam, and completion checklist.
 
-Live site: _add GitHub Pages URL after setup_
+**Live site:** https://philipkram.github.io/allot-ai-champion-hub/
+
+**2026 Q2 Cohort:** Day 1 — Wed 29 Apr 2026 · Day 2 — Mon 4 May 2026 · 10:00–18:00 IL · hybrid (in-person Hod HaSharon + remote EU/India via Teams)
 
 ## What's here
 

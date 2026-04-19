@@ -1,7 +1,11 @@
 # AI Champion Enablement Training — 2-Day Program
 
-**Program:** ALLOT AI Champions  
-**Duration:** 2 days (8 hours per day)  
+**Program:** ALLOT AI Champions
+**Cohort:** 2026 Q2
+**Dates:** Day 1 — Wed 29 Apr 2026 · Day 2 — Mon 4 May 2026
+**Schedule:** 10:00–18:00 IL both days
+**Duration:** 2 days (8 hours per day)
+
 **Audience:** Newly selected AI Champions across R&D, Product, and Business teams  
 **Objective:** Equip champions with the knowledge, skills, and confidence to drive AI adoption within their local teams
 
@@ -499,9 +503,9 @@ Each champion commits to:
 | **Month 1** | Document 5 use cases, contribute prompts to shared library |
 | **Months 2–3** | Identify automation opportunities, mentor team members |
 | **Months 4–6** | Propose AI-assisted workflow improvements, present wins to leadership |
-| **Ongoing** | Stay current on AI developments, scout new tools, share via Champions Teams channel |
+| **Ongoing** | Stay current on AI developments, scout new tools, share via **AI Champions - Training** Teams channel |
 
-**AI Scouting:** Use the Champions Teams channel to report new AI tools, features, or techniques you discover. Champions are the organization's scouts — not just implementers of current tools.
+**AI Scouting:** Use the **AI Champions - Training** Teams channel to report new AI tools, features, or techniques you discover. Champions are the organization's scouts — not just implementers of current tools.
 
 #### 9.3 Your Champion Toolkit
 You leave with:
@@ -509,13 +513,14 @@ You leave with:
 - Prompt cookbook (companion document)
 - Workshop facilitation template
 - Quick-start reference card
-- Access to the Champions Teams channel and knowledge base
+- Access to the **AI Champions - Training** Teams channel and knowledge base
 
 #### 9.4 Support & Escalation
 | Need | Where to Go |
 |---|---|
-| Prompt help | Champions Teams channel |
-| Tool access issues | IT Service Desk + tag AI Champions |
+| Prompt help | **AI Champions - Training** Teams channel |
+| AI tool access (Claude / Copilot licenses) | Email Philip Kramer (pkramer@allot.com) |
+| General IT issues (laptop, VPN, login) | IT Service Desk |
 | Security questions | AppSec team / AI program lead |
 | Feature requests | AI program backlog (Jira) |
 | Training materials | Confluence AI Champions space |

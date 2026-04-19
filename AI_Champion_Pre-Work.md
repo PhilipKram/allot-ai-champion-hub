@@ -3,7 +3,7 @@
 **Complete before attending the 2-day training**
 **Estimated time:** 4 hours (self-paced, can be spread across several days)
 **Deadline:** Start at least 1 week before the workshop (tool access requests may take several days)
-**Submission:** Part 5 (the Readiness Exam) must be submitted to the AI Champions Teams channel at least **48 hours before Day 1**. Your facilitator reviews submissions to surface common gaps and schedule 30-min coaching calls where needed.
+**Submission:** Part 5 (the Readiness Exam) must be submitted to the **AI Champions - Training** Teams channel at least **Mon 27 Apr 2026 at 10:00 IL (48h before Day 1)**. Your facilitator reviews submissions to surface common gaps and schedule 30-min coaching calls where needed.
 
 ---
 
@@ -21,11 +21,11 @@ Complete these before the workshop so you're ready to go on Day 1.
 
 > **Start this part at least 1 week early.** IT ticket resolution can take 2–3 business days. Don't let tool access block your preparation.
 
-- [ ] **Claude access** — Verify you can log in at the approved Allot instance. If you don't have access, submit a request via IT Service Desk **now** (reference: AI Tools License Request).
+- [ ] **Claude access** — Verify you can log in at the approved Allot instance. If you don't have access, email Philip Kramer (pkramer@allot.com), the AI Enablement lead, **now** with subject line "AI Tools License Request".
 - [ ] **GitHub Copilot** (R&D participants) — Confirm Copilot is enabled in your IDE. Check: IDE Settings → Extensions → GitHub Copilot → Status: Active.
 - [ ] **Bookmark key resources:**
   - Allot AI usage policy (Confluence) — **you will need this for Part 5**
-  - AI Champions Teams channel
+  - **AI Champions - Training** Teams channel
   - AI program Jira board (ALLOTAI)
 - [ ] **Bring to the workshop:**
   - Your laptop with approved AI tools installed
@@ -70,7 +70,7 @@ This table governs what you can and cannot share with AI tools. **Memorize it** 
 | **Confidential** | Only on-premise/approved private instances | Customer data, financial reports, unreleased product details |
 | **Restricted** | **Never use with AI tools** | Credentials, API keys, PII, NDA-protected material, security configs |
 
-**When in doubt, treat it as Confidential.** You can always ask in the Champions Teams channel.
+**When in doubt, treat it as Confidential.** You can always ask in the **AI Champions - Training** Teams channel.
 
 > **Note:** Different AI tools have different security boundaries. For example, Claude (enterprise) may accept Internal data, while Copilot operates only on code context. The workshop will cover tool-specific rules in detail — for pre-work, use the table above as your baseline.
 
@@ -152,7 +152,7 @@ As a champion, you'll be the "Quality Gate" for AI usage on your team. Practice 
 
 This exam replaces the old reflection/policy questions. It's designed to show — through actual artifacts, not multiple-choice trivia — that you understand the AI tools, when to use them, and how to verify their output.
 
-**Submit one document to the AI Champions Teams channel at least 48 hours before Day 1.** Your facilitator reviews submissions and schedules a 30-min coaching call only for anyone flagged as "Needs work" in two or more sections.
+**Submit one document to the **AI Champions - Training** Teams channel at least Mon 27 Apr 2026 at 10:00 IL (48h before Day 1).** Your facilitator reviews submissions and schedules a 30-min coaching call only for anyone flagged as "Needs work" in two or more sections.
 
 ---
 
@@ -318,7 +318,7 @@ Before Day 1, confirm:
 - [ ] I've read the core concepts, data classification table, and V-C-A-F preview (Part 2)
 - [ ] I've completed Exercises 3.1 (Inigo draft prompt) and 3.2 (V-C-A-F on a factual question) (Part 3)
 - [ ] I've completed the Sanitization Challenge (Part 4)
-- [ ] **I've submitted the Readiness Exam to the AI Champions Teams channel at least 48 hours before Day 1** (Part 5)
+- [ ] **I've submitted the Readiness Exam to the **AI Champions - Training** Teams channel at least Mon 27 Apr 2026 at 10:00 IL (48h before Day 1)** (Part 5)
 - [ ] I've completed one domain-specific deep dive task (Part 6)
 - [ ] I'm bringing 2–3 real work examples (sanitized per the Data Classification table) to Day 1
 
@@ -329,7 +329,7 @@ Before Day 1, confirm:
 ## Questions?
 
 If you get stuck during pre-work or have questions:
-- Post in the AI Champions Teams channel
+- Post in the **AI Champions - Training** Teams channel
 - Contact your AI Champion program lead
 - Questions are welcome — that's what the workshop is for
 

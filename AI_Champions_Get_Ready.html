@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Champions — Get Ready for Training</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          allot: {50:'#f5f5f6',100:'#e9e9eb',200:'#d0d0d4',300:'#acacb2',400:'#7b7b83',500:'#5b5b63',600:'#45454c',700:'#3f3f46',800:'#2e2e33',900:'#1e1e22',950:'#111113'},
+          crimson:{50:'#fdecf1',100:'#fbd4df',200:'#f7a2b8',500:'#cb004b',600:'#a8003e',700:'#850030'},
+          red2:{50:'#fdeaea',100:'#fbd0d0',500:'#e30613',600:'#b9040f'},
+          brandorange:{50:'#fef3e6',100:'#fde1c0',500:'#f18a00',600:'#c97100'}
+        }
+      }
+    }
+  };
+</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Barlow:wght@600;700;800&display=swap');
+  :root{
+    --allot-charcoal:#3f3f46;
+    --allot-charcoal-deep:#1e1e22;
+    --allot-crimson:#cb004b;
+    --allot-red:#e30613;
+    --allot-orange:#f18a00;
+    --allot-gradient:linear-gradient(90deg,#cb004b 0%,#e30613 50%,#f18a00 100%);
+  }
+  body{
+    font-family:'Inter',sans-serif;
+    background:
+      radial-gradient(1200px 600px at 100% -10%, rgba(241,138,0,0.05), transparent 60%),
+      radial-gradient(900px 500px at -10% 110%, rgba(203,0,75,0.04), transparent 60%),
+      #f7f7f8;
+    color:#1e1e22;
+  }
+  h1,h2,h3,.brand-display{font-family:'Barlow','Inter',sans-serif;letter-spacing:-0.01em}
+  .gradient-bar{background:var(--allot-gradient)}
+  .gradient-text{background:var(--allot-gradient);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .card{background:#fff;border:1px solid #e9e9eb;border-radius:14px}
+  .chip{display:inline-flex;align-items:center;gap:6px;font-size:.75rem;font-weight:600;padding:3px 10px;border-radius:999px;border:1px solid transparent}
+  .chip-info{background:#f5f5f6;color:#45454c;border-color:#d0d0d4}
+  .chip-ok{background:#ecfdf5;color:#065f46;border-color:#a7f3d0}
+  .chip-warn{background:#fef3e6;color:#9e5800;border-color:#fde1c0}
+  .chip-crit{background:#fdecf1;color:#850030;border-color:#f7a2b8}
+  details[open] summary .chev{transform:rotate(90deg)}
+  summary{list-style:none;cursor:pointer}
+  summary::-webkit-details-marker{display:none}
+  .chev{transition:transform .15s ease}
+  /* Countdown tiles */
+  .cd-tile{background:#fff;border:1px solid #e9e9eb;border-radius:14px;padding:14px 10px;text-align:center}
+  .cd-num{font-family:'Barlow','Inter',sans-serif;font-weight:800;font-size:2.1rem;line-height:1;color:#1e1e22}
+  .cd-lbl{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:#7b7b83;margin-top:6px}
+  /* Hat cards */
+  .hat{background:#fff;border:1px solid #e9e9eb;border-radius:14px;padding:16px;display:flex;gap:14px;align-items:flex-start}
+  .hat-ico{flex:0 0 44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;background:var(--allot-gradient)}
+  /* Day schedule */
+  .day-row{display:grid;grid-template-columns:110px 1fr;gap:14px;padding:10px 14px;border-top:1px solid #f1f1f2}
+  .day-row:first-child{border-top:0}
+  .day-row .t{font-family:'Barlow','Inter',sans-serif;font-weight:700;color:#1e1e22;font-size:.9rem}
+  .day-row.break{background:#fafafb}
+  .day-row.break .t,.day-row.break .s{color:#7b7b83;font-style:italic;font-weight:500}
+  .day-row .s{color:#2e2e33;font-size:.92rem}
+  /* Prework steps */
+  .pw-step{display:flex;gap:14px;padding:14px;border-top:1px solid #f1f1f2;align-items:flex-start}
+  .pw-step:first-child{border-top:0}
+  .pw-step .num{flex:0 0 40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Barlow','Inter',sans-serif;font-weight:800;font-size:1.1rem;color:#fff;background:var(--allot-gradient)}
+  .pw-step input[type=checkbox]{appearance:none;width:18px;height:18px;border:1.5px solid #acacb2;border-radius:5px;flex:0 0 18px;margin-top:4px;cursor:pointer;position:relative;background:#fff}
+  .pw-step input[type=checkbox]:checked{background:var(--allot-gradient);border-color:transparent}
+  .pw-step input[type=checkbox]:checked::after{content:'\f00c';font-family:'Font Awesome 6 Free';font-weight:900;color:#fff;font-size:11px;position:absolute;left:3px;top:1px}
+  .pw-step input[type=checkbox]:checked + .pw-body .pw-title{text-decoration:line-through;color:#7b7b83}
+  .pw-title{font-family:'Barlow','Inter',sans-serif;font-weight:700;color:#1e1e22;font-size:1.02rem}
+  .pw-meta{font-size:.78rem;color:#7b7b83;margin-top:2px}
+  .pw-desc{color:#45454c;font-size:.9rem;margin-top:6px;line-height:1.55}
+  /* Bring/don't */
+  .col-bring{background:#ecfdf5;border:1px solid #a7f3d0;border-radius:14px;padding:18px}
+  .col-dont{background:#fdecf1;border:1px solid #f7a2b8;border-radius:14px;padding:18px}
+  .col-bring h3,.col-dont h3{font-family:'Barlow','Inter',sans-serif;font-weight:700;font-size:1.05rem;margin-bottom:10px}
+  .col-bring li,.col-dont li{display:flex;gap:10px;align-items:flex-start;padding:6px 0;font-size:.92rem}
+  .col-bring li i{color:#065f46;margin-top:3px}
+  .col-dont li i{color:#850030;margin-top:3px}
+  /* Table */
+  table.clean{width:100%;border-collapse:collapse;font-size:.9rem}
+  table.clean th{text-align:left;font-family:'Barlow','Inter',sans-serif;font-weight:700;color:#3f3f46;padding:10px 12px;border-bottom:1px solid #e9e9eb;background:#fafafb}
+  table.clean td{padding:10px 12px;border-bottom:1px solid #f1f1f2;vertical-align:top;color:#2e2e33}
+  table.clean tr:last-child td{border-bottom:0}
+  /* FAQ */
+  .faq{border-top:1px solid #f1f1f2}
+  .faq:first-of-type{border-top:0}
+  .faq summary{padding:14px 16px;font-weight:600;color:#1e1e22;display:flex;justify-content:space-between;align-items:center}
+  .faq summary:hover{background:#fafafb}
+  .faq[open] summary{background:#fafafb}
+  .faq .answer{padding:0 16px 16px 16px;color:#45454c;font-size:.93rem;line-height:1.6}
+  @media print{
+    body{background:#fff}
+    .no-print{display:none!important}
+  }
+</style>
+</head>
+<body class="min-h-screen">
+
+<header class="border-b border-allot-100 bg-white/70 backdrop-blur sticky top-0 z-10 no-print">
+  <div class="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <img src="assets/brand/allot-logo-tagline.svg" alt="Allot" class="h-6">
+      <span class="text-allot-300">|</span>
+      <span class="text-sm font-semibold text-allot-700">AI Champions · 2026 Q2</span>
+    </div>
+    <div class="flex items-center gap-3 text-sm">
+      <a href="#prework" class="text-allot-600 hover:text-allot-900 hidden sm:inline">Pre-work</a>
+      <a href="#schedule" class="text-allot-600 hover:text-allot-900 hidden sm:inline">Schedule</a>
+      <a href="#bring" class="text-allot-600 hover:text-allot-900 hidden sm:inline">What to bring</a>
+      <a href="#faq" class="text-allot-600 hover:text-allot-900 hidden sm:inline">FAQ</a>
+      <a href="https://philipkram.github.io/allot-ai-champion-hub/" target="_blank" rel="noopener" class="gradient-bar text-white font-semibold rounded-lg px-3 py-1.5 text-xs">Open Hub <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i></a>
+    </div>
+  </div>
+  <div class="gradient-bar h-[3px] w-full"></div>
+</header>
+
+<main class="max-w-6xl mx-auto px-6 py-10">
+
+  <!-- HERO -->
+  <section class="mb-12">
+    <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-crimson-500 mb-3">
+      <span class="w-8 h-[2px] gradient-bar rounded-full"></span>
+      Welcome, Champion
+    </div>
+    <h1 class="text-4xl md:text-5xl font-extrabold text-allot-900 leading-tight">
+      You're in. Here's how to <span class="gradient-text">get ready</span>.
+    </h1>
+    <p class="mt-5 text-allot-600 max-w-3xl text-lg">
+      You've been selected for the first 2026 Q2 cohort of the Allot AI Champion program.
+      Over two days you'll move from <span class="font-semibold text-allot-900">using AI well yourself</span>
+      to <span class="font-semibold text-allot-900">leading AI adoption in your team</span>.
+      This page is your pre-flight checklist — skim it now, act on it this week.
+    </p>
+
+    <!-- Countdown -->
+    <div class="mt-8 grid grid-cols-4 gap-3 max-w-xl">
+      <div class="cd-tile"><div class="cd-num" id="cd-days">–</div><div class="cd-lbl">Days</div></div>
+      <div class="cd-tile"><div class="cd-num" id="cd-hours">–</div><div class="cd-lbl">Hours</div></div>
+      <div class="cd-tile"><div class="cd-num" id="cd-mins">–</div><div class="cd-lbl">Minutes</div></div>
+      <div class="cd-tile"><div class="cd-num" id="cd-secs">–</div><div class="cd-lbl">Seconds</div></div>
+    </div>
+    <div class="text-sm text-allot-500 mt-2">Until Day 1 · Wed 29 Apr 2026, 10:00 IL</div>
+
+    <!-- Key dates strip -->
+    <div class="grid md:grid-cols-4 gap-3 mt-8">
+      <div class="card p-4">
+        <div class="text-xs uppercase tracking-wider text-crimson-600 font-semibold">Day 1</div>
+        <div class="mt-1 text-allot-900 font-bold text-lg brand-display">Wed 29 Apr 2026</div>
+        <div class="text-sm text-allot-500">10:00–18:00 IL · hybrid</div>
+      </div>
+      <div class="card p-4">
+        <div class="text-xs uppercase tracking-wider text-red2-500 font-semibold">Day 2</div>
+        <div class="mt-1 text-allot-900 font-bold text-lg brand-display">Mon 4 May 2026</div>
+        <div class="text-sm text-allot-500">10:00–18:00 IL · hybrid</div>
+      </div>
+      <div class="card p-4">
+        <div class="text-xs uppercase tracking-wider text-brandorange-600 font-semibold">Certification due</div>
+        <div class="mt-1 text-allot-900 font-bold text-lg brand-display">Mon 11 May 2026</div>
+        <div class="text-sm text-allot-500">10:00 IL · 7 days after Day 2</div>
+      </div>
+      <div class="card p-4">
+        <div class="text-xs uppercase tracking-wider text-allot-500 font-semibold">First local workshop</div>
+        <div class="mt-1 text-allot-900 font-bold text-lg brand-display">Mon 18 May 2026</div>
+        <div class="text-sm text-allot-500">2 weeks after Day 2</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE'LL ASK OF YOU (THE DEAL) -->
+  <section class="mb-12">
+    <h2 class="text-2xl font-bold text-allot-900 mb-4">What we're asking of you</h2>
+    <div class="card p-6">
+      <p class="text-allot-700 mb-5">
+        Champion isn't a title — it's a role with five hats you'll wear for your team.
+        You don't need to be the smartest person in the room on AI. You need to be the
+        <span class="font-semibold text-allot-900">bridge</span> between the technology and the people
+        around you.
+      </p>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div class="hat"><div class="hat-ico"><i class="fa-solid fa-bullhorn"></i></div>
+          <div><div class="font-bold text-allot-900">Evangelist</div>
+          <div class="text-sm text-allot-600 mt-1">Promote real use cases your team can copy.</div></div></div>
+        <div class="hat"><div class="hat-ico"><i class="fa-solid fa-life-ring"></i></div>
+          <div><div class="font-bold text-allot-900">First Responder</div>
+          <div class="text-sm text-allot-600 mt-1">First line for AI questions, before they escalate.</div></div></div>
+        <div class="hat"><div class="hat-ico"><i class="fa-solid fa-arrows-rotate"></i></div>
+          <div><div class="font-bold text-allot-900">Feedback Loop</div>
+          <div class="text-sm text-allot-600 mt-1">Channel team pain points back to the program.</div></div></div>
+        <div class="hat"><div class="hat-ico"><i class="fa-solid fa-shield-halved"></i></div>
+          <div><div class="font-bold text-allot-900">Quality Gate</div>
+          <div class="text-sm text-allot-600 mt-1">Ensure responsible, secure usage in your domain.</div></div></div>
+        <div class="hat"><div class="hat-ico"><i class="fa-solid fa-chalkboard-user"></i></div>
+          <div><div class="font-bold text-allot-900">Trainer</div>
+          <div class="text-sm text-allot-600 mt-1">Run the 60-minute local workshop, mentor 1:1.</div></div></div>
+        <div class="hat"><div class="hat-ico" style="background:#1e1e22"><i class="fa-solid fa-flag"></i></div>
+          <div><div class="font-bold text-allot-900">+ Scout</div>
+          <div class="text-sm text-allot-600 mt-1">Surface new AI tools &amp; techniques in the Teams channel.</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRE-WORK -->
+  <section id="prework" class="mb-12">
+    <div class="flex items-baseline justify-between mb-3">
+      <h2 class="text-2xl font-bold text-allot-900">Your pre-work — 2.5 hours, before Day 1</h2>
+      <span class="chip chip-crit"><i class="fa-solid fa-triangle-exclamation"></i>Start now · tool access takes 2–3 days</span>
+    </div>
+    <p class="text-allot-600 mb-4 max-w-3xl">
+      The workshop is hands-on and fast-paced. This pre-work gets everyone to a shared baseline so we can skip the basics and go straight to practice. Budget ~2.5 hours, spread across this week. Progress saves locally in your browser.
+    </p>
+
+    <div class="card overflow-hidden">
+      <div class="pw-step">
+        <div class="num">1</div>
+        <input type="checkbox" id="pw1">
+        <div class="pw-body flex-1">
+          <div class="pw-title">Tool setup &amp; access</div>
+          <div class="pw-meta">30 min · do this FIRST · license requests may take 2–3 business days</div>
+          <div class="pw-desc">Verify you can log in to Claude. If you don't have access, email Philip Kramer (<span class="font-semibold">pkramer@allot.com</span>) with subject "AI Tools License Request" — not IT Service Desk. Bookmark the AI Champions - Training Teams channel and the Allot AI usage policy.</div>
+        </div>
+      </div>
+      <div class="pw-step">
+        <div class="num">2</div>
+        <input type="checkbox" id="pw2">
+        <div class="pw-body flex-1">
+          <div class="pw-title">AI foundations — core concepts</div>
+          <div class="pw-meta">45 min · read, don't memorize</div>
+          <div class="pw-desc">LLM behavior (generates plausible, not true), key terminology, and — most importantly — the <span class="font-semibold">Data Classification table</span>. You'll teach that table to your team; you need to know it cold.</div>
+        </div>
+      </div>
+      <div class="pw-step">
+        <div class="num">3</div>
+        <input type="checkbox" id="pw3">
+        <div class="pw-body flex-1">
+          <div class="pw-title">First steps with AI — two exercises</div>
+          <div class="pw-meta">30 min · outputs come to Day 1</div>
+          <div class="pw-desc">(3.1) Draft a prompt using the Inigo 4-part frame — we'll rewrite it together in Session 3. (3.2) Ask Claude a factual question in your domain, then apply V-C-A-F to its answer and note what it got wrong.</div>
+        </div>
+      </div>
+      <div class="pw-step">
+        <div class="num">4</div>
+        <input type="checkbox" id="pw4">
+        <div class="pw-body flex-1">
+          <div class="pw-title">Security sandbox — sanitization challenge</div>
+          <div class="pw-meta">15 min</div>
+          <div class="pw-desc">The "Firehawk transcript" exercise: rewrite a raw meeting note so it's safe to send to an AI tool. Bring your sanitized version on Day 1 — we'll debrief common mistakes.</div>
+        </div>
+      </div>
+      <div class="pw-step">
+        <div class="num">5</div>
+        <input type="checkbox" id="pw5">
+        <div class="pw-body flex-1">
+          <div class="pw-title">Domain deep-dive — pick one</div>
+          <div class="pw-meta">30 min · R&amp;D, Product/Business, or Security</div>
+          <div class="pw-desc">R&amp;D: write a unit test with AI, apply V-C-A-F. Product/Business: draft a user story from a feature brief, apply V-C-A-F. Security: explain a recent CVE in plain language, apply V-C-A-F. Bring the output and your notes.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-4 flex flex-wrap items-center gap-3 text-sm">
+      <a href="AI_Champion_Pre-Work.html" class="inline-flex items-center gap-2 font-semibold text-crimson-600 hover:text-crimson-700">
+        <i class="fa-solid fa-book-open"></i> Full pre-work document
+      </a>
+      <span class="text-allot-300">·</span>
+      <a href="https://philipkram.github.io/allot-ai-champion-hub/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-semibold text-allot-700 hover:text-allot-900">
+        <i class="fa-solid fa-up-right-from-square"></i> Interactive hub with progress tracking
+      </a>
+    </div>
+  </section>
+
+  <!-- SCHEDULE -->
+  <section id="schedule" class="mb-12">
+    <h2 class="text-2xl font-bold text-allot-900 mb-4">Your 2 days at a glance</h2>
+    <div class="grid md:grid-cols-2 gap-5">
+      <div class="card overflow-hidden">
+        <div class="p-5 border-b border-allot-100 flex items-center justify-between">
+          <div>
+            <div class="text-xs uppercase tracking-wider text-crimson-600 font-semibold">Day 1 · Wed 29 Apr</div>
+            <h3 class="text-lg font-bold text-allot-900 brand-display mt-1">Foundations &amp; Personal Capability</h3>
+          </div>
+          <span class="chip chip-info">10:00–18:00 IL</span>
+        </div>
+        <div>
+          <div class="day-row"><div class="t">10:00–10:30</div><div class="s"><span class="font-semibold text-allot-900">Welcome</span> &amp; the Champion Role — the five hats</div></div>
+          <div class="day-row"><div class="t">10:30–11:30</div><div class="s"><span class="font-semibold text-allot-900">Foundations &amp; Friction-Busters</span> — model selection, Skills / <span class="font-mono text-sm">MEMORY.md</span> preview</div></div>
+          <div class="day-row break"><div class="t">11:30–11:45</div><div class="s">Break</div></div>
+          <div class="day-row"><div class="t">11:45–13:00</div><div class="s"><span class="font-semibold text-allot-900">Prompt Anatomy</span> — the Inigo 4-part frame, pair rewrite exercise</div></div>
+          <div class="day-row break"><div class="t">13:00–14:00</div><div class="s">Lunch</div></div>
+          <div class="day-row"><div class="t">14:00–15:15</div><div class="s"><span class="font-semibold text-allot-900">V-C-A-F</span> — the Trust Protocol, hallucination demo, sanitization debrief</div></div>
+          <div class="day-row break"><div class="t">15:15–15:30</div><div class="s">Break</div></div>
+          <div class="day-row"><div class="t">15:30–17:00</div><div class="s"><span class="font-semibold text-allot-900">Lab</span> — prompt chaining on real work + red-team swap</div></div>
+          <div class="day-row break"><div class="t">17:00–17:15</div><div class="s">Break</div></div>
+          <div class="day-row"><div class="t">17:15–18:00</div><div class="s"><span class="font-semibold text-allot-900">Feasibility vs. Impact</span> + pick your capstone problem</div></div>
+        </div>
+      </div>
+
+      <div class="card overflow-hidden">
+        <div class="p-5 border-b border-allot-100 flex items-center justify-between">
+          <div>
+            <div class="text-xs uppercase tracking-wider text-red2-500 font-semibold">Day 2 · Mon 4 May</div>
+            <h3 class="text-lg font-bold text-allot-900 brand-display mt-1">Advanced Skills &amp; Champion Leadership</h3>
+          </div>
+          <span class="chip chip-info">10:00–18:00 IL</span>
+        </div>
+        <div>
+          <div class="day-row"><div class="t">10:00–11:30</div><div class="s"><span class="font-semibold text-allot-900">Advanced Workflows</span> — align first, then parallel Track A / Track B labs</div></div>
+          <div class="day-row break"><div class="t">11:30–11:45</div><div class="s">Break</div></div>
+          <div class="day-row"><div class="t">11:45–13:00</div><div class="s"><span class="font-semibold text-allot-900">Responsible AI</span>, security, ethics &amp; live incident drill</div></div>
+          <div class="day-row break"><div class="t">13:00–14:00</div><div class="s">Lunch</div></div>
+          <div class="day-row"><div class="t">14:00–15:30</div><div class="s"><span class="font-semibold text-allot-900">Champion Playbook</span> — running workshops, handling resistance, metrics</div></div>
+          <div class="day-row break"><div class="t">15:30–15:45</div><div class="s">Break</div></div>
+          <div class="day-row"><div class="t">15:45–17:15</div><div class="s"><span class="font-semibold text-allot-900">Capstone build</span> — design, build, test, present (pair work)</div></div>
+          <div class="day-row"><div class="t">17:15–18:00</div><div class="s"><span class="font-semibold text-allot-900">Wrap-up</span>, roadmap &amp; commitments</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRING -->
+  <section id="bring" class="mb-12">
+    <h2 class="text-2xl font-bold text-allot-900 mb-4">What to bring — and what to leave out</h2>
+    <div class="grid md:grid-cols-2 gap-5">
+      <div class="col-bring">
+        <h3 class="text-emerald-800"><i class="fa-solid fa-circle-check mr-2"></i>Bring on Day 1</h3>
+        <ul class="text-allot-800">
+          <li><i class="fa-solid fa-laptop"></i><span><span class="font-semibold">Your laptop</span> with approved AI tools already installed &amp; tested (do NOT install on the day of).</span></li>
+          <li><i class="fa-solid fa-folder-open"></i><span><span class="font-semibold">2–3 real work examples</span> you'd like to try with AI — sanitized per the Data Classification table.</span></li>
+          <li><i class="fa-solid fa-pen-to-square"></i><span>Your <span class="font-semibold">pre-work outputs</span>: Inigo-frame prompt, V-C-A-F notes, sanitized Firehawk transcript, domain deep-dive artifact.</span></li>
+          <li><i class="fa-solid fa-lightbulb"></i><span><span class="font-semibold">A problem you'd love to solve</span> — something your team hits repeatedly. This becomes your capstone.</span></li>
+          <li><i class="fa-solid fa-headset"></i><span><span class="font-semibold">Headset</span> if you're joining remotely — breakout rooms need clear audio.</span></li>
+        </ul>
+      </div>
+      <div class="col-dont">
+        <h3 class="text-crimson-800"><i class="fa-solid fa-circle-xmark mr-2"></i>Do not bring / do not paste</h3>
+        <ul class="text-allot-800">
+          <li><i class="fa-solid fa-ban"></i><span><span class="font-semibold">Credentials, API keys, tokens</span> — ever. Not in a prompt, not in a code snippet.</span></li>
+          <li><i class="fa-solid fa-ban"></i><span><span class="font-semibold">Customer PII or raw customer data</span> — sanitize or synthesize first.</span></li>
+          <li><i class="fa-solid fa-ban"></i><span><span class="font-semibold">NDA-protected specs</span>, internal architecture details marked Restricted.</span></li>
+          <li><i class="fa-solid fa-ban"></i><span>Unsanitized log files or config files — strip secrets first.</span></li>
+          <li><i class="fa-solid fa-ban"></i><span><span class="font-semibold">A "just popping out" mindset</span> — the format is pair work &amp; labs; leaving breaks your partner's day.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMAT + LOGISTICS -->
+  <section class="mb-12">
+    <h2 class="text-2xl font-bold text-allot-900 mb-4">Format &amp; logistics</h2>
+    <div class="grid md:grid-cols-2 gap-5">
+      <div class="card p-5">
+        <div class="flex items-center gap-3 mb-2">
+          <i class="fa-solid fa-building text-crimson-500"></i>
+          <div class="font-bold text-allot-900">In-person · Israel</div>
+        </div>
+        <p class="text-sm text-allot-600">Hod HaSharon office training room, both days. Arrive by 09:45 for coffee &amp; setup. Coffee breaks and lunch provided.</p>
+      </div>
+      <div class="card p-5">
+        <div class="flex items-center gap-3 mb-2">
+          <i class="fa-solid fa-video text-red2-500"></i>
+          <div class="font-bold text-allot-900">Remote · EU &amp; India</div>
+        </div>
+        <p class="text-sm text-allot-600">Join via Teams — same link both days. Camera on, please. You'll be paired remote-with-remote for breakouts. Headset strongly recommended.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AFTER TRAINING -->
+  <section class="mb-12">
+    <h2 class="text-2xl font-bold text-allot-900 mb-4">After the 2 days — what you'll commit to</h2>
+    <div class="card overflow-hidden">
+      <table class="clean">
+        <thead>
+          <tr>
+            <th>Commitment</th>
+            <th style="width:180px">Deadline</th>
+            <th style="width:120px">Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="font-semibold">Submit the AI Champion Certification Exam</span><div class="text-xs text-allot-500 mt-1">Five sections: Case Studies, Your Capstone, First Local Workshop, Prompt Library Starter, Commitments.</div></td>
+            <td>Mon 11 May 2026, 10:00 IL</td>
+            <td><span class="chip chip-crit">Required</span></td>
+          </tr>
+          <tr>
+            <td><span class="font-semibold">Run your first local team workshop</span><div class="text-xs text-allot-500 mt-1">60 minutes. Template provided on Day 2.</div></td>
+            <td>Mon 18 May 2026</td>
+            <td><span class="chip chip-crit">Required</span></td>
+          </tr>
+          <tr>
+            <td><span class="font-semibold">Contribute 3+ prompts</span> to the shared prompt library</td>
+            <td>Within 1 month</td>
+            <td><span class="chip chip-warn">Expected</span></td>
+          </tr>
+          <tr>
+            <td><span class="font-semibold">Document 5 AI use cases</span> for your team</td>
+            <td>Within 1 month</td>
+            <td><span class="chip chip-warn">Expected</span></td>
+          </tr>
+          <tr>
+            <td><span class="font-semibold">Attend the bi-weekly Champion community sync</span></td>
+            <td>Ongoing</td>
+            <td><span class="chip chip-info">Cadence</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="mb-12">
+    <h2 class="text-2xl font-bold text-allot-900 mb-4">FAQ</h2>
+    <div class="card overflow-hidden">
+      <details class="faq">
+        <summary>Is the pre-work graded? What if I don't finish it?<i class="fa-solid fa-chevron-right chev text-allot-400"></i></summary>
+        <div class="answer">No gating exam on pre-work — but if you skip it, Day 1 will be significantly harder because sessions build on what you've already tried. The only graded piece is the <span class="font-semibold">Certification Exam</span>, which comes <em>after</em> the 2 days.</div>
+      </details>
+      <details class="faq">
+        <summary>I already use Claude every day. Do I still need to do the pre-work?<i class="fa-solid fa-chevron-right chev text-allot-400"></i></summary>
+        <div class="answer">Yes — the pre-work outputs (Inigo prompt, V-C-A-F notes, sanitized Firehawk transcript) are <em>inputs</em> to specific Day 1 exercises. You'll work on them, not re-do them.</div>
+      </details>
+      <details class="faq">
+        <summary>I can't get Claude access in time — what do I do?<i class="fa-solid fa-chevron-right chev text-allot-400"></i></summary>
+        <div class="answer">Email Philip Kramer (<span class="font-semibold">pkramer@allot.com</span>) with subject "AI Tools License Request" <span class="font-semibold">this week</span>. Do NOT route through IT Service Desk — that slows it down. License provisioning takes 2–3 business days.</div>
+      </details>
+      <details class="faq">
+        <summary>Can I drop in for part of a day?<i class="fa-solid fa-chevron-right chev text-allot-400"></i></summary>
+        <div class="answer">No. The format is pair work and labs that build on each other. Leaving mid-session breaks your partner's experience as well as your own. Block the full two days in your calendar — we've briefed your line manager.</div>
+      </details>
+      <details class="faq">
+        <summary>What if my real work example contains sensitive data?<i class="fa-solid fa-chevron-right chev text-allot-400"></i></summary>
+        <div class="answer">Sanitize it. Replace customer names, IDs, credentials, and specifics with placeholders or synthetic equivalents. Pre-work Part 4 (the Firehawk exercise) is the drill for this — finish it before Day 1 and you'll know what "sanitized enough" looks like.</div>
+      </details>
+      <details class="faq">
+        <summary>Will the sessions be recorded?<i class="fa-solid fa-chevron-right chev text-allot-400"></i></summary>
+        <div class="answer">Recording policy will be confirmed in your calendar invite closer to the date. Lab and capstone portions won't be recorded either way — too much live work, too much sensitive discussion.</div>
+      </details>
+      <details class="faq">
+        <summary>What happens if I miss the certification deadline (11 May)?<i class="fa-solid fa-chevron-right chev text-allot-400"></i></summary>
+        <div class="answer">Reach out directly — a short extension can usually be arranged if you flag it early. Silently missing the deadline is the problem, not the delay itself.</div>
+      </details>
+    </div>
+  </section>
+
+  <!-- SUPPORT -->
+  <section class="mb-16">
+    <h2 class="text-2xl font-bold text-allot-900 mb-4">Who to contact</h2>
+    <div class="grid md:grid-cols-4 gap-4">
+      <div class="card p-5">
+        <div class="text-xs uppercase tracking-wider text-allot-500 font-semibold">AI tool access &amp; licenses</div>
+        <div class="mt-1 font-bold text-allot-900">Philip Kramer</div>
+        <a href="mailto:pkramer@allot.com" class="text-sm text-crimson-600 hover:text-crimson-700">pkramer@allot.com</a>
+      </div>
+      <div class="card p-5">
+        <div class="text-xs uppercase tracking-wider text-allot-500 font-semibold">Questions &amp; discussion</div>
+        <div class="mt-1 font-bold text-allot-900">Teams channel</div>
+        <div class="text-sm text-allot-600">AI Champions - Training</div>
+      </div>
+      <div class="card p-5">
+        <div class="text-xs uppercase tracking-wider text-allot-500 font-semibold">General IT</div>
+        <div class="mt-1 font-bold text-allot-900">IT Service Desk</div>
+        <div class="text-sm text-allot-600">Laptop, VPN, login — <em>not</em> AI licenses.</div>
+      </div>
+      <div class="card p-5">
+        <div class="text-xs uppercase tracking-wider text-allot-500 font-semibold">Security questions</div>
+        <div class="mt-1 font-bold text-allot-900">AppSec team</div>
+        <div class="text-sm text-allot-600">Plus the AI program lead for policy edge cases.</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t border-allot-100 pt-6 pb-10 text-sm text-allot-500 flex items-center justify-between flex-wrap gap-3">
+    <div>Program lead: <span class="text-allot-700 font-semibold">Philip Kramer</span> · AI Enablement &amp; Standards</div>
+    <div>2026 Q2 AI Champion cohort · See you on 29 April</div>
+  </footer>
+</main>
+
+<script>
+  // Countdown to Day 1: Wed 29 Apr 2026, 10:00 IL (UTC+3)
+  const target = new Date('2026-04-29T10:00:00+03:00').getTime();
+  const dEl = document.getElementById('cd-days');
+  const hEl = document.getElementById('cd-hours');
+  const mEl = document.getElementById('cd-mins');
+  const sEl = document.getElementById('cd-secs');
+  function tick(){
+    const now = Date.now();
+    let diff = Math.max(0, target - now);
+    const days = Math.floor(diff / 86400000); diff -= days*86400000;
+    const hrs  = Math.floor(diff / 3600000);  diff -= hrs*3600000;
+    const mins = Math.floor(diff / 60000);    diff -= mins*60000;
+    const secs = Math.floor(diff / 1000);
+    dEl.textContent = days;
+    hEl.textContent = String(hrs).padStart(2,'0');
+    mEl.textContent = String(mins).padStart(2,'0');
+    sEl.textContent = String(secs).padStart(2,'0');
+  }
+  tick(); setInterval(tick, 1000);
+
+  // Persist pre-work checkboxes
+  const KEY = 'aiChampionsGetReady/v1';
+  const saved = JSON.parse(localStorage.getItem(KEY) || '{}');
+  document.querySelectorAll('.pw-step input[type=checkbox]').forEach(b => {
+    if (saved[b.id]) b.checked = true;
+    b.addEventListener('change', () => {
+      saved[b.id] = b.checked;
+      localStorage.setItem(KEY, JSON.stringify(saved));
+    });
+  });
+</script>
+</body>
+</html>

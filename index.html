@@ -198,6 +198,7 @@
     </div>
     <nav class="hidden md:flex space-x-6 text-sm font-medium text-gray-600">
       <button onclick="showTab('home')" class="nav-btn hover:text-blue-600 transition pb-1" id="btn-home"><i class="fas fa-home mr-1"></i> Home</button>
+      <button onclick="showTab('getready')" class="nav-btn hover:text-blue-600 transition pb-1" id="btn-getready"><i class="fas fa-clipboard-check mr-1"></i> Get Ready</button>
       <button onclick="showTab('prework')" class="nav-btn hover:text-blue-600 transition pb-1" id="btn-prework"><i class="fas fa-book-open mr-1"></i> Pre-Work</button>
       <button onclick="showTab('workshop')" class="nav-btn hover:text-blue-600 transition pb-1" id="btn-workshop"><i class="fas fa-chalkboard-teacher mr-1"></i> Workshop</button>
       <button onclick="showTab('exam')" class="nav-btn hover:text-blue-600 transition pb-1" id="btn-exam"><i class="fas fa-award mr-1"></i> Certification Exam</button>
@@ -210,6 +211,7 @@
   <div class="md:hidden border-t bg-white">
     <div class="max-w-7xl mx-auto px-4 py-2 flex overflow-x-auto gap-2 text-xs">
       <button onclick="showTab('home')" class="nav-btn px-3 py-2 whitespace-nowrap rounded-md" id="btn-home-m">Home</button>
+      <button onclick="showTab('getready')" class="nav-btn px-3 py-2 whitespace-nowrap rounded-md" id="btn-getready-m">Get Ready</button>
       <button onclick="showTab('prework')" class="nav-btn px-3 py-2 whitespace-nowrap rounded-md" id="btn-prework-m">Pre-Work</button>
       <button onclick="showTab('workshop')" class="nav-btn px-3 py-2 whitespace-nowrap rounded-md" id="btn-workshop-m">Workshop</button>
       <button onclick="showTab('exam')" class="nav-btn px-3 py-2 whitespace-nowrap rounded-md" id="btn-exam-m">Certification</button>
@@ -428,6 +430,360 @@
         <i class="fas fa-chalkboard-teacher text-allot-700 mb-2"></i>
         <h4 class="font-bold text-sm mb-1">Trainer</h4>
         <p class="text-xs text-gray-600">Run the 60-min local workshop &amp; mentor 1:1.</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- =========================================================== -->
+<!-- GET READY -->
+<!-- =========================================================== -->
+<section id="tab-getready" class="tab-content hidden space-y-8">
+
+  <!-- Intro -->
+  <div>
+    <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-crimson-500 mb-3">
+      <span class="w-8 h-[2px] allot-gradient-bg rounded-full"></span>
+      Welcome, Champion
+    </div>
+    <h2 class="brand-display text-3xl md:text-4xl font-extrabold text-allot-900 leading-tight">
+      You're in. Here's how to <span class="allot-gradient-text">get ready</span>.
+    </h2>
+    <p class="mt-4 text-gray-600 max-w-3xl text-lg">
+      Over two days you'll move from <span class="font-semibold text-gray-900">using AI well yourself</span>
+      to <span class="font-semibold text-gray-900">leading AI adoption in your team</span>.
+      This page is your pre-flight checklist — skim it now, act on it this week.
+    </p>
+  </div>
+
+  <!-- Pre-work summary with checkboxes -->
+  <div class="bg-white p-6 md:p-8 rounded-xl border border-gray-100 shadow-sm">
+    <div class="flex items-baseline justify-between flex-wrap gap-3 mb-4">
+      <h3 class="text-2xl font-bold">Your pre-work — 2.5 hours, before Day 1</h3>
+      <span class="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-xs font-bold"><i class="fas fa-exclamation-triangle mr-1"></i>Start now · tool access takes 2–3 days</span>
+    </div>
+    <p class="text-gray-600 max-w-3xl mb-5">Budget ~2.5 hours across this week. The full instructions live in the <button onclick="showTab('prework')" class="text-crimson-600 hover:text-crimson-700 font-semibold underline">Pre-Work tab</button> — the five steps below are your map.</p>
+    <div class="divide-y divide-gray-100">
+      <div class="flex gap-4 py-4 items-start">
+        <div class="flex-shrink-0 w-10 h-10 rounded-lg allot-gradient-bg flex items-center justify-center text-white brand-display font-extrabold">1</div>
+        <div class="flex-1">
+          <div class="font-bold text-gray-900">Tool setup &amp; access <span class="text-xs font-normal text-gray-500 ml-1">· 30 min · do this FIRST</span></div>
+          <p class="text-sm text-gray-600 mt-1">Verify you can log in to Claude. No access? Email Philip Kramer (<span class="font-semibold">pkramer@allot.com</span>) with subject "AI Tools License Request" — <em>not</em> IT Service Desk.</p>
+        </div>
+      </div>
+      <div class="flex gap-4 py-4 items-start">
+        <div class="flex-shrink-0 w-10 h-10 rounded-lg allot-gradient-bg flex items-center justify-center text-white brand-display font-extrabold">2</div>
+        <div class="flex-1">
+          <div class="font-bold text-gray-900">AI foundations — core concepts <span class="text-xs font-normal text-gray-500 ml-1">· 45 min</span></div>
+          <p class="text-sm text-gray-600 mt-1">LLM behavior, terminology, and — most importantly — the <span class="font-semibold">Data Classification table</span>. You'll teach that table to your team, so learn it cold.</p>
+        </div>
+      </div>
+      <div class="flex gap-4 py-4 items-start">
+        <div class="flex-shrink-0 w-10 h-10 rounded-lg allot-gradient-bg flex items-center justify-center text-white brand-display font-extrabold">3</div>
+        <div class="flex-1">
+          <div class="font-bold text-gray-900">First steps with AI — two exercises <span class="text-xs font-normal text-gray-500 ml-1">· 30 min · outputs come to Day 1</span></div>
+          <p class="text-sm text-gray-600 mt-1">Draft a prompt using the Inigo 4-part frame, then apply V-C-A-F to a factual question in your domain.</p>
+        </div>
+      </div>
+      <div class="flex gap-4 py-4 items-start">
+        <div class="flex-shrink-0 w-10 h-10 rounded-lg allot-gradient-bg flex items-center justify-center text-white brand-display font-extrabold">4</div>
+        <div class="flex-1">
+          <div class="font-bold text-gray-900">Security sandbox — sanitization challenge <span class="text-xs font-normal text-gray-500 ml-1">· 15 min</span></div>
+          <p class="text-sm text-gray-600 mt-1">The "Firehawk transcript" exercise. Bring your sanitized version on Day 1 — we'll debrief common mistakes.</p>
+        </div>
+      </div>
+      <div class="flex gap-4 py-4 items-start">
+        <div class="flex-shrink-0 w-10 h-10 rounded-lg allot-gradient-bg flex items-center justify-center text-white brand-display font-extrabold">5</div>
+        <div class="flex-1">
+          <div class="font-bold text-gray-900">Domain deep-dive — pick one <span class="text-xs font-normal text-gray-500 ml-1">· 30 min</span></div>
+          <p class="text-sm text-gray-600 mt-1">R&amp;D: unit test with V-C-A-F. Product/Business: user story with V-C-A-F. Security: CVE explained in plain language with V-C-A-F.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 1 / Day 2 at a glance -->
+  <div>
+    <div class="flex items-baseline justify-between flex-wrap gap-3 mb-4">
+      <h3 class="text-2xl font-bold">Your 2 days at a glance</h3>
+      <button onclick="showTab('workshop')" class="text-sm text-crimson-600 hover:text-crimson-700 font-semibold">See the full agenda <i class="fas fa-arrow-right ml-1"></i></button>
+    </div>
+
+    <!-- Legend -->
+    <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-4 mb-4">
+      <div class="text-xs uppercase tracking-wider text-gray-500 font-bold mb-2.5">Session types</div>
+      <div class="flex flex-wrap gap-2">
+        <span class="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-wider font-bold bg-gray-100 text-gray-700 px-2 py-1 rounded"><i class="fas fa-users"></i>Plenary</span>
+        <span class="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-wider font-bold bg-blue-100 text-blue-800 px-2 py-1 rounded"><i class="fas fa-tv"></i>Demo</span>
+        <span class="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-wider font-bold bg-amber-100 text-amber-800 px-2 py-1 rounded"><i class="fas fa-keyboard"></i>Hands-on</span>
+        <span class="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-wider font-bold bg-pink-100 text-pink-700 px-2 py-1 rounded"><i class="fas fa-people-arrows"></i>Pair work</span>
+        <span class="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-wider font-bold bg-purple-100 text-purple-700 px-2 py-1 rounded"><i class="fas fa-comments"></i>Group work</span>
+        <span class="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-wider font-bold bg-gray-900 text-white px-2 py-1 rounded"><i class="fas fa-flask"></i>Lab</span>
+        <span class="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-wider font-bold bg-green-100 text-green-800 px-2 py-1 rounded"><i class="fas fa-masks-theater"></i>Roleplay</span>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-5">
+      <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+        <div class="p-5 border-b border-gray-100 flex items-center justify-between">
+          <div>
+            <div class="text-xs uppercase tracking-wider text-crimson-600 font-bold">Day 1 · Wed 29 Apr</div>
+            <h4 class="brand-display text-lg font-bold mt-1">Foundations &amp; Personal Capability</h4>
+          </div>
+          <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-bold">10:00–18:00 IL</span>
+        </div>
+        <div class="text-sm">
+          <div class="grid grid-cols-[110px_1fr] gap-3 px-5 py-3 border-t border-gray-50">
+            <div class="font-bold brand-display text-gray-900">10:00–10:30</div>
+            <div>
+              <div><span class="font-semibold">Welcome</span> &amp; the Champion role — the five hats</div>
+              <div class="mt-1.5 flex flex-wrap gap-1"><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-gray-100 text-gray-700 px-2 py-0.5 rounded"><i class="fas fa-users"></i>Plenary</span></div>
+            </div>
+          </div>
+          <div class="grid grid-cols-[110px_1fr] gap-3 px-5 py-3 border-t border-gray-50">
+            <div class="font-bold brand-display text-gray-900">10:30–11:30</div>
+            <div>
+              <div><span class="font-semibold">Foundations &amp; Friction-Busters</span> — model selection, Skills / MEMORY.md preview</div>
+              <div class="mt-1.5 flex flex-wrap gap-1"><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-gray-100 text-gray-700 px-2 py-0.5 rounded"><i class="fas fa-users"></i>Plenary</span><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-blue-100 text-blue-800 px-2 py-0.5 rounded"><i class="fas fa-tv"></i>Demo</span></div>
+            </div>
+          </div>
+          <div class="grid grid-cols-[110px_1fr] gap-3 px-5 py-2 border-t border-gray-50 bg-gray-50 italic text-gray-500"><div class="font-medium">11:30–11:45</div><div>Break</div></div>
+          <div class="grid grid-cols-[110px_1fr] gap-3 px-5 py-3 border-t border-gray-50">
+            <div class="font-bold brand-display text-gray-900">11:45–13:00</div>
+            <div>
+              <div><span class="font-semibold">Prompt Anatomy</span> — the Inigo 4-part frame, pair rewrite</div>
+              <div class="mt-1.5 flex flex-wrap gap-1"><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-pink-100 text-pink-700 px-2 py-0.5 rounded"><i class="fas fa-people-arrows"></i>Pair work</span><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-purple-100 text-purple-700 px-2 py-0.5 rounded"><i class="fas fa-comments"></i>Group work</span></div>
+            </div>
+          </div>
+          <div class="grid grid-cols-[110px_1fr] gap-3 px-5 py-2 border-t border-gray-50 bg-gray-50 italic text-gray-500"><div class="font-medium">13:00–14:00</div><div>Lunch</div></div>
+          <div class="grid grid-cols-[110px_1fr] gap-3 px-5 py-3 border-t border-gray-50">
+            <div class="font-bold brand-display text-gray-900">14:00–15:15</div>
+            <div>
+              <div><span class="font-semibold">V-C-A-F</span> — the Trust Protocol, hallucination demo, sanitization debrief</div>
+              <div class="mt-1.5 flex flex-wrap gap-1"><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-blue-100 text-blue-800 px-2 py-0.5 rounded"><i class="fas fa-tv"></i>Demo</span><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-purple-100 text-purple-700 px-2 py-0.5 rounded"><i class="fas fa-comments"></i>Group work</span></div>
+            </div>
+          </div>
+          <div class="grid grid-cols-[110px_1fr] gap-3 px-5 py-2 border-t border-gray-50 bg-gray-50 italic text-gray-500"><div class="font-medium">15:15–15:30</div><div>Break</div></div>
+          <div class="grid grid-cols-[110px_1fr] gap-3 px-5 py-3 border-t border-gray-50">
+            <div class="font-bold brand-display text-gray-900">15:30–17:00</div>
+            <div>
+              <div><span class="font-semibold">Lab</span> — prompt chaining on real work + red-team swap</div>
+              <div class="mt-1.5 flex flex-wrap gap-1"><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-gray-900 text-white px-2 py-0.5 rounded"><i class="fas fa-flask"></i>Lab</span><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-pink-100 text-pink-700 px-2 py-0.5 rounded"><i class="fas fa-people-arrows"></i>Pair work</span></div>
+            </div>
+          </div>
+          <div class="grid grid-cols-[110px_1fr] gap-3 px-5 py-2 border-t border-gray-50 bg-gray-50 italic text-gray-500"><div class="font-medium">17:00–17:15</div><div>Break</div></div>
+          <div class="grid grid-cols-[110px_1fr] gap-3 px-5 py-3 border-t border-gray-50">
+            <div class="font-bold brand-display text-gray-900">17:15–18:00</div>
+            <div>
+              <div><span class="font-semibold">Feasibility vs. Impact</span> + pick your capstone problem</div>
+              <div class="mt-1.5 flex flex-wrap gap-1"><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-amber-100 text-amber-800 px-2 py-0.5 rounded"><i class="fas fa-keyboard"></i>Hands-on</span><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-pink-100 text-pink-700 px-2 py-0.5 rounded"><i class="fas fa-people-arrows"></i>Pair work</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+        <div class="p-5 border-b border-gray-100 flex items-center justify-between">
+          <div>
+            <div class="text-xs uppercase tracking-wider text-red2-500 font-bold">Day 2 · Mon 4 May</div>
+            <h4 class="brand-display text-lg font-bold mt-1">Advanced Skills &amp; Champion Leadership</h4>
+          </div>
+          <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-bold">10:00–18:00 IL</span>
+        </div>
+        <div class="text-sm">
+          <div class="grid grid-cols-[110px_1fr] gap-3 px-5 py-3 border-t border-gray-50">
+            <div class="font-bold brand-display text-gray-900">10:00–11:30</div>
+            <div>
+              <div><span class="font-semibold">Advanced Workflows</span> — align first, then Track A / Track B labs</div>
+              <div class="mt-1.5 flex flex-wrap gap-1"><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-gray-100 text-gray-700 px-2 py-0.5 rounded"><i class="fas fa-users"></i>Plenary</span><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-gray-900 text-white px-2 py-0.5 rounded"><i class="fas fa-flask"></i>Lab</span></div>
+            </div>
+          </div>
+          <div class="grid grid-cols-[110px_1fr] gap-3 px-5 py-2 border-t border-gray-50 bg-gray-50 italic text-gray-500"><div class="font-medium">11:30–11:45</div><div>Break</div></div>
+          <div class="grid grid-cols-[110px_1fr] gap-3 px-5 py-3 border-t border-gray-50">
+            <div class="font-bold brand-display text-gray-900">11:45–13:00</div>
+            <div>
+              <div><span class="font-semibold">Responsible AI</span>, security, ethics &amp; live incident drill</div>
+              <div class="mt-1.5 flex flex-wrap gap-1"><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-gray-100 text-gray-700 px-2 py-0.5 rounded"><i class="fas fa-users"></i>Plenary</span><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-green-100 text-green-800 px-2 py-0.5 rounded"><i class="fas fa-masks-theater"></i>Roleplay</span></div>
+            </div>
+          </div>
+          <div class="grid grid-cols-[110px_1fr] gap-3 px-5 py-2 border-t border-gray-50 bg-gray-50 italic text-gray-500"><div class="font-medium">13:00–14:00</div><div>Lunch</div></div>
+          <div class="grid grid-cols-[110px_1fr] gap-3 px-5 py-3 border-t border-gray-50">
+            <div class="font-bold brand-display text-gray-900">14:00–15:30</div>
+            <div>
+              <div><span class="font-semibold">Champion Playbook</span> — workshops, handling resistance, metrics</div>
+              <div class="mt-1.5 flex flex-wrap gap-1"><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-gray-100 text-gray-700 px-2 py-0.5 rounded"><i class="fas fa-users"></i>Plenary</span><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-green-100 text-green-800 px-2 py-0.5 rounded"><i class="fas fa-masks-theater"></i>Roleplay</span></div>
+            </div>
+          </div>
+          <div class="grid grid-cols-[110px_1fr] gap-3 px-5 py-2 border-t border-gray-50 bg-gray-50 italic text-gray-500"><div class="font-medium">15:30–15:45</div><div>Break</div></div>
+          <div class="grid grid-cols-[110px_1fr] gap-3 px-5 py-3 border-t border-gray-50">
+            <div class="font-bold brand-display text-gray-900">15:45–17:15</div>
+            <div>
+              <div><span class="font-semibold">Capstone build</span> — design, build, test, present</div>
+              <div class="mt-1.5 flex flex-wrap gap-1"><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-gray-900 text-white px-2 py-0.5 rounded"><i class="fas fa-flask"></i>Lab</span><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-pink-100 text-pink-700 px-2 py-0.5 rounded"><i class="fas fa-people-arrows"></i>Pair work</span><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-purple-100 text-purple-700 px-2 py-0.5 rounded"><i class="fas fa-comments"></i>Group work</span></div>
+            </div>
+          </div>
+          <div class="grid grid-cols-[110px_1fr] gap-3 px-5 py-3 border-t border-gray-50">
+            <div class="font-bold brand-display text-gray-900">17:15–18:00</div>
+            <div>
+              <div><span class="font-semibold">Wrap-up</span>, roadmap &amp; commitments</div>
+              <div class="mt-1.5 flex flex-wrap gap-1"><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-gray-100 text-gray-700 px-2 py-0.5 rounded"><i class="fas fa-users"></i>Plenary</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bring / Don't bring -->
+  <div>
+    <h3 class="text-2xl font-bold mb-4">What to bring — and what to leave out</h3>
+    <div class="grid md:grid-cols-2 gap-5">
+      <div class="bg-green-50 border border-green-200 rounded-xl p-6">
+        <h4 class="brand-display font-bold text-lg text-green-900 mb-3"><i class="fas fa-circle-check mr-2"></i>Bring on Day 1</h4>
+        <ul class="space-y-2.5 text-sm text-gray-800">
+          <li class="flex gap-3"><i class="fas fa-laptop text-green-700 mt-1"></i><span><span class="font-semibold">Your laptop</span> with approved AI tools already installed &amp; tested — don't install on the day of.</span></li>
+          <li class="flex gap-3"><i class="fas fa-folder-open text-green-700 mt-1"></i><span><span class="font-semibold">2–3 real work examples</span> sanitized per the Data Classification table.</span></li>
+          <li class="flex gap-3"><i class="fas fa-pen-to-square text-green-700 mt-1"></i><span>Your <span class="font-semibold">pre-work outputs</span>: Inigo prompt, V-C-A-F notes, sanitized Firehawk transcript, domain deep-dive artifact.</span></li>
+          <li class="flex gap-3"><i class="fas fa-lightbulb text-green-700 mt-1"></i><span><span class="font-semibold">A real problem</span> your team hits repeatedly — this becomes your capstone.</span></li>
+          <li class="flex gap-3"><i class="fas fa-headset text-green-700 mt-1"></i><span><span class="font-semibold">Headset</span> if you're joining remotely.</span></li>
+        </ul>
+      </div>
+      <div class="bg-pink-50 border border-pink-200 rounded-xl p-6">
+        <h4 class="brand-display font-bold text-lg text-crimson-700 mb-3"><i class="fas fa-circle-xmark mr-2"></i>Do not bring / do not paste</h4>
+        <ul class="space-y-2.5 text-sm text-gray-800">
+          <li class="flex gap-3"><i class="fas fa-ban text-crimson-600 mt-1"></i><span><span class="font-semibold">Credentials, API keys, tokens</span> — ever. Not in a prompt, not in a snippet.</span></li>
+          <li class="flex gap-3"><i class="fas fa-ban text-crimson-600 mt-1"></i><span><span class="font-semibold">Customer PII or raw customer data</span> — sanitize or synthesize first.</span></li>
+          <li class="flex gap-3"><i class="fas fa-ban text-crimson-600 mt-1"></i><span><span class="font-semibold">NDA-protected specs</span> or architecture marked Restricted.</span></li>
+          <li class="flex gap-3"><i class="fas fa-ban text-crimson-600 mt-1"></i><span>Unsanitized log or config files — strip secrets first.</span></li>
+          <li class="flex gap-3"><i class="fas fa-ban text-crimson-600 mt-1"></i><span><span class="font-semibold">A "just popping out" mindset</span> — labs &amp; pair work break if you leave mid-session.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Format & logistics -->
+  <div>
+    <h3 class="text-2xl font-bold mb-4">Format &amp; logistics</h3>
+    <div class="grid md:grid-cols-2 gap-5">
+      <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+        <div class="flex items-center gap-3 mb-2">
+          <i class="fas fa-building text-crimson-500 text-lg"></i>
+          <div class="brand-display font-bold text-gray-900">In-person · Israel</div>
+        </div>
+        <p class="text-sm text-gray-600">Hod HaSharon office training room, both days. Arrive by 09:45 for coffee &amp; setup. Coffee breaks and lunch provided.</p>
+      </div>
+      <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+        <div class="flex items-center gap-3 mb-2">
+          <i class="fas fa-video text-red2-500 text-lg"></i>
+          <div class="brand-display font-bold text-gray-900">Remote · EU &amp; India</div>
+        </div>
+        <p class="text-sm text-gray-600">Join via Teams — same link both days. Camera on, please. You'll be paired remote-with-remote for breakouts. Headset strongly recommended.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- After-training commitments -->
+  <div>
+    <h3 class="text-2xl font-bold mb-4">After the 2 days — what you'll commit to</h3>
+    <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+      <table class="w-full text-sm">
+        <thead class="bg-gray-50">
+          <tr>
+            <th class="text-left brand-display font-bold text-gray-700 px-4 py-3">Commitment</th>
+            <th class="text-left brand-display font-bold text-gray-700 px-4 py-3" style="width:180px">Deadline</th>
+            <th class="text-left brand-display font-bold text-gray-700 px-4 py-3" style="width:120px">Type</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100">
+          <tr>
+            <td class="px-4 py-3"><span class="font-semibold text-gray-900">Submit the AI Champion Certification Exam</span><div class="text-xs text-gray-500 mt-1">Five sections: Case Studies, Capstone, First Workshop, Prompt Library, Commitments.</div></td>
+            <td class="px-4 py-3 text-gray-700">Mon 11 May 2026, 10:00 IL</td>
+            <td class="px-4 py-3"><span class="bg-pink-100 text-pink-700 px-2 py-1 rounded text-xs font-bold">Required</span></td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3"><span class="font-semibold text-gray-900">Run your first local team workshop</span><div class="text-xs text-gray-500 mt-1">60 minutes. Template provided on Day 2.</div></td>
+            <td class="px-4 py-3 text-gray-700">Mon 18 May 2026</td>
+            <td class="px-4 py-3"><span class="bg-pink-100 text-pink-700 px-2 py-1 rounded text-xs font-bold">Required</span></td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3"><span class="font-semibold text-gray-900">Contribute 3+ prompts to the shared prompt library</span></td>
+            <td class="px-4 py-3 text-gray-700">Within 1 month</td>
+            <td class="px-4 py-3"><span class="bg-amber-100 text-amber-800 px-2 py-1 rounded text-xs font-bold">Expected</span></td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3"><span class="font-semibold text-gray-900">Document 5 AI use cases for your team</span></td>
+            <td class="px-4 py-3 text-gray-700">Within 1 month</td>
+            <td class="px-4 py-3"><span class="bg-amber-100 text-amber-800 px-2 py-1 rounded text-xs font-bold">Expected</span></td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3"><span class="font-semibold text-gray-900">Attend the bi-weekly Champion community sync</span></td>
+            <td class="px-4 py-3 text-gray-700">Ongoing</td>
+            <td class="px-4 py-3"><span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs font-bold">Routine</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div>
+    <h3 class="text-2xl font-bold mb-4">FAQ</h3>
+    <div class="bg-white rounded-xl border border-gray-100 shadow-sm divide-y divide-gray-100 overflow-hidden">
+      <details class="group">
+        <summary class="px-5 py-4 flex justify-between items-center font-semibold text-gray-900 hover:bg-gray-50"><span>Is the pre-work graded? What if I don't finish it?</span><i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition"></i></summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">No gating exam on pre-work — but skipping it makes Day 1 significantly harder because sessions build on what you've already tried. The only graded piece is the <span class="font-semibold">Certification Exam</span>, which comes <em>after</em> the 2 days.</div>
+      </details>
+      <details class="group">
+        <summary class="px-5 py-4 flex justify-between items-center font-semibold text-gray-900 hover:bg-gray-50"><span>I already use Claude every day. Do I still need to do the pre-work?</span><i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition"></i></summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Yes — the pre-work outputs (Inigo prompt, V-C-A-F notes, sanitized Firehawk transcript) are <em>inputs</em> to specific Day 1 exercises. You'll work on them, not redo them.</div>
+      </details>
+      <details class="group">
+        <summary class="px-5 py-4 flex justify-between items-center font-semibold text-gray-900 hover:bg-gray-50"><span>I can't get Claude access in time — what do I do?</span><i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition"></i></summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Email Philip Kramer (<span class="font-semibold">pkramer@allot.com</span>) with subject "AI Tools License Request" <span class="font-semibold">this week</span>. Do NOT route through IT Service Desk — that slows it down. License provisioning takes 2–3 business days.</div>
+      </details>
+      <details class="group">
+        <summary class="px-5 py-4 flex justify-between items-center font-semibold text-gray-900 hover:bg-gray-50"><span>Can I drop in for part of a day?</span><i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition"></i></summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">No. The format is pair work and labs that build on each other. Leaving mid-session breaks your partner's experience as well as your own. Block the full two days in your calendar — we've briefed your line manager.</div>
+      </details>
+      <details class="group">
+        <summary class="px-5 py-4 flex justify-between items-center font-semibold text-gray-900 hover:bg-gray-50"><span>What if my real work example contains sensitive data?</span><i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition"></i></summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Sanitize it. Replace customer names, IDs, credentials, and specifics with placeholders or synthetic equivalents. Pre-work Part 4 (the Firehawk exercise) is the drill for this — finish it before Day 1 and you'll know what "sanitized enough" looks like.</div>
+      </details>
+      <details class="group">
+        <summary class="px-5 py-4 flex justify-between items-center font-semibold text-gray-900 hover:bg-gray-50"><span>Will the sessions be recorded?</span><i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition"></i></summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Recording policy will be confirmed in your calendar invite closer to the date. Lab and capstone portions won't be recorded either way — too much live work, too much sensitive discussion.</div>
+      </details>
+      <details class="group">
+        <summary class="px-5 py-4 flex justify-between items-center font-semibold text-gray-900 hover:bg-gray-50"><span>What happens if I miss the certification deadline (11 May)?</span><i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition"></i></summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed">Reach out directly — a short extension can usually be arranged if you flag it early. Silently missing the deadline is the problem, not the delay itself.</div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Who to contact -->
+  <div>
+    <h3 class="text-2xl font-bold mb-4">Who to contact</h3>
+    <div class="grid md:grid-cols-4 gap-4">
+      <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+        <div class="text-xs uppercase tracking-wider text-gray-500 font-bold">AI tool access &amp; licenses</div>
+        <div class="mt-1 brand-display font-bold text-gray-900">Philip Kramer</div>
+        <a href="mailto:pkramer@allot.com" class="text-sm text-crimson-600 hover:text-crimson-700">pkramer@allot.com</a>
+      </div>
+      <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+        <div class="text-xs uppercase tracking-wider text-gray-500 font-bold">Questions &amp; discussion</div>
+        <div class="mt-1 brand-display font-bold text-gray-900">Teams channel</div>
+        <div class="text-sm text-gray-600">AI Champions - Training</div>
+      </div>
+      <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+        <div class="text-xs uppercase tracking-wider text-gray-500 font-bold">General IT</div>
+        <div class="mt-1 brand-display font-bold text-gray-900">IT Service Desk</div>
+        <div class="text-sm text-gray-600">Laptop, VPN, login — <em>not</em> AI licenses.</div>
+      </div>
+      <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+        <div class="text-xs uppercase tracking-wider text-gray-500 font-bold">Security questions</div>
+        <div class="mt-1 brand-display font-bold text-gray-900">AI Enablement program lead</div>
+        <div class="text-sm text-gray-600">Philip Kramer — for policy edge cases and sanitization calls.</div>
       </div>
     </div>
   </div>
@@ -740,6 +1096,20 @@
     </div>
   </div>
 
+  <!-- Session type legend -->
+  <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-4">
+    <div class="text-xs uppercase tracking-wider text-gray-500 font-bold mb-2.5">Session types</div>
+    <div class="flex flex-wrap gap-2">
+      <span class="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-wider font-bold bg-gray-100 text-gray-700 px-2 py-1 rounded"><i class="fas fa-users"></i>Plenary</span>
+      <span class="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-wider font-bold bg-blue-100 text-blue-800 px-2 py-1 rounded"><i class="fas fa-tv"></i>Demo</span>
+      <span class="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-wider font-bold bg-amber-100 text-amber-800 px-2 py-1 rounded"><i class="fas fa-keyboard"></i>Hands-on</span>
+      <span class="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-wider font-bold bg-pink-100 text-pink-700 px-2 py-1 rounded"><i class="fas fa-people-arrows"></i>Pair work</span>
+      <span class="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-wider font-bold bg-purple-100 text-purple-700 px-2 py-1 rounded"><i class="fas fa-comments"></i>Group work</span>
+      <span class="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-wider font-bold bg-gray-900 text-white px-2 py-1 rounded"><i class="fas fa-flask"></i>Lab</span>
+      <span class="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-wider font-bold bg-green-100 text-green-800 px-2 py-1 rounded"><i class="fas fa-masks-theater"></i>Roleplay</span>
+    </div>
+  </div>
+
   <!-- Day 1 -->
   <div id="day1-content" class="space-y-4">
     <div class="bg-blue-600 text-white p-5 rounded-xl">
@@ -759,6 +1129,7 @@
         <div class="flex-grow">
           <h4 class="font-bold">Welcome &amp; the Champion Role</h4>
           <p class="text-sm text-gray-600">Audience framing, the five hats, the Champion&harr;Team bridge.</p>
+          <div class="mt-2 flex flex-wrap gap-1"><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-gray-100 text-gray-700 px-2 py-0.5 rounded"><i class="fas fa-users"></i>Plenary</span></div>
         </div>
         <i class="fas fa-chevron-down text-gray-400 mt-1"></i>
       </summary>
@@ -778,6 +1149,7 @@
         <div class="flex-grow">
           <h4 class="font-bold">Foundations &amp; Friction-Busters</h4>
           <p class="text-sm text-gray-600">LLM refresher + model/context selection + Skills &amp; <code>MEMORY.md</code> preview.</p>
+          <div class="mt-2 flex flex-wrap gap-1"><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-gray-100 text-gray-700 px-2 py-0.5 rounded"><i class="fas fa-users"></i>Plenary</span><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-blue-100 text-blue-800 px-2 py-0.5 rounded"><i class="fas fa-tv"></i>Demo</span></div>
         </div>
         <i class="fas fa-chevron-down text-gray-400 mt-1"></i>
       </summary>
@@ -801,6 +1173,7 @@
         <div class="flex-grow">
           <h4 class="font-bold">Prompt Anatomy &mdash; The Inigo Frame</h4>
           <p class="text-sm text-gray-600">4 parts (+ optional constraints). Pair rewrite of a pre-work prompt.</p>
+          <div class="mt-2 flex flex-wrap gap-1"><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-pink-100 text-pink-700 px-2 py-0.5 rounded"><i class="fas fa-people-arrows"></i>Pair work</span><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-purple-100 text-purple-700 px-2 py-0.5 rounded"><i class="fas fa-comments"></i>Group work</span></div>
         </div>
         <i class="fas fa-chevron-down text-gray-400 mt-1"></i>
       </summary>
@@ -824,6 +1197,7 @@
         <div class="flex-grow">
           <h4 class="font-bold">V-C-A-F &mdash; The Trust Protocol</h4>
           <p class="text-sm text-gray-600">Live hallucination demo + Fairness deep-dive + Firehawk sanitization debrief.</p>
+          <div class="mt-2 flex flex-wrap gap-1"><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-blue-100 text-blue-800 px-2 py-0.5 rounded"><i class="fas fa-tv"></i>Demo</span><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-purple-100 text-purple-700 px-2 py-0.5 rounded"><i class="fas fa-comments"></i>Group work</span></div>
         </div>
         <i class="fas fa-chevron-down text-gray-400 mt-1"></i>
       </summary>
@@ -847,6 +1221,7 @@
         <div class="flex-grow">
           <h4 class="font-bold">Lab &mdash; Prompt Chaining on Real Work</h4>
           <p class="text-sm text-gray-600">Extract &rarr; Analyze &rarr; Format. 3-step chain on a real problem you brought.</p>
+          <div class="mt-2 flex flex-wrap gap-1"><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-gray-900 text-white px-2 py-0.5 rounded"><i class="fas fa-flask"></i>Lab</span><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-pink-100 text-pink-700 px-2 py-0.5 rounded"><i class="fas fa-people-arrows"></i>Pair work</span></div>
         </div>
         <i class="fas fa-chevron-down text-gray-400 mt-1"></i>
       </summary>
@@ -870,6 +1245,7 @@
         <div class="flex-grow">
           <h4 class="font-bold">Feasibility vs. Impact + Capstone Problem ID</h4>
           <p class="text-sm text-gray-600">Map pre-work use cases. Pick a Day-2 capstone target. Write the problem statement.</p>
+          <div class="mt-2 flex flex-wrap gap-1"><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-amber-100 text-amber-800 px-2 py-0.5 rounded"><i class="fas fa-keyboard"></i>Hands-on</span><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-pink-100 text-pink-700 px-2 py-0.5 rounded"><i class="fas fa-people-arrows"></i>Pair work</span></div>
         </div>
         <i class="fas fa-chevron-down text-gray-400 mt-1"></i>
       </summary>
@@ -900,6 +1276,7 @@
         <div class="flex-grow">
           <h4 class="font-bold">Advanced Prompting &amp; Domain Workflows (Tracks A / B)</h4>
           <p class="text-sm text-gray-600">System prompts &middot; long documents &middot; Skills &middot; <code>MEMORY.md</code> &middot; parallel tracks.</p>
+          <div class="mt-2 flex flex-wrap gap-1"><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-gray-100 text-gray-700 px-2 py-0.5 rounded"><i class="fas fa-users"></i>Plenary</span><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-gray-900 text-white px-2 py-0.5 rounded"><i class="fas fa-flask"></i>Lab</span></div>
         </div>
         <i class="fas fa-chevron-down text-gray-400 mt-1"></i>
       </summary>
@@ -951,6 +1328,7 @@
         <div class="flex-grow">
           <h4 class="font-bold">Responsible AI, Security, Ethics &amp; Incident Drill</h4>
           <p class="text-sm text-gray-600">Data classification refresher, IP &amp; compliance, ethics deep-dive, live fire drill.</p>
+          <div class="mt-2 flex flex-wrap gap-1"><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-gray-100 text-gray-700 px-2 py-0.5 rounded"><i class="fas fa-users"></i>Plenary</span><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-green-100 text-green-800 px-2 py-0.5 rounded"><i class="fas fa-masks-theater"></i>Roleplay</span></div>
         </div>
         <i class="fas fa-chevron-down text-gray-400 mt-1"></i>
       </summary>
@@ -974,6 +1352,7 @@
         <div class="flex-grow">
           <h4 class="font-bold">Champion Playbook &mdash; Workshops, Resistance, Metrics</h4>
           <p class="text-sm text-gray-600">60-min local workshop template, prompt library, resistance roleplay, analytics.</p>
+          <div class="mt-2 flex flex-wrap gap-1"><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-gray-100 text-gray-700 px-2 py-0.5 rounded"><i class="fas fa-users"></i>Plenary</span><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-green-100 text-green-800 px-2 py-0.5 rounded"><i class="fas fa-masks-theater"></i>Roleplay</span></div>
         </div>
         <i class="fas fa-chevron-down text-gray-400 mt-1"></i>
       </summary>
@@ -998,6 +1377,7 @@
         <div class="flex-grow">
           <h4 class="font-bold">Capstone &mdash; Design, Build, Present</h4>
           <p class="text-sm text-gray-600">Refine the Day 1 problem. Build the workflow. Present to the group.</p>
+          <div class="mt-2 flex flex-wrap gap-1"><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-gray-900 text-white px-2 py-0.5 rounded"><i class="fas fa-flask"></i>Lab</span><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-pink-100 text-pink-700 px-2 py-0.5 rounded"><i class="fas fa-people-arrows"></i>Pair work</span><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-purple-100 text-purple-700 px-2 py-0.5 rounded"><i class="fas fa-comments"></i>Group work</span></div>
         </div>
         <i class="fas fa-chevron-down text-gray-400 mt-1"></i>
       </summary>
@@ -1018,13 +1398,14 @@
         <div class="flex-grow">
           <h4 class="font-bold">Wrap-Up &middot; Roadmap &middot; Next Steps</h4>
           <p class="text-sm text-gray-600">Certification, commitments, 30-day roadmap, support channels, feedback survey.</p>
+          <div class="mt-2 flex flex-wrap gap-1"><span class="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold bg-gray-100 text-gray-700 px-2 py-0.5 rounded"><i class="fas fa-users"></i>Plenary</span></div>
         </div>
         <i class="fas fa-chevron-down text-gray-400 mt-1"></i>
       </summary>
       <div class="mt-4 pl-28 text-sm text-gray-700 space-y-2">
         <p><strong>Commitments:</strong> first local workshop within 2 weeks &middot; 3 prompts to shared library within 1 month &middot; 5 team use cases documented within 1 month.</p>
         <p><strong>Champion roadmap:</strong> Weeks 1&ndash;2, Month 1, Months 2&ndash;3, Months 4&ndash;6, ongoing.</p>
-        <p><strong>Support:</strong> "AI Champions - Training" Teams channel, IT Service Desk, AppSec, Confluence AI Champions space.</p>
+        <p><strong>Support:</strong> "AI Champions - Training" Teams channel, IT Service Desk, AI Enablement program lead, Confluence AI Champions space.</p>
       </div>
     </details>
   </div>

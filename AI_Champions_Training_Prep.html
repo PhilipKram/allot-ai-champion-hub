@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Champions — Training Preparation</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          allot: {
+            50:'#f5f5f6',100:'#e9e9eb',200:'#d0d0d4',300:'#acacb2',400:'#7b7b83',
+            500:'#5b5b63',600:'#45454c',700:'#3f3f46',800:'#2e2e33',900:'#1e1e22',950:'#111113'
+          },
+          crimson: {50:'#fdecf1',100:'#fbd4df',200:'#f7a2b8',500:'#cb004b',600:'#a8003e',700:'#850030'},
+          red2:    {50:'#fdeaea',100:'#fbd0d0',500:'#e30613',600:'#b9040f'},
+          brandorange:{50:'#fef3e6',100:'#fde1c0',500:'#f18a00',600:'#c97100'}
+        }
+      }
+    }
+  };
+</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Barlow:wght@600;700;800&display=swap');
+  :root {
+    --allot-charcoal:#3f3f46;
+    --allot-charcoal-deep:#1e1e22;
+    --allot-crimson:#cb004b;
+    --allot-red:#e30613;
+    --allot-orange:#f18a00;
+    --allot-gradient:linear-gradient(90deg,#cb004b 0%,#e30613 50%,#f18a00 100%);
+  }
+  body{
+    font-family:'Inter',sans-serif;
+    background:
+      radial-gradient(1200px 600px at 100% -10%, rgba(241,138,0,0.05), transparent 60%),
+      radial-gradient(900px 500px at -10% 110%, rgba(203,0,75,0.04), transparent 60%),
+      #f7f7f8;
+    color:#1e1e22;
+  }
+  h1,h2,h3,.brand-display{font-family:'Barlow','Inter',sans-serif;letter-spacing:-0.01em}
+  .gradient-bar{background:var(--allot-gradient)}
+  .gradient-text{background:var(--allot-gradient);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .card{background:#fff;border:1px solid #e9e9eb;border-radius:14px}
+  .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#f5f5f6;border:1px solid #e9e9eb;border-radius:6px;padding:1px 6px;font-size:.82em;color:#3f3f46}
+  .chip{display:inline-flex;align-items:center;gap:6px;font-size:.75rem;font-weight:600;padding:3px 10px;border-radius:999px;border:1px solid transparent}
+  .chip-done{background:#ecfdf5;color:#065f46;border-color:#a7f3d0}
+  .chip-risk{background:#fef3e6;color:#9e5800;border-color:#fde1c0}
+  .chip-blocked{background:#fdecf1;color:#850030;border-color:#f7a2b8}
+  .chip-info{background:#f5f5f6;color:#45454c;border-color:#d0d0d4}
+  details[open] summary .chev{transform:rotate(90deg)}
+  summary{list-style:none;cursor:pointer}
+  summary::-webkit-details-marker{display:none}
+  .chev{transition:transform .15s ease}
+  .row{display:grid;grid-template-columns:70px 1fr auto;gap:14px;align-items:start;padding:12px 14px;border-top:1px solid #f1f1f2}
+  .row:first-child{border-top:0}
+  .row .time{font-family:'Barlow','Inter',sans-serif;font-weight:700;color:#1e1e22;font-size:.95rem;padding-top:1px}
+  .row .title{font-weight:600;color:#1e1e22}
+  .row .desc{font-size:.88rem;color:#5b5b63;margin-top:2px}
+  .risk-tag{font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:2px 8px;border-radius:6px}
+  .risk-high{background:#fdecf1;color:#850030}
+  .risk-med{background:#fef3e6;color:#9e5800}
+  .risk-low{background:#ecfdf5;color:#065f46}
+  .check-item{display:flex;gap:12px;align-items:flex-start;padding:10px 12px;border-top:1px solid #f1f1f2}
+  .check-item:first-child{border-top:0}
+  .check-item input[type=checkbox]{appearance:none;width:18px;height:18px;border:1.5px solid #acacb2;border-radius:5px;flex:0 0 18px;margin-top:2px;cursor:pointer;position:relative;background:#fff}
+  .check-item input[type=checkbox]:checked{background:var(--allot-gradient);border-color:transparent}
+  .check-item input[type=checkbox]:checked::after{content:'\f00c';font-family:'Font Awesome 6 Free';font-weight:900;color:#fff;font-size:11px;position:absolute;left:3px;top:1px}
+  .check-item input[type=checkbox]:checked + label .ci-title{text-decoration:line-through;color:#7b7b83}
+  .ci-title{font-weight:600;color:#1e1e22}
+  .ci-note{font-size:.83rem;color:#5b5b63;display:block;margin-top:2px}
+  .count-pill{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:.85rem;color:#1e1e22;background:#fff;border:1px solid #e9e9eb;padding:5px 12px;border-radius:999px}
+  .count-pill .dot{width:8px;height:8px;border-radius:50%;background:var(--allot-gradient)}
+  table.clean{width:100%;border-collapse:collapse;font-size:.9rem}
+  table.clean th{text-align:left;font-family:'Barlow','Inter',sans-serif;font-weight:700;color:#3f3f46;padding:10px 12px;border-bottom:1px solid #e9e9eb;background:#fafafb}
+  table.clean td{padding:10px 12px;border-bottom:1px solid #f1f1f2;vertical-align:top;color:#2e2e33}
+  table.clean tr:last-child td{border-bottom:0}
+  .owner{display:inline-flex;align-items:center;gap:6px;font-weight:600;color:#3f3f46;font-size:.82rem}
+  .owner .ow-dot{width:6px;height:6px;border-radius:50%;background:#cb004b}
+  .print-only{display:none}
+  @media print{
+    body{background:#fff}
+    .no-print{display:none!important}
+    .print-only{display:block}
+    .card{box-shadow:none!important;border:1px solid #e9e9eb}
+  }
+</style>
+</head>
+<body class="min-h-screen">
+
+<header class="border-b border-allot-100 bg-white/70 backdrop-blur sticky top-0 z-10 no-print">
+  <div class="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <img src="assets/brand/allot-logo-tagline.svg" alt="Allot" class="h-6">
+      <span class="text-allot-300">|</span>
+      <span class="text-sm font-semibold text-allot-700">AI Enablement</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <a href="index.html" class="text-sm text-allot-600 hover:text-allot-900"><i class="fa-solid fa-arrow-left mr-1"></i>Hub</a>
+      <button onclick="window.print()" class="text-sm text-allot-600 hover:text-allot-900 border border-allot-200 rounded-lg px-3 py-1.5"><i class="fa-solid fa-print mr-1"></i>Print</button>
+    </div>
+  </div>
+  <div class="gradient-bar h-[3px] w-full"></div>
+</header>
+
+<main class="max-w-6xl mx-auto px-6 py-10">
+
+  <!-- HERO -->
+  <section class="mb-10">
+    <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-crimson-500 mb-3">
+      <span class="w-8 h-[2px] gradient-bar rounded-full"></span>
+      Internal working meeting · Program readiness
+    </div>
+    <h1 class="text-4xl md:text-5xl font-extrabold text-allot-900 leading-tight">
+      AI Champions <span class="gradient-text">Training Preparation</span>
+    </h1>
+    <p class="mt-4 text-allot-600 max-w-3xl text-lg">
+      T-9 readiness review for the 2026 Q2 AI Champion cohort. Confirm logistics, surface blockers,
+      lock the final agenda, and assign every open item an owner before Day 1 kicks off on
+      <span class="font-semibold text-allot-900">Wed 29 Apr 2026, 10:00 IL</span>.
+    </p>
+
+    <div class="grid md:grid-cols-4 gap-3 mt-8">
+      <div class="card p-4">
+        <div class="text-xs uppercase tracking-wider text-allot-500 font-semibold">Meeting date</div>
+        <div class="mt-1 text-allot-900 font-bold text-lg brand-display">Mon 20 Apr 2026</div>
+        <div class="text-sm text-allot-500">60 min · hybrid</div>
+      </div>
+      <div class="card p-4">
+        <div class="text-xs uppercase tracking-wider text-allot-500 font-semibold">Training Day 1</div>
+        <div class="mt-1 text-allot-900 font-bold text-lg brand-display">Wed 29 Apr 2026</div>
+        <div class="text-sm text-allot-500">9 days away · 10:00–18:00 IL</div>
+      </div>
+      <div class="card p-4">
+        <div class="text-xs uppercase tracking-wider text-allot-500 font-semibold">Training Day 2</div>
+        <div class="mt-1 text-allot-900 font-bold text-lg brand-display">Mon 4 May 2026</div>
+        <div class="text-sm text-allot-500">14 days away · 10:00–18:00 IL</div>
+      </div>
+      <div class="card p-4">
+        <div class="text-xs uppercase tracking-wider text-allot-500 font-semibold">Certification due</div>
+        <div class="mt-1 text-allot-900 font-bold text-lg brand-display">Mon 11 May 2026</div>
+        <div class="text-sm text-allot-500">10:00 IL · post-training</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OBJECTIVES -->
+  <section class="mb-10">
+    <div class="flex items-baseline justify-between mb-3">
+      <h2 class="text-2xl font-bold text-allot-900">Meeting objective &amp; desired outcomes</h2>
+      <span class="chip chip-info"><i class="fa-solid fa-bullseye"></i>Readiness gate</span>
+    </div>
+    <div class="card p-6">
+      <p class="text-allot-700 mb-4">
+        Walk out with a training program that is <span class="font-semibold text-allot-900">green across logistics, content, tooling, and people</span>
+        — or a clear owner and deadline for anything still amber or red.
+      </p>
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="border-l-4 border-crimson-500 pl-4">
+          <div class="text-xs font-semibold uppercase text-crimson-700">Outcome 1</div>
+          <div class="font-semibold text-allot-900 mt-1">Agenda locked</div>
+          <p class="text-sm text-allot-600 mt-1">Final Day 1 / Day 2 timing signed off; facilitators named per session; transitions rehearsed.</p>
+        </div>
+        <div class="border-l-4 border-red2-500 pl-4">
+          <div class="text-xs font-semibold uppercase text-red2-600">Outcome 2</div>
+          <div class="font-semibold text-allot-900 mt-1">Cohort ready</div>
+          <p class="text-sm text-allot-600 mt-1">Pre-work completion visible, access gaps resolved, hybrid setup confirmed for IL / EU / India.</p>
+        </div>
+        <div class="border-l-4 border-brandorange-500 pl-4">
+          <div class="text-xs font-semibold uppercase text-brandorange-600">Outcome 3</div>
+          <div class="font-semibold text-allot-900 mt-1">Risks de-risked</div>
+          <p class="text-sm text-allot-600 mt-1">Top 3 risks have mitigations and owners; decisions needed from sponsors are captured.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AGENDA -->
+  <section class="mb-10">
+    <div class="flex items-baseline justify-between mb-3">
+      <h2 class="text-2xl font-bold text-allot-900">Agenda — 60 min</h2>
+      <span class="text-sm text-allot-500"><i class="fa-regular fa-clock mr-1"></i>Chair: Philip Kramer</span>
+    </div>
+    <div class="card overflow-hidden">
+      <div class="row">
+        <div class="time">0:00</div>
+        <div>
+          <div class="title">Context &amp; objectives <span class="chip chip-info ml-2">5 min</span></div>
+          <div class="desc">Frame the meeting: T-9 readiness gate. Confirm attendees and quorum for decisions.</div>
+        </div>
+        <div class="owner"><span class="ow-dot"></span>Philip</div>
+      </div>
+      <div class="row">
+        <div class="time">0:05</div>
+        <div>
+          <div class="title">Cohort &amp; pre-work status <span class="chip chip-info ml-2">10 min</span></div>
+          <div class="desc">Walk the cohort list. Tool access, pre-work completion, sanitization exercise, 2–3 real examples in hand. Name any champion we need to chase by Thursday.</div>
+        </div>
+        <div class="owner"><span class="ow-dot"></span>Philip</div>
+      </div>
+      <div class="row">
+        <div class="time">0:15</div>
+        <div>
+          <div class="title">Logistics &amp; hybrid setup <span class="chip chip-info ml-2">10 min</span></div>
+          <div class="desc">Hod HaSharon room, Teams bridge for EU + India, breakout rooms, AV test, catering, printed handouts, room signage.</div>
+        </div>
+        <div class="owner"><span class="ow-dot"></span>Ops lead</div>
+      </div>
+      <div class="row">
+        <div class="time">0:25</div>
+        <div>
+          <div class="title">Content walk-through <span class="chip chip-info ml-2">15 min</span></div>
+          <div class="desc">Fast skim of Day 1 (Inigo, V-C-A-F, chaining lab, capstone ID) and Day 2 (Advanced workflows align-first, tracks A/B, capstone). Flag any slide or exercise not yet final.</div>
+        </div>
+        <div class="owner"><span class="ow-dot"></span>Philip</div>
+      </div>
+      <div class="row">
+        <div class="time">0:40</div>
+        <div>
+          <div class="title">Risks, decisions &amp; action items <span class="chip chip-info ml-2">15 min</span></div>
+          <div class="desc">Each amber/red item in the readiness checklist → assign owner and due date. Capture decisions the sponsor must make.</div>
+        </div>
+        <div class="owner"><span class="ow-dot"></span>All</div>
+      </div>
+      <div class="row">
+        <div class="time">0:55</div>
+        <div>
+          <div class="title">Close &amp; next check-in <span class="chip chip-info ml-2">5 min</span></div>
+          <div class="desc">Confirm next sync (T-3, Fri 24 Apr), day-of runbook owner, and the single "go / no-go" call date.</div>
+        </div>
+        <div class="owner"><span class="ow-dot"></span>Philip</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- READINESS -->
+  <section class="mb-10">
+    <div class="flex items-baseline justify-between mb-3">
+      <h2 class="text-2xl font-bold text-allot-900">Readiness checklist</h2>
+      <div class="flex items-center gap-2 text-sm">
+        <span class="count-pill"><span class="dot"></span><span id="doneCount">0</span> / <span id="totalCount">0</span> done</span>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-5">
+
+      <!-- Logistics -->
+      <details class="card" open>
+        <summary class="p-5 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-building-user text-crimson-500"></i>
+            <span class="font-bold text-allot-900">Logistics &amp; venue</span>
+          </div>
+          <i class="fa-solid fa-chevron-right chev text-allot-400"></i>
+        </summary>
+        <div class="border-t border-allot-100">
+          <div class="check-item">
+            <input type="checkbox" id="l1">
+            <label for="l1"><span class="ci-title">Hod HaSharon training room booked for both days</span>
+              <span class="ci-note">Room with projector, whiteboard, min. 20 seats, reliable Wi-Fi.</span></label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="l2">
+            <label for="l2"><span class="ci-title">Teams bridge created for EU + India remote participants</span>
+              <span class="ci-note">Single recurring link, breakout rooms pre-configured for pair work.</span></label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="l3">
+            <label for="l3"><span class="ci-title">AV dry-run scheduled (T-2, Mon 27 Apr)</span>
+              <span class="ci-note">Mic, camera, shared-screen, remote audio from breakout rooms all tested.</span></label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="l4">
+            <label for="l4"><span class="ci-title">Catering confirmed for Day 1 and Day 2</span>
+              <span class="ci-note">Lunch 13:00–14:00 + two coffee breaks, dietary restrictions collected.</span></label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="l5">
+            <label for="l5"><span class="ci-title">Printed handouts: quick-reference card + workshop template</span>
+              <span class="ci-note">Enough for IL in-room; digital-only for EU/India via the hub.</span></label>
+          </div>
+        </div>
+      </details>
+
+      <!-- Content -->
+      <details class="card" open>
+        <summary class="p-5 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-chalkboard-user text-red2-500"></i>
+            <span class="font-bold text-allot-900">Content &amp; facilitation</span>
+          </div>
+          <i class="fa-solid fa-chevron-right chev text-allot-400"></i>
+        </summary>
+        <div class="border-t border-allot-100">
+          <div class="check-item">
+            <input type="checkbox" id="c1">
+            <label for="c1"><span class="ci-title">Day 1 deck finalized</span>
+              <span class="ci-note">Inigo 4-part frame, V-C-A-F, chaining lab, feasibility/impact, capstone ID.</span></label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="c2">
+            <label for="c2"><span class="ci-title">Day 2 deck finalized</span>
+              <span class="ci-note">Align-first Session 5, Track A/B briefs, responsible AI drill, capstone build.</span></label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="c3">
+            <label for="c3"><span class="ci-title">Live demos rehearsed end-to-end</span>
+              <span class="ci-note">Three-model side-by-side, hallucination demo, 30-second skeptic demo.</span></label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="c4">
+            <label for="c4"><span class="ci-title">Track A / Track B facilitators confirmed</span>
+              <span class="ci-note">One lead per track; briefed on align-first pedagogy and cross-track share.</span></label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="c5">
+            <label for="c5"><span class="ci-title">Incident drill scenario &amp; debrief notes ready</span>
+              <span class="ci-note">Firehawk-style prompt leak scenario; escalation path documented.</span></label>
+          </div>
+        </div>
+      </details>
+
+      <!-- Tools -->
+      <details class="card" open>
+        <summary class="p-5 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-toolbox text-brandorange-500"></i>
+            <span class="font-bold text-allot-900">Tools &amp; access</span>
+          </div>
+          <i class="fa-solid fa-chevron-right chev text-allot-400"></i>
+        </summary>
+        <div class="border-t border-allot-100">
+          <div class="check-item">
+            <input type="checkbox" id="t1">
+            <label for="t1"><span class="ci-title">Every champion has Claude access working</span>
+              <span class="ci-note">License requests routed to Philip (not IT Service Desk); track via the cohort list.</span></label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="t2">
+            <label for="t2"><span class="ci-title">Training hub published &amp; tested</span>
+              <span class="ci-note">philipkram.github.io/allot-ai-champion-hub loads externally; pre-work checkboxes persist.</span></label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="t3">
+            <label for="t3"><span class="ci-title">Shared prompt library space seeded</span>
+              <span class="ci-note">One place to drop capstone artifacts + a starter template.</span></label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="t4">
+            <label for="t4"><span class="ci-title">Teams channel "AI Champions - Training" healthy</span>
+              <span class="ci-note">All 2026 Q2 champions added; pinned posts: hub link, pre-work, Day 1 agenda.</span></label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="t5">
+            <label for="t5"><span class="ci-title">Breakout room plan written down</span>
+              <span class="ci-note">Remote-with-remote pairs, in-room-with-in-room; roster pre-assigned for Session 3 &amp; 5.</span></label>
+          </div>
+        </div>
+      </details>
+
+      <!-- People -->
+      <details class="card" open>
+        <summary class="p-5 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-people-group text-crimson-500"></i>
+            <span class="font-bold text-allot-900">People &amp; communications</span>
+          </div>
+          <i class="fa-solid fa-chevron-right chev text-allot-400"></i>
+        </summary>
+        <div class="border-t border-allot-100">
+          <div class="check-item">
+            <input type="checkbox" id="p1">
+            <label for="p1"><span class="ci-title">Cohort roster finalized &amp; calendar invites accepted</span>
+              <span class="ci-note">RSVPs &gt; 90%; chase laggards this week.</span></label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="p2">
+            <label for="p2"><span class="ci-title">Pre-work reminder sent (T-7, Wed 22 Apr)</span>
+              <span class="ci-note">Plain message with hub link + 2.5-hour budget + what to bring.</span></label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="p3">
+            <label for="p3"><span class="ci-title">Exec sponsor opening confirmed (5 min, Day 1 kickoff)</span>
+              <span class="ci-note">Brief the sponsor on message: champions are scouts, not just users.</span></label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="p4">
+            <label for="p4"><span class="ci-title">Line managers briefed: champions released for the full 2 days</span>
+              <span class="ci-note">No "just popping out for a meeting" allowed — it breaks pairs and hybrid pairing.</span></label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="p5">
+            <label for="p5"><span class="ci-title">Day-of runbook written</span>
+              <span class="ci-note">Who unlocks the room, who starts the Teams bridge, who owns escalations.</span></label>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- RISKS + DECISIONS (2 col) -->
+  <section class="mb-10 grid md:grid-cols-2 gap-5">
+    <div class="card p-6">
+      <div class="flex items-center gap-2 mb-4">
+        <i class="fa-solid fa-triangle-exclamation text-crimson-500"></i>
+        <h2 class="text-xl font-bold text-allot-900">Top risks</h2>
+      </div>
+      <table class="clean">
+        <thead><tr><th>Risk</th><th>Severity</th><th>Mitigation</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="font-semibold">Hybrid breakouts break down</span><div class="text-xs text-allot-500 mt-1">Remote pairs can't hear in-room pairs during Session 3 &amp; 5.</div></td>
+            <td><span class="risk-tag risk-high">High</span></td>
+            <td>Remote-only breakout rooms; in-room pairs stay together; facilitator rotates between Teams rooms.</td>
+          </tr>
+          <tr>
+            <td><span class="font-semibold">Pre-work skipped</span><div class="text-xs text-allot-500 mt-1">Champions walk in without tool access or examples — Day 1 stalls.</div></td>
+            <td><span class="risk-tag risk-high">High</span></td>
+            <td>T-7 reminder with per-part checklist; named chase list by Thu 23 Apr.</td>
+          </tr>
+          <tr>
+            <td><span class="font-semibold">License access gap</span><div class="text-xs text-allot-500 mt-1">A champion hits Day 1 without Claude access.</div></td>
+            <td><span class="risk-tag risk-med">Med</span></td>
+            <td>Route all requests to Philip this week; confirm each license before Fri 24 Apr.</td>
+          </tr>
+          <tr>
+            <td><span class="font-semibold">Capstone pairs mis-matched</span><div class="text-xs text-allot-500 mt-1">Pairs aren't in the same function/domain; capstone dilutes.</div></td>
+            <td><span class="risk-tag risk-med">Med</span></td>
+            <td>Pre-assign pairs from the roster; only adjust in the room as a fallback.</td>
+          </tr>
+          <tr>
+            <td><span class="font-semibold">Sanitization miss</span><div class="text-xs text-allot-500 mt-1">A champion pastes Restricted data into Claude during the lab.</div></td>
+            <td><span class="risk-tag risk-low">Low</span></td>
+            <td>Open Day 1 with the Firehawk exercise; pin data-classification table in Teams channel.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card p-6">
+      <div class="flex items-center gap-2 mb-4">
+        <i class="fa-solid fa-gavel text-red2-500"></i>
+        <h2 class="text-xl font-bold text-allot-900">Decisions needed</h2>
+      </div>
+      <table class="clean">
+        <thead><tr><th>Question</th><th>From</th><th>By</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Exec sponsor for the Day 1 opening — confirm speaker and 5-min message.</td>
+            <td><span class="owner"><span class="ow-dot"></span>Sponsor</span></td>
+            <td>Fri 24 Apr</td>
+          </tr>
+          <tr>
+            <td>Recording policy — record Day 1/Day 2 for asynchronous re-watch, or live-only?</td>
+            <td><span class="owner"><span class="ow-dot"></span>Legal / sponsor</span></td>
+            <td>Wed 22 Apr</td>
+          </tr>
+          <tr>
+            <td>Budget for printed quick-reference cards (IL in-room only).</td>
+            <td><span class="owner"><span class="ow-dot"></span>Ops</span></td>
+            <td>Tue 21 Apr</td>
+          </tr>
+          <tr>
+            <td>Post-training certification grading — Philip solo, or a review panel?</td>
+            <td><span class="owner"><span class="ow-dot"></span>Philip</span></td>
+            <td>Mon 4 May</td>
+          </tr>
+          <tr>
+            <td>Can we skip the capstone presentations on Day 2 if we're over time, or is it non-negotiable?</td>
+            <td><span class="owner"><span class="ow-dot"></span>Philip</span></td>
+            <td>Meeting today</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ACTION ITEMS -->
+  <section class="mb-10">
+    <div class="flex items-baseline justify-between mb-3">
+      <h2 class="text-2xl font-bold text-allot-900">Action items</h2>
+      <span class="text-sm text-allot-500">Assign owner + due date for every open row</span>
+    </div>
+    <div class="card overflow-hidden">
+      <table class="clean">
+        <thead>
+          <tr>
+            <th style="width:44px">#</th>
+            <th>Action</th>
+            <th style="width:180px">Owner</th>
+            <th style="width:140px">Due</th>
+            <th style="width:110px">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Send T-7 pre-work reminder with per-part checklist to the cohort</td>
+            <td><span class="owner"><span class="ow-dot"></span>Philip</span></td>
+            <td>Wed 22 Apr</td>
+            <td><span class="chip chip-info">Open</span></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Confirm Hod HaSharon room + AV dry-run slot on Mon 27 Apr</td>
+            <td><span class="owner"><span class="ow-dot"></span>Ops lead</span></td>
+            <td>Tue 21 Apr</td>
+            <td><span class="chip chip-info">Open</span></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Audit Claude license status for every champion; chase gaps</td>
+            <td><span class="owner"><span class="ow-dot"></span>Philip</span></td>
+            <td>Fri 24 Apr</td>
+            <td><span class="chip chip-risk">At risk</span></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Pre-assign capstone pairs from the roster (same function / domain)</td>
+            <td><span class="owner"><span class="ow-dot"></span>Philip</span></td>
+            <td>Mon 27 Apr</td>
+            <td><span class="chip chip-info">Open</span></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Brief Track A &amp; Track B facilitators on align-first pedagogy</td>
+            <td><span class="owner"><span class="ow-dot"></span>Philip</span></td>
+            <td>Thu 23 Apr</td>
+            <td><span class="chip chip-info">Open</span></td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Confirm exec sponsor for 5-min Day 1 opening + message brief</td>
+            <td><span class="owner"><span class="ow-dot"></span>Sponsor</span></td>
+            <td>Fri 24 Apr</td>
+            <td><span class="chip chip-blocked">Blocked</span></td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>Write the day-of runbook (room unlock, Teams bridge, escalations)</td>
+            <td><span class="owner"><span class="ow-dot"></span>Philip + Ops</span></td>
+            <td>Mon 27 Apr</td>
+            <td><span class="chip chip-info">Open</span></td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>Decide recording policy; update invites &amp; hub accordingly</td>
+            <td><span class="owner"><span class="ow-dot"></span>Legal / sponsor</span></td>
+            <td>Wed 22 Apr</td>
+            <td><span class="chip chip-risk">At risk</span></td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>Schedule T-3 sync on Fri 24 Apr to close remaining amber items</td>
+            <td><span class="owner"><span class="ow-dot"></span>Philip</span></td>
+            <td>Today</td>
+            <td><span class="chip chip-info">Open</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- LINKS -->
+  <section class="mb-16">
+    <h2 class="text-2xl font-bold text-allot-900 mb-3">Reference material</h2>
+    <div class="grid md:grid-cols-3 gap-4">
+      <a href="AI_Champion_Enablement_Training.html" class="card p-5 hover:shadow-lg transition">
+        <div class="flex items-center gap-3 mb-1">
+          <i class="fa-solid fa-book-open text-crimson-500"></i>
+          <span class="font-bold text-allot-900">Training program</span>
+        </div>
+        <div class="text-sm text-allot-600">Full Day 1 / Day 2 agenda with every session, timing, and exercise.</div>
+      </a>
+      <a href="AI_Champion_Pre-Work.html" class="card p-5 hover:shadow-lg transition">
+        <div class="flex items-center gap-3 mb-1">
+          <i class="fa-solid fa-list-check text-red2-500"></i>
+          <span class="font-bold text-allot-900">Pre-work</span>
+        </div>
+        <div class="text-sm text-allot-600">The 2.5-hour self-paced prep champions must complete before Day 1.</div>
+      </a>
+      <a href="https://philipkram.github.io/allot-ai-champion-hub/" class="card p-5 hover:shadow-lg transition" target="_blank" rel="noopener">
+        <div class="flex items-center gap-3 mb-1">
+          <i class="fa-solid fa-up-right-from-square text-brandorange-500"></i>
+          <span class="font-bold text-allot-900">Training hub</span>
+        </div>
+        <div class="text-sm text-allot-600">Public GitHub Pages hub — pre-work tracking and certification portal.</div>
+      </a>
+    </div>
+  </section>
+
+  <footer class="border-t border-allot-100 pt-6 pb-10 text-sm text-allot-500 flex items-center justify-between flex-wrap gap-3">
+    <div>Owner: <span class="text-allot-700 font-semibold">Philip Kramer</span> · AI Enablement &amp; Standards</div>
+    <div>2026 Q2 AI Champion Cohort · Prep meeting · 20 Apr 2026</div>
+  </footer>
+</main>
+
+<script>
+  // Persist checkbox state in localStorage + update counts
+  const boxes = document.querySelectorAll('.check-item input[type=checkbox]');
+  const doneEl = document.getElementById('doneCount');
+  const totalEl = document.getElementById('totalCount');
+  totalEl.textContent = boxes.length;
+
+  const KEY = 'aiChampionsPrepChecklist/v1';
+  const saved = JSON.parse(localStorage.getItem(KEY) || '{}');
+
+  function recount(){
+    let n = 0;
+    boxes.forEach(b => { if (b.checked) n++; });
+    doneEl.textContent = n;
+  }
+
+  boxes.forEach(b => {
+    if (saved[b.id]) b.checked = true;
+    b.addEventListener('change', () => {
+      saved[b.id] = b.checked;
+      localStorage.setItem(KEY, JSON.stringify(saved));
+      recount();
+    });
+  });
+  recount();
+</script>
+</body>
+</html>

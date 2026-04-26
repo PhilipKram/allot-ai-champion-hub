@@ -20,6 +20,11 @@
 *_Answer_Key.*
 Allot  R&D - All Hands Q1 2026.pptx
 
+# Personnel / licensing data — never publish to the public hub repo
+AI_Tools_License_Request.xlsx
+AI_Champions_RnD_Input_v2*.xlsx
+ChatGPT_License_Audit_*.md
+
 # Playwright verification artifacts
 .playwright-mcp/
 hub-*.png

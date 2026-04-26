@@ -62,16 +62,16 @@ From pre-work, now as a group:
 
 | Model | Best for | Avoid when |
 |---|---|---|
-| **Opus** | Complex reasoning, architecture, deep analysis, novel problems | Routine summaries, short classifications |
-| **Sonnet** | Day-to-day work — the sensible default | Only skip when you *know* the job needs more or less |
-| **Haiku** | Fast, lightweight, repetitive, operational tasks | Anything requiring deep reasoning |
+| **Opus** | The sensible default — deep reasoning, architecture, complex analysis, code review, ambiguous problems | Trivial classifications and short, mechanical tasks where Haiku will do |
+| **Sonnet** | Routine, well-scoped work where Opus is overkill but you still want some reasoning | When the task is genuinely complex (use Opus) or genuinely trivial (use Haiku) |
+| **Haiku** | Fast, lightweight, repetitive / operational tasks; high-volume batch work | Anything requiring deep reasoning or domain judgment |
 
 **Context-size tradeoff:**
 - 200k context is usually better than 1M
 - Bigger context = higher cost, slower responses, more anchoring on irrelevant earlier content, more signal dilution
 - Rule of thumb: if you don't need the long context, don't pay for it
 
-**Don't default to Opus with 1M context.** It feels safe, but it's expensive, slower, and often produces worse results than Sonnet at 200k.
+**Default to Opus, but don't reflexively pair it with 1M context.** Opus at 200k is the right choice for most Champion work; 1M context is a separate decision and usually not needed. Big context = higher cost, slower responses, more anchoring on irrelevant earlier content. If you don't need the long context, don't pay for it.
 
 #### 2.3 The relief message — Skills & MEMORY.md (20 min preview)
 You do **not** need to rewrite your role, context, and constraints into every prompt.

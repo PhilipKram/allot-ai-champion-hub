@@ -23,7 +23,7 @@ Complete these before the workshop so you're ready to go on Day 1.
 
 - [ ] **Claude access** — Verify you can log in at the approved Allot instance. If you don't have access, email Philip Kramer (pkramer@allot.com), the AI Enablement lead, **now** with subject line "AI Tools License Request".
 - [ ] **Bookmark key resources:**
-  - Allot AI usage policy (Confluence)
+  - [Allot AI Usage Policy](https://allot.atlassian.net/wiki/spaces/RD/pages/1472692298/Allot+AI+Usage+Policy) (Confluence)
   - **AI Champions - Training** Teams channel
   - AI program Jira board (ALLOTAI)
 - [ ] **Bring to the workshop:**
